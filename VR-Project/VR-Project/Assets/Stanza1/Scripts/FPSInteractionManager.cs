@@ -55,7 +55,7 @@ public class FPSInteractionManager : MonoBehaviour
                 Push();
         }
 
-        UpdateUITarget();
+       UpdateUITarget();
 
         if (_debugRay)
             DebugRaycast();
@@ -111,7 +111,7 @@ public class FPSInteractionManager : MonoBehaviour
             _target.color = Color.red;
     }
 
-    private void Push()
+   private void Push()
     {
         Ray ray = new Ray(rayOrigin, _fpsCameraT.forward);
         RaycastHit hit;
