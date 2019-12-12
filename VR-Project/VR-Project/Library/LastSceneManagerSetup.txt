@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Stanza1/Scene/Stanza1.unity
-  isLoaded: 1
-  isActive: 1
+- path: Assets/VRTK/Assets/Samples/Farm/Scenes/ExampleScene.unity
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0
