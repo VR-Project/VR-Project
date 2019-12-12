@@ -97,8 +97,14 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Supyrb.Editor">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Supyrb.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Zinnia.Editor">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Zinnia.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -112,17 +118,14 @@
  <Reference Include="Unity.CollabProxy.Editor">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.XR.LegacyInputHelpers">
- <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+ <Reference Include="Zinnia.Runtime">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Zinnia.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.SpatialTracking">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
@@ -130,8 +133,17 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="VRTK.Prefabs.Runtime">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/VRTK.Prefabs.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -318,6 +330,21 @@
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="Malimbe.BehaviourStateRequirementMethod">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.BehaviourStateRequirementMethod.dll</HintPath>
+ </Reference>
+ <Reference Include="Malimbe.MemberChangeMethod">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.MemberChangeMethod.dll</HintPath>
+ </Reference>
+ <Reference Include="Malimbe.MemberClearanceMethod">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.MemberClearanceMethod.dll</HintPath>
+ </Reference>
+ <Reference Include="Malimbe.PropertySerializationAttribute">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.PropertySerializationAttribute.dll</HintPath>
+ </Reference>
+ <Reference Include="Malimbe.XmlDocumentationAttribute">
+ <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.XmlDocumentationAttribute.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
