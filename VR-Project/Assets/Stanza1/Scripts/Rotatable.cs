@@ -32,7 +32,8 @@ public class Rotatable : MonoBehaviour
 
     public void Rotate(GameObject rotater)
     {
-        _collider.enabled = false;
-        _rigidbody.isKinematic = true;
+        //_collider.enabled = false;
+        //_rigidbody.isKinematic = true;
+        rotater.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
     }
 }

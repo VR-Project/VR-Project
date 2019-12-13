@@ -103,13 +103,16 @@ public class FPSInteractionManager : MonoBehaviour
             //Check if is rotatable
             Rotatable rotatableObject = hit.transform.GetComponent<Rotatable>();
             _pointingRotatable = rotatableObject != null ? true : false;
-            _pointingRotatable = true;
+            //_pointingRotatable = true;
             if (_pointingRotatable && _rotatedObject == null)
             {
 
                 if (Input.GetMouseButtonDown(1))
                 {
+                    Debug.Log("Sono entrato nell'if");
+
                     rotatableObject.Rotate(gameObject);
+                    
                     Rotate(rotatableObject);
                 }
 
@@ -176,10 +179,14 @@ public class FPSInteractionManager : MonoBehaviour
     private void Rotate(Rotatable rotatable)
     {
         _rotatedObject = rotatable;
-        rotatable.transform.SetParent(_fpsCameraT);
-        rotatable.transform.Rotate(0,0, _rotateDistance);
+        //rotatable.transform.SetParent(_fpsCameraT);
+        //rotatable.transform.Rotate(0,0, _rotateDistance);
+        GameObject cil = GameObject.Find("Cylinder");
+        Debug.Log("Cylinder e' " + cil);
+        cil.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+        Debug.Log("Dovrei aver ruotato");
+        //_target.enabled = false;
 
-        _target.enabled = false;
     }
 
     private void DebugRaycast()
