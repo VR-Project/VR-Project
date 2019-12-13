@@ -88,6 +88,23 @@
      <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationMaterialEditor.cs" />
      <Compile Include="Assets\Oculus\Spatializer\editor\ONSPPropagationSerializationManager.cs" />
      <Compile Include="Assets\Oculus\Spatializer\editor\ONSPReflectionCustomGUI.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Examples\ExampleResources\SharedResources\Scripts\Editor\VRTKExample_FixSetupEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\Attributes\MinMaxRangeDrawer.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\Attributes\ObsoleteInspectorDrawer.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\Attributes\SerializedPropertyExtensions.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\DataTypes\Limits2DDrawer.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\DataTypes\Vector3StateDrawer.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_AdaptiveQualityEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_EditorUtilities.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_InteractHapticsEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_NavMeshDataEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_ObjectSetup.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_PolicyListEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_RadialMenuEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_SDKManagerEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_SDKSetupEditor.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_SupportInfoWindow.cs" />
+     <Compile Include="Assets\VRTK-3.3.0\Assets\VRTK\Source\Editor\VRTK_UpdatePrompt.cs" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
@@ -345,9 +362,6 @@
  </Reference>
  <Reference Include="Malimbe.XmlDocumentationAttribute">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/io.extendreality.malimbe@9.6.3/Runtime/Malimbe.XmlDocumentationAttribute.dll</HintPath>
- </Reference>
- <Reference Include="Valve.Newtonsoft.Json">
- <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>C:/Users/pc/Documents/GitHub/VR-Project/VR-Project/VR-Project/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -723,22 +737,6 @@
     <ProjectReference Include="Oculus.VR.csproj">
       <Project>{F4F09A58-B689-5EC7-3B28-D1CD7EBF1FAD}</Project>
       <Name>Oculus.VR</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Input_Editor.csproj">
-      <Project>{8A81DF0B-63B9-8B36-38C7-9AEAEE372603}</Project>
-      <Name>SteamVR_Input_Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Editor.csproj">
-      <Project>{F0604DB1-104C-1027-ADF8-CED998C75BBB}</Project>
-      <Name>SteamVR_Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR.csproj">
-      <Project>{E4E57401-70D3-B04D-3B9E-FA427E58D1CC}</Project>
-      <Name>SteamVR</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
-      <Project>{6E7AA3ED-2C4B-FBFF-FB56-770EA0A3574A}</Project>
-      <Name>SteamVR_Windows_EditorHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
