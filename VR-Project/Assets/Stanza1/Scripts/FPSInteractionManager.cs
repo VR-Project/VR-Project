@@ -11,16 +11,19 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _pushDistance;
     [SerializeField] private float _pushForce;
     [SerializeField] private float _grabDistance;
+    [SerializeField] private float _rotateDistance;
 
     [SerializeField] private Image _target;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
+    private bool _pointingRotatable;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
 
     private Grabbable _grabbedObject = null;
+    private Rotatable _rotatedObject = null;
 
 
     public float InteractionDistance
@@ -32,6 +35,10 @@ public class FPSInteractionManager : MonoBehaviour
     public Grabbable GrabbedObject
     {
         set { _grabbedObject = value; }
+    }
+    public Rotatable RotatedObject
+    {
+        set { _rotatedObject = value; }
     }
 
     void Start()
@@ -45,7 +52,8 @@ public class FPSInteractionManager : MonoBehaviour
 
         if(_grabbedObject == null)
             CheckInteraction();
-
+        if (_rotatedObject == null)
+            CheckInteraction();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -92,11 +100,26 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                     
             }
+            //Check if is rotatable
+            Rotatable rotatableObject = hit.transform.GetComponent<Rotatable>();
+            _pointingRotatable = rotatableObject != null ? true : false;
+            _pointingRotatable = true;
+            if (_pointingRotatable && _rotatedObject == null)
+            {
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    rotatableObject.Rotate(gameObject);
+                    Rotate(rotatableObject);
+                }
+
+            }
         }
         else
         {
             _pointingInteractable = false;
             _pointingGrabbable = false;
+            _pointingRotatable = false;
         }
 
     }
@@ -106,6 +129,8 @@ public class FPSInteractionManager : MonoBehaviour
         if (_pointingInteractable)
             _target.color = Color.green;
         else if (_pointingGrabbable)
+            _target.color = Color.yellow;
+        else if (_pointingRotatable)
             _target.color = Color.yellow;
         else
             _target.color = Color.red;
@@ -144,6 +169,15 @@ public class FPSInteractionManager : MonoBehaviour
         _grabbedObject = grabbable;
         grabbable.transform.SetParent(_fpsCameraT);
         Vector3 grabPosition = _fpsCameraT.position + transform.forward * _grabDistance;
+
+        _target.enabled = false;
+    }
+
+    private void Rotate(Rotatable rotatable)
+    {
+        _rotatedObject = rotatable;
+        rotatable.transform.SetParent(_fpsCameraT);
+        rotatable.transform.Rotate(0,0, _rotateDistance);
 
         _target.enabled = false;
     }
