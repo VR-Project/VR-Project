@@ -63,7 +63,9 @@ public class FPSInteractionManager : MonoBehaviour
                 Push();
         }
 
-       UpdateUITarget();
+
+
+        UpdateUITarget();
 
         if (_debugRay)
             DebugRaycast();
@@ -93,13 +95,20 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingGrabbable && _grabbedObject == null)
             {
 
-                if (Input.GetMouseButtonDown(1))
+                /*if (Input.GetMouseButtonDown(1))
+                {
+                    grabbableObject.Grab(gameObject);
+                    Grab(grabbableObject);
+                }*/
+                if (Input.GetKeyDown(KeyCode.E) && _grabbedObject == null)
                 {
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
                 }
-                    
+                
+
             }
+
             //Check if is rotatable
             Rotatable rotatableObject = hit.transform.GetComponent<Rotatable>();
             _pointingRotatable = rotatableObject != null ? true : false;
