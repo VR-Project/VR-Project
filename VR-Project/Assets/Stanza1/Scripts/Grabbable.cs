@@ -31,8 +31,9 @@ public class Grabbable : MonoBehaviour
 
     public void Grab(GameObject grabber)
     {
-        _collider.enabled = false;
-        _rigidbody.isKinematic = true;
+        _collider.enabled = true;
+        _rigidbody.isKinematic = false;
+
     }
 
     public void Drop()
