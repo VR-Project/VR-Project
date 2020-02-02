@@ -21,7 +21,7 @@ public class Crouch : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched == false)
         {
-            characterController.height = 0.5f;
+            characterController.height = 0.3f;
             isCrouched = true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched==true)

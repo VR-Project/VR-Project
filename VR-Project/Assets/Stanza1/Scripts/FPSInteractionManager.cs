@@ -17,6 +17,8 @@ public class FPSInteractionManager : MonoBehaviour
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
+    private bool _pointingPick;
+    private bool _pointingOpen;
     private bool _pointingRotatable;
 
     private CharacterController fpsController;
@@ -24,6 +26,8 @@ public class FPSInteractionManager : MonoBehaviour
 
     private Grabbable _grabbedObject = null;
     private Rotatable _rotatedObject = null;
+    private PickUp _pickedObject = null;
+    private Openable _openedObject = null;
 
 
     public float InteractionDistance
@@ -53,6 +57,10 @@ public class FPSInteractionManager : MonoBehaviour
         if(_grabbedObject == null)
             CheckInteraction();
         if (_rotatedObject == null)
+            CheckInteraction();
+        if (_pickedObject == null)
+            CheckInteraction();
+        if (_openedObject == null)
             CheckInteraction();
 
         if (Input.GetMouseButtonDown(0))
@@ -104,8 +112,32 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
+                }                
+
+            }
+
+            //Check if is pickable
+            PickUp pickableObject = hit.transform.GetComponent<PickUp>();
+            _pointingPick = pickableObject != null ? true : false;
+            if (_pointingPick)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    pickableObject.transform.gameObject.SetActive(false);
+                    PickUp(pickableObject);
                 }
-                
+
+            }
+
+            //Check if is openable
+            Openable openableObject = hit.transform.GetComponent<Openable>();
+            _pointingOpen = openableObject != null ? true : false;
+            if (_pointingOpen)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null)
+                {
+                    openableObject.Open();
+                }
 
             }
 
@@ -141,6 +173,10 @@ public class FPSInteractionManager : MonoBehaviour
         if (_pointingInteractable)
             _target.color = Color.green;
         else if (_pointingGrabbable)
+            _target.color = Color.yellow;
+        else if (_pointingPick)
+            _target.color = Color.yellow;
+        else if (_pointingOpen)
             _target.color = Color.yellow;
         else if (_pointingRotatable)
             _target.color = Color.yellow;
@@ -183,6 +219,12 @@ public class FPSInteractionManager : MonoBehaviour
         Vector3 grabPosition = _fpsCameraT.position + transform.forward * _grabDistance;
 
         _target.enabled = false;
+    }
+
+    private void PickUp(PickUp pickable)
+    {
+        _pickedObject = pickable;
+        //_target.enabled = false;
     }
 
     private void Rotate(Rotatable rotatable)
