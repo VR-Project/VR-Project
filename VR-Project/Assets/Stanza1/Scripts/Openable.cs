@@ -18,7 +18,7 @@ public class Openable : MonoBehaviour
 
     public void Open()
     {
-        transform.Translate(0.0f, 0.0f, 0.3f);
+        transform.Translate(-0.1f, 0.0f, 0.0f);
     }
 
 }
