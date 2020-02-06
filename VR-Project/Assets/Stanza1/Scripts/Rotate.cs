@@ -2,29 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotate : MonoBehaviour
+public class rotate : MonoBehaviour
 {
-    Vector3 mPrevPos = Vector3.zero;
-    Vector3 mPosDelta = Vector3.zero;
+    public float rotationSpeed = 8;  //This will determine max rotation speed, you can adjust in the inspector
 
-    // Update is called once per frame
+    public Camera cam;  //Drag the camera object here
+
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        //If you want to prevent rotation, just don't call this method
+        if (Input.GetMouseButton(1))
         {
-            mPosDelta = Input.mousePosition - mPrevPos;
-            if (Vector3.Dot(transform.up, Vector3.up) >= 0)
-            {
-                transform.Rotate(transform.up, -Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
-            }
-            else
-            {
-                transform.Rotate(transform.up, Vector3.Dot(mPosDelta, Camera.main.transform.right), Space.World);
-            }
-
-            transform.Rotate(Camera.main.transform.right, Vector3.Dot(mPosDelta, Camera.main.transform.up), Space.World);
+            RotateObject();
         }
+        
+    }
 
-        mPrevPos = Input.mousePosition;
+    void RotateObject()
+    {
+        ////Get mouse position
+        //Vector3 mousePos = Input.mousePosition;
+
+        ////Adjust mouse z position
+        //mousePos.z = cam.transform.position.y - transform.position.y;
+
+        ////Get a world position for the mouse
+        //Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
+
+        ////Get the angle to rotate and rotate
+        //float angle = -Mathf.Atan2(transform.position.z - mouseWorldPos.z, transform.position.x - mouseWorldPos.x) * Mathf.Rad2Deg;
+
+        ////transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSpeed * Time.deltaTime);
+        ////float angle2 = -Mathf.Atan2(transform.position.y - mouseWorldPos.y, transform.position.x - mouseWorldPos.x) * Mathf.Rad2Deg;
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotationSpeed * Time.deltaTime);
+    
+        transform.Rotate(0, 0, 90);
     }
 }
