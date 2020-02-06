@@ -134,9 +134,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpen = openableObject != null ? true : false;
             if (_pointingOpen)
             {
-                if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null)
+                if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null && _openedObject == null)
                 {
                     openableObject.Open();
+                    Open(openableObject);
                 }
 
             }
@@ -224,7 +225,11 @@ public class FPSInteractionManager : MonoBehaviour
     private void PickUp(PickUp pickable)
     {
         _pickedObject = pickable;
-        //_target.enabled = false;
+    }
+
+    private void Open(Openable openable)
+    {
+        _openedObject = openable;
     }
 
     private void Rotate(Rotatable rotatable)
