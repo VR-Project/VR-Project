@@ -38,6 +38,8 @@ public class Grabbable : MonoBehaviour
     public void Drop()
     {
         _collider.enabled = true;
-        _rigidbody.isKinematic = false;
+        _rigidbody.isKinematic = true;
+        _rigidbody.useGravity = false;
+
     }
 }
