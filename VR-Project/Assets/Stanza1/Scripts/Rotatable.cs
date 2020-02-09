@@ -2,25 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Collider))]
 public class Rotatable : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
-    private Collider _collider;
-    private Transform _originalParent;
-
-    public Transform OriginalParent
-    {
-        get { return _originalParent; }
-        protected set { _originalParent = value; }
-    }
-    // Use this for initialization
+    // Start is called before the first frame update
     void Start()
     {
-        _collider = GetComponent<Collider>();
-        _rigidbody = GetComponent<Rigidbody>();
-        _originalParent = transform.parent;
 
     }
 
@@ -30,10 +16,9 @@ public class Rotatable : MonoBehaviour
 
     }
 
-    public void Rotate(GameObject rotater)
+    public void Rotate()
     {
-        //_collider.enabled = false;
-        //_rigidbody.isKinematic = true;
-        rotater.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+        transform.Rotate(0.0f, 0.0f, 20.0f, Space.Self);
     }
+
 }
