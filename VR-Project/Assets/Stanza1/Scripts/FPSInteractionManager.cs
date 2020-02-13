@@ -19,6 +19,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingGrabbable;
     private bool _pointingPick;
     private bool _pointingOpen;
+    private bool _pointingOpenCab;
     private bool _pointingRotatable;
     private bool _pointingExamine;
 
@@ -29,6 +30,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Rotatable _rotatedObject = null;
     private PickUp _pickedObject = null;
     private Openable _openedObject = null;
+    private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
 
 
@@ -55,17 +57,8 @@ public class FPSInteractionManager : MonoBehaviour
     void Update()
     {
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
-
-        if(_grabbedObject == null)
-            CheckInteraction();
-        if (_rotatedObject == null)
-            CheckInteraction();
-        if (_pickedObject == null)
-            CheckInteraction();
-        if (_openedObject == null)
-            CheckInteraction();
-        if (_examinedObject == null)
-            CheckInteraction();
+        
+        CheckInteraction();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -143,6 +136,29 @@ public class FPSInteractionManager : MonoBehaviour
                     openableObject.Open();
                     Open(openableObject);
                 }
+                else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
+                {
+                        openableObject.Close();
+                        Close();
+                }
+
+            }
+
+            //Check if is openable
+            OpenCabinet openableCabObject = hit.transform.GetComponent<OpenCabinet>();
+            _pointingOpenCab = openableCabObject != null ? true : false;
+            if (_pointingOpenCab)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _openedCabObject == null)
+                {
+                    openableCabObject.Open();
+                    OpenCab(openableCabObject);
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
+                {
+                    openableCabObject.Close();
+                    CloseCab();
+                }
 
             }
 
@@ -181,6 +197,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingInteractable = false;
             _pointingGrabbable = false;
             _pointingRotatable = false;
+            _pointingExamine = false;
+            _pointingOpen = false;
+            _pointingOpenCab = false;
+            _pointingPick = false;
         }
 
     }
@@ -190,17 +210,19 @@ public class FPSInteractionManager : MonoBehaviour
         if (_pointingInteractable)
             _target.color = Color.green;
         else if (_pointingGrabbable)
-            _target.color = Color.yellow;
+            _target.color = Color.green;
         else if (_pointingPick)
-            _target.color = Color.yellow;
+            _target.color = Color.green;
         else if (_pointingOpen)
-            _target.color = Color.yellow;
+            _target.color = Color.green;
+        else if (_pointingOpenCab)
+            _target.color = Color.green;
         else if (_pointingRotatable)
-            _target.color = Color.yellow;
+            _target.color = Color.green;
         else if (_pointingExamine)
-            _target.color = Color.yellow;
+            _target.color = Color.green;
         else
-            _target.color = Color.red;
+            _target.color = Color.white;
     }
 
    private void Push()
@@ -246,6 +268,21 @@ public class FPSInteractionManager : MonoBehaviour
     private void Open(Openable openable)
     {
         _openedObject = openable;
+
+    }
+
+    private void Close()
+    {
+        _openedObject = null;
+    }
+
+    private void OpenCab(OpenCabinet openCab)
+    {
+        _openedCabObject = openCab;
+    }
+    private void CloseCab()
+    {
+        _openedCabObject = null;
     }
 
     private void Examine(Examine examinable)
