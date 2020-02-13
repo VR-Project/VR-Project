@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -478,7 +478,7 @@ PrefabInstance:
       objectReference: {fileID: 567239103}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Radius
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
@@ -2674,6 +2674,7 @@ GameObject:
   - component: {fileID: 4523071064073510180}
   - component: {fileID: 4523071064073510182}
   - component: {fileID: 4523071064073510183}
+  - component: {fileID: 4523071064073510181}
   m_Layer: 0
   m_Name: fiori
   m_TagString: Untagged
@@ -2695,6 +2696,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -553691795846450108, guid: 937b54a5bba2dce4a90a056cc9ea5072, type: 3}
+--- !u!114 &4523071064073510181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523071064073510179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe573adcbe8e88548a772505f2a08d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &4523071064073510182
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4954,6 +4967,7 @@ GameObject:
   - component: {fileID: 5062458685929762997}
   - component: {fileID: 8797962888219054886}
   - component: {fileID: 8797962888219054885}
+  - component: {fileID: 8797962888219054887}
   - component: {fileID: 8797962888219054884}
   m_Layer: 0
   m_Name: lampada
@@ -5004,6 +5018,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -5918037397106098997, guid: 937b54a5bba2dce4a90a056cc9ea5072, type: 3}
+--- !u!114 &8797962888219054887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797962888219054883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe573adcbe8e88548a772505f2a08d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8832419274984576329
 GameObject:
   m_ObjectHideFlags: 0
