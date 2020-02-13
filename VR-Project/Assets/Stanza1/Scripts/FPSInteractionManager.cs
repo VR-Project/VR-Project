@@ -177,20 +177,6 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
-
-            //Check if is examinable
-            Examine examinableObject = hit.transform.GetComponent<Examine>();
-            _pointingExamine = examinableObject != null ? true : false;
-            if (_pointingExamine)
-            {
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    examinableObject.ClickObject();  
-                    Examine(examinableObject);
-                }
-
-            }
         }
         else
         {
@@ -249,6 +235,8 @@ public class FPSInteractionManager : MonoBehaviour
 
         _target.enabled = true;
         _grabbedObject = null;
+
+
     }
 
     private void Grab(Grabbable grabbable)
@@ -289,7 +277,6 @@ public class FPSInteractionManager : MonoBehaviour
     {
         _examinedObject = examinable;
     }
-
 
     private void Rotate(Rotatable rotatable)
     {
