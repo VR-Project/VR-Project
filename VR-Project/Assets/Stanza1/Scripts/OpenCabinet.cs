@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Openable : MonoBehaviour
+public class OpenCabinet : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Open()
     {
-        transform.Translate(-0.3f, 0.0f, 0.0f);
+        transform.Rotate(0, -110, 0);
     }
-
     public void Close()
     {
-        transform.Translate(0.3f, 0.0f, 0.0f);
+        transform.Rotate(0, 110, 0);
     }
 
 }
