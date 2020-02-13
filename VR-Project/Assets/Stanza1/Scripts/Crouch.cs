@@ -19,6 +19,8 @@ public class Crouch : MonoBehaviour {
 
     void Update ()
     {
+
+        Vector3 originalPosition = characterController.transform.position;
         if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched == false)
         {
             characterController.height = 0.3f;
@@ -28,6 +30,7 @@ public class Crouch : MonoBehaviour {
         {
             characterController.height = 1.8f;
             isCrouched = false;
+            characterController.transform.position = originalPosition;
         }
 
     }

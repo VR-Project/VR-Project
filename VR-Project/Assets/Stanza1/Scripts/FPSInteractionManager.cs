@@ -20,6 +20,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingPick;
     private bool _pointingOpen;
     private bool _pointingRotatable;
+    private bool _pointingExamine;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -28,6 +29,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Rotatable _rotatedObject = null;
     private PickUp _pickedObject = null;
     private Openable _openedObject = null;
+    private Examine _examinedObject = null;
 
 
     public float InteractionDistance
@@ -61,6 +63,8 @@ public class FPSInteractionManager : MonoBehaviour
         if (_pickedObject == null)
             CheckInteraction();
         if (_openedObject == null)
+            CheckInteraction();
+        if (_examinedObject == null)
             CheckInteraction();
 
         if (Input.GetMouseButtonDown(0))
@@ -157,6 +161,20 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
+
+            //Check if is examinable
+            Examine examinableObject = hit.transform.GetComponent<Examine>();
+            _pointingExamine = examinableObject != null ? true : false;
+            if (_pointingExamine)
+            {
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    examinableObject.ClickObject();  
+                    Examine(examinableObject);
+                }
+
+            }
         }
         else
         {
@@ -178,6 +196,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingOpen)
             _target.color = Color.yellow;
         else if (_pointingRotatable)
+            _target.color = Color.yellow;
+        else if (_pointingExamine)
             _target.color = Color.yellow;
         else
             _target.color = Color.red;
@@ -207,8 +227,6 @@ public class FPSInteractionManager : MonoBehaviour
 
         _target.enabled = true;
         _grabbedObject = null;
-
-
     }
 
     private void Grab(Grabbable grabbable)
@@ -229,6 +247,12 @@ public class FPSInteractionManager : MonoBehaviour
     {
         _openedObject = openable;
     }
+
+    private void Examine(Examine examinable)
+    {
+        _examinedObject = examinable;
+    }
+
 
     private void Rotate(Rotatable rotatable)
     {
