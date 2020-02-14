@@ -1,50 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Deployment.Internal;
+using System.Collections.Generic;
 
 public class MoveLabirinto : MonoBehaviour
 {
-    public GameObject wayPointsT;
-     
-    public bool _useCoroutine;
-    
-    [Range(0.001f, 0.5f)][SerializeField] private float _nextWayPointWaitTime;
+    public GameObject wayPoints;
+    private List<Vector3> positions;
+    public bool arrivato= false;
+    private float _nextWayPointWaitTime=0.25f;   //velocità (più è alto più va lento)
 
 
     // Use this for initialization
     void Start()
     {
-        //if (_useCoroutine)
-        //    StartCoroutine(MoveAlongWaipointsCoroutine());
+        
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        wayPointsT = this.gameObject.transform.GetChild(0).gameObject;
-        Debug.Log(wayPointsT);
-        //if (_useCoroutine)
-        //    return;
 
-        //for (int i = 0; i < wayPointsT.childCount; i++)
-        //{
-        //    Vector3 wayPointPosition = wayPointsT.GetChild(i).position;
-        //    transform.position = new Vector3(wayPointPosition.x, transform.position.y, wayPointPosition.z);
-        //}
     }
 
     public IEnumerator MoveAlongWaipointsCoroutine()
     {
-        while (true)
+        wayPoints = this.gameObject.transform.GetChild(0).gameObject;
+
+        while (arrivato==false)
         {
-            //for (int i = 0; i < wayPointsT.childCount; i++)
-            //{
-            //    Vector3 wayPointPosition = wayPointsT.GetChild(i).position;
-            //    transform.position = new Vector3(wayPointPosition.x, transform.position.y, wayPointPosition.z);
-       
-            //    yield return new WaitForSeconds(_nextWayPointWaitTime);
-            //}
+            positions = new List<Vector3>();
+
+            for (int i = 0; i < wayPoints.transform.childCount; i++)
+            {
+                positions.Add(wayPoints.transform.GetChild(i).position);
+            }
+            for(int i = 0; i < positions.Count; i++)
+            {
+                Vector3 wayPointPosition = positions[i];
+                transform.position = new Vector3(wayPointPosition.x, transform.position.y, wayPointPosition.z);
+                yield return new WaitForSeconds(_nextWayPointWaitTime);
+            }
+            arrivato = true;
         }
     }
 }

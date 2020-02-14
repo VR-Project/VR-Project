@@ -239,7 +239,8 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && _movedObject == null)
                 {
-                    movableObject._useCoroutine = true;
+                    //movableObject._useCoroutine = true;
+                    StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
                 }
 
             }
