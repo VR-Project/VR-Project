@@ -208,8 +208,8 @@ public class FPSInteractionManager : MonoBehaviour
 
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
                     {
-                        portaCassaforte = GameObject.Find("PortaCassaforte1");
-                        portaCassaforte.transform.Rotate(0, 90, 0);
+                        portaCassaforte = GameObject.Find("PortaCassaforte");
+                        portaCassaforte.gameObject.transform.Rotate(0, -70, 0);
                     }
                 }
 
