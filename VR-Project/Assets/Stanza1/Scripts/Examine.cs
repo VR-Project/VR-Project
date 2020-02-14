@@ -13,7 +13,7 @@ public class Examine : MonoBehaviour
     Vector3 originalRotation;
 
     //If True Allow Rotation Of Object
-    bool examineMode;
+    public bool examineMode;
 
     void Start()
     {
@@ -82,7 +82,7 @@ public class Examine : MonoBehaviour
         }
     }
 
-    void ExitExamineMode()
+    public void ExitExamineMode()
     {
             //Reset Object To Original Position
             clickedObject.transform.position = originaPosition;

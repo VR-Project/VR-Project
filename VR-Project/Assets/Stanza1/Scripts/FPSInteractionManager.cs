@@ -184,10 +184,14 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingExamine)
             {
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && _examinedObject == null)
                 {
                     examinableObject.ClickObject();  
                     Examine(examinableObject);
+                }
+                if (examinableObject.examineMode == false && _examinedObject == examinableObject )
+                {
+                    ExitExamine();
                 }
 
             }
@@ -288,6 +292,11 @@ public class FPSInteractionManager : MonoBehaviour
     private void Examine(Examine examinable)
     {
         _examinedObject = examinable;
+    }
+
+    public void ExitExamine()
+    {
+       _examinedObject = null;
     }
 
 

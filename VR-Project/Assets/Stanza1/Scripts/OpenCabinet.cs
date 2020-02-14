@@ -18,11 +18,11 @@ public class OpenCabinet : MonoBehaviour
 
     public void Open()
     {
-        transform.Rotate(0, -110, 0);
+        transform.Rotate(0, -70, 0);
     }
     public void Close()
     {
-        transform.Rotate(0, 110, 0);
+        transform.Rotate(0, 70, 0);
     }
 
 }
