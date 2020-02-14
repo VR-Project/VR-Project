@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lamp_base
-  m_Shader: {fileID: 4800000, guid: 1f4952b4595bb4bfb9c5b023dfe1cf54, type: 3}
+  m_Name: lampshade
+  m_Shader: {fileID: 4800000, guid: ea8dbf43656a14e93826f14f5a818ed4, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d08aecd9c52de8c4d941dcbbe0b40268, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1c9023bff0f9d740a62281924ac5052, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b7d02d326dca7994aaf61aa8ee1e3392, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0962a14218c506b4e95dada98e9b5b64, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: f55b4802ad7752a45973dedb0005d2c7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b45f477eda3b43409ed5bcc5c865f9e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 6d1b3983dea2a3e4dbdb0731611ffc2f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2c2775fd9c3feef45b58bc2b7adb559c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyOcclusion:
@@ -71,7 +71,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScatteringPower: 3.84
+    - _ScatteringPower: 4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
