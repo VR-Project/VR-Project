@@ -32,6 +32,11 @@ public class FPSInteractionManager : MonoBehaviour
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
+    public GameObject portaCassaforte;
+    int counter0 = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    int counter3 = 0;
 
 
     public float InteractionDistance
@@ -174,6 +179,36 @@ public class FPSInteractionManager : MonoBehaviour
                     rotatableObject.Rotate();
                     
                     Rotate(rotatableObject);
+
+                    if (rotatableObject.name == "Cylinder.000") 
+                    {
+                        if (counter0 < 6) counter0++;
+                        else counter0 = 0;
+                    }
+
+                    if (rotatableObject.name == "Cylinder.001")
+                    {
+                        if (counter1 < 6) counter1++;
+                        else counter1 = 0;
+                    }
+
+                    if (rotatableObject.name == "Cylinder.002")
+                    {
+                        if (counter2 < 6) counter2++;
+                        else counter2 = 0;
+                    }
+
+                    if (rotatableObject.name == "Cylinder.003")
+                    {
+                        if (counter3 < 6) counter3++;
+                        else counter3 = 0;
+                    }
+
+                    if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
+                    {
+                        portaCassaforte = GameObject.Find("PortaCassaforte1");
+                        portaCassaforte.transform.Rotate(0, 90, 0);
+                    }
                 }
 
             }
