@@ -18,7 +18,7 @@ public class Rotatable : MonoBehaviour
 
     public void Rotate()
     {
-        transform.Rotate(0.0f, 0.0f, 60.0f, Space.Self);
+        transform.Rotate(60.0f, 0.0f, 0.0f, Space.Self);
     }
 
 }

@@ -22,6 +22,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingOpenCab;
     private bool _pointingRotatable;
     private bool _pointingExamine;
+    private bool _pointingLeva;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -32,6 +33,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
+    private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
     int counter0 = 0;
     int counter1 = 0;
@@ -230,6 +232,17 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
+
+            MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
+            _pointingLeva = movableObject != null ? true : false;
+            if (_pointingLeva)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null)
+                {
+                    movableObject._useCoroutine = true;
+                }
+
+            }
         }
         else
         {
@@ -240,6 +253,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpen = false;
             _pointingOpenCab = false;
             _pointingPick = false;
+            _pointingLeva = false;
         }
 
     }
@@ -259,6 +273,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingRotatable)
             _target.color = Color.green;
         else if (_pointingExamine)
+            _target.color = Color.green;
+        else if (_pointingLeva)
             _target.color = Color.green;
         else
             _target.color = Color.white;
