@@ -9,7 +9,7 @@ public class MoveLabirinto : MonoBehaviour
     private List<Vector3> positions;
     public bool arrivato= false;
     private float _nextWayPointWaitTime=0.25f;   //velocità (più è alto più va lento)
-
+    private Vector3[] initPos = new Vector3[10];
 
     // Use this for initialization
     void Start()
@@ -23,8 +23,19 @@ public class MoveLabirinto : MonoBehaviour
 
     }
 
+    public void tornaIndietro()
+    {
+        int levaN;
+        int.TryParse(name, out levaN);
+        transform.position = initPos[levaN-1];
+    }
+
     public IEnumerator MoveAlongWaipointsCoroutine()
     {
+        int levaN;
+        int.TryParse(name, out levaN);
+        initPos[levaN-1]= transform.position;
+        Debug.Log(initPos[0]);
         wayPoints = this.gameObject.transform.GetChild(0).gameObject;
 
         while (arrivato==false)
