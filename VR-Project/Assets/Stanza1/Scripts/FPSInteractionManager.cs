@@ -266,7 +266,7 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
 
-                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null && !leve_arrivate.Contains(movableObject.name) && !angolo)
+                if (Input.GetKeyDown(KeyCode.E) && !leve_arrivate.Contains(movableObject.name) && !angolo)
                 {
                     StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
                     leve_arrivate.Add(movableObject.name);
