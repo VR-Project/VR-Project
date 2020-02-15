@@ -41,6 +41,10 @@ public class FPSInteractionManager : MonoBehaviour
     int counter2 = 0;
     int counter3 = 0;
     private List<string> leve_arrivate= new List<string>();
+    bool angolo = false;
+    bool angOcc2 = false;
+    bool angOcc3 = false;
+    bool angOcc4 = false;
 
 
 
@@ -242,22 +246,62 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if is movelabirinto
-
-            
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
+
             if (_pointingLeva)
             {
-                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null && !leve_arrivate.Contains(movableObject.name))
+                // Capisco angolo da considerare
+                if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
                 {
-                    //movableObject._useCoroutine = true;
+                    angolo = angOcc2;
+                }
+                else if (movableObject.name == "5" || movableObject.name == "6")
+                {
+                    angolo = angOcc3;
+                }
+                else if (movableObject.name == "7" || movableObject.name == "8" || movableObject.name == "9" || movableObject.name == "10")
+                {
+                    angolo = angOcc4;
+                }
+
+
+                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null && !leve_arrivate.Contains(movableObject.name) && !angolo)
+                {
                     StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
                     leve_arrivate.Add(movableObject.name);
                     
+                    // Setto flag se angolo già occupato
+                    if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
+                    {
+                        angOcc2 = true;
+                    }
+                    else if (movableObject.name == "5" || movableObject.name == "6")
+                    {
+                        angOcc3 = true;
+                    }
+                    else if (movableObject.name == "7" || movableObject.name == "8" || movableObject.name == "9" || movableObject.name == "10")
+                    {
+                        angOcc4 = true;
+                    }
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && leve_arrivate.Contains(movableObject.name))
                 {
                     movableObject.tornaIndietro();
+                    
+                    // Setto flag false se angolo si libera
+                    if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
+                    {
+                        angOcc2 = false;
+                    }
+                    else if (movableObject.name == "5" || movableObject.name == "6")
+                    {
+                        angOcc3 = false;
+                    }
+                    else if (movableObject.name == "7" || movableObject.name == "8" || movableObject.name == "9" || movableObject.name == "10")
+                    {
+                        angOcc4 = false;
+                    }
                 }
 
             }
