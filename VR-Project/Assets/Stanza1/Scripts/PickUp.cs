@@ -15,4 +15,9 @@ public class PickUp : MonoBehaviour
     {
         
     }
+
+    public void DestroyInstance()
+    {
+        Destroy(this);
+    }
 }

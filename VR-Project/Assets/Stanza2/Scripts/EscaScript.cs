@@ -26,4 +26,9 @@ public class EscaScript : MonoBehaviour
         this.GetComponent<Renderer>().material = material1;
         fluo = true;
     }
+
+    public void DestroyInstance()
+    {
+        Destroy(this);
+    }
 }
