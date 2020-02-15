@@ -252,7 +252,11 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingLeva)
             {
                 // Capisco angolo da considerare
-                if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
+                if (movableObject.name == "1")
+                {
+                    angolo = false;
+                }
+                else if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
                 {
                     angolo = angOcc2;
                 }
@@ -288,7 +292,7 @@ public class FPSInteractionManager : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.E) && leve_arrivate.Contains(movableObject.name))
                 {
                     movableObject.tornaIndietro();
-                    
+                    leve_arrivate.Remove(movableObject.name);
                     // Setto flag false se angolo si libera
                     if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
                     {
