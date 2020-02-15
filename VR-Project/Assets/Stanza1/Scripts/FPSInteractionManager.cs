@@ -48,8 +48,6 @@ public class FPSInteractionManager : MonoBehaviour
     bool angOcc3 = false;
     bool angOcc4 = false;
 
-
-
     public float InteractionDistance
     {
         get { return _interactionDistance; }
@@ -125,12 +123,6 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingGrabbable = grabbableObject != null ? true : false;
             if (_pointingGrabbable && _grabbedObject == null)
             {
-
-                /*if (Input.GetMouseButtonDown(1))
-                {
-                    grabbableObject.Grab(gameObject);
-                    Grab(grabbableObject);
-                }*/
                 if (Input.GetKeyDown(KeyCode.E) && _grabbedObject == null)
                 {
                     grabbableObject.Grab(gameObject);
@@ -191,7 +183,6 @@ public class FPSInteractionManager : MonoBehaviour
             //Check if is rotatable
             Rotatable rotatableObject = hit.transform.GetComponent<Rotatable>();
             _pointingRotatable = rotatableObject != null ? true : false;
-            //_pointingRotatable = true;
             if (_pointingRotatable)
             {
 
@@ -432,14 +423,6 @@ public class FPSInteractionManager : MonoBehaviour
     private void Rotate(Rotatable rotatable)
     {
         _rotatedObject = rotatable;
-        //rotatable.transform.SetParent(_fpsCameraT);
-        //rotatable.transform.Rotate(0,0, _rotateDistance);
-        //GameObject cil = GameObject.Find("Cylinder");
-        //Debug.Log("Cylinder e' " + cil);
-        //cil.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-        //Debug.Log("Dovrei aver ruotato");
-        ////_target.enabled = false;
-
     }
 
     private void DebugRaycast()
