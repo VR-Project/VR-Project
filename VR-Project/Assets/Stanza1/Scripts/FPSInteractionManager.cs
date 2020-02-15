@@ -43,29 +43,24 @@ public class FPSInteractionManager : MonoBehaviour
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
-    public GameObject portaCassaforte;
-
-    public GameObject amo;
+    public GameObject portaCassaforte;
+    public GameObject scrigno;
+    public GameObject amo;
+    public GameObject esca;
+    private Material material1;
+    int counter0 = 0;
+    int counter1 = 0;
+    int counter2 = 0;    
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
-
-    public GameObject esca;
-
-    private Material material1;
-
-    int counter0 = 0;
-
-    int counter1 = 0;
-
-    int counter2 = 0;
-
     int counter3 = 0;
     private List<string> leve_arrivate = new List<string>();
     bool angolo = false;
     bool angOcc2 = false;
     bool angOcc3 = false;
     bool angOcc4 = false;
-
+    float posScrigno = 0;
+    float angScrigno = 0;
     int counterFish = 0;
 
     public float InteractionDistance
@@ -107,7 +102,6 @@ public class FPSInteractionManager : MonoBehaviour
         {
             StartCoroutine(Fluo());
         }
-
         if (Input.GetMouseButtonDown(0))
         {
             if (_grabbedObject != null)
@@ -115,15 +109,7 @@ public class FPSInteractionManager : MonoBehaviour
             else
                 Push();
         }
-
-
-
-
-
-
-
         UpdateUITarget();
-
         if (_debugRay)
             DebugRaycast();
     }
@@ -131,10 +117,7 @@ public class FPSInteractionManager : MonoBehaviour
     IEnumerator Fluo()
 
     {
-
-
         if (!esca.activeSelf)
-
         {
 
             fluo = false;
@@ -147,6 +130,7 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     float pos = amoColtello.transform.position.y;
                     pos = pos - 0.01f;
+                    //se spostiamo il COLTELLO NON FUNZIONA UN CAZZO
                     amoColtello.transform.position = new Vector3(6.883f, pos, 1.915f);
                     yield return new WaitForSeconds(.01f);
                     counterFish--;
@@ -198,7 +182,23 @@ public class FPSInteractionManager : MonoBehaviour
 
     }
 
-
+    IEnumerator openScrigno()
+    {
+        scrigno = GameObject.Find("labirinto_wayPoints/Scrigno_corpo");
+        yield return new WaitForSeconds(6f);
+        while (posScrigno <= 0.5f)
+        {
+            posScrigno = posScrigno + 0.01f;
+            scrigno.gameObject.transform.Translate(0, 0, 0.005f);
+            yield return new WaitForSeconds(.05f);
+        }
+        while (angScrigno <= 60)
+        {
+            angScrigno += 1f;
+            scrigno.transform.GetChild(0).gameObject.transform.Rotate(0, 1, 0);
+            yield return new WaitForSeconds(.01f);
+        }
+    }
     private void CheckInteraction()
     {
         
@@ -451,8 +451,13 @@ public class FPSInteractionManager : MonoBehaviour
                         angOcc4 = false;
                     }
                 }
-
+                if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
+                {
+                    leve_arrivate.Clear();
+                    StartCoroutine(openScrigno());
+                }
             }
+            
         }
         else
         {
