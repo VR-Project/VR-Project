@@ -444,6 +444,6 @@ public class FPSInteractionManager : MonoBehaviour
 
     private void DebugRaycast()
     {
-        Debug.DrawRay(rayOrigin, _fpsCameraT.forward * InteractionDistance, Color.red);
+        Debug.DrawRay(rayOrigin, _fpsCameraT.forward * InteractionDistance, Color.white);
     }
 }
