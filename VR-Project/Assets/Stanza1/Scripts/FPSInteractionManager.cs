@@ -39,6 +39,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
+    public GameObject scrigno;
     public GameObject amo;
     public GameObject esca;
     private Material material1;
@@ -268,7 +269,7 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
-// Check if is movelabirinto
+             // Check if is movelabirinto
              MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
 
@@ -330,8 +331,15 @@ public class FPSInteractionManager : MonoBehaviour
                         angOcc4 = false;
                     }
                 }
-
+                if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
+                {
+                    leve_arrivate.Clear();
+                    scrigno = GameObject.Find("labirinto_wayPoints/Scrigno_corpo");
+                    scrigno.gameObject.transform.Translate(0, 0, 0.1f);
+                    scrigno.transform.GetChild(0).gameObject.transform.Rotate(0, 60, 0);
+                }
             }
+            
         }
         else
         {
