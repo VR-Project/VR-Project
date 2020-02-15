@@ -35,6 +35,8 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
+    public GameObject amo;
+    public GameObject esca;
     int counter0 = 0;
     int counter1 = 0;
     int counter2 = 0;
@@ -59,6 +61,10 @@ public class FPSInteractionManager : MonoBehaviour
     void Start()
     {
         fpsController = GetComponent<CharacterController>();
+        amo = GameObject.Find("amo");
+        esca = amo.transform.GetChild(0).Find("esca1").gameObject;
+        esca.AddComponent (typeof(EscaScript));
+        esca.AddComponent (typeof(PickUp));
     }
 
     void Update()
@@ -66,6 +72,7 @@ public class FPSInteractionManager : MonoBehaviour
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         
         CheckInteraction();
+        Fluo();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -81,6 +88,11 @@ public class FPSInteractionManager : MonoBehaviour
 
         if (_debugRay)
             DebugRaycast();
+    }
+
+    private void Fluo()
+    {
+
     }
 
     private void CheckInteraction()
