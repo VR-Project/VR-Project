@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityStandardAssets.Utility;
+
 using System.Collections.Generic;
 
 public class FPSInteractionManager : MonoBehaviour
@@ -24,6 +25,8 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingRotatable;
     private bool _pointingExamine;
     private bool _pointingLeva;
+    private bool fluo;
+    private bool pickFluo;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -38,11 +41,12 @@ public class FPSInteractionManager : MonoBehaviour
     public GameObject portaCassaforte;
     public GameObject amo;
     public GameObject esca;
+    private Material material1;
     int counter0 = 0;
     int counter1 = 0;
     int counter2 = 0;
     int counter3 = 0;
-    private List<string> leve_arrivate= new List<string>();
+    private List<string> leve_arrivate = new List<string>();
     bool angolo = false;
     bool angOcc2 = false;
     bool angOcc3 = false;
@@ -70,6 +74,7 @@ public class FPSInteractionManager : MonoBehaviour
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         esca.AddComponent (typeof(EscaScript));
         esca.AddComponent (typeof(PickUp));
+        fluo = true;
     }
 
     void Update()
@@ -77,7 +82,10 @@ public class FPSInteractionManager : MonoBehaviour
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         
         CheckInteraction();
-        Fluo();
+        if (fluo == true)
+        {
+            StartCoroutine(Fluo());
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -95,9 +103,27 @@ public class FPSInteractionManager : MonoBehaviour
             DebugRaycast();
     }
 
-    private void Fluo()
+    IEnumerator Fluo()
     {
-
+        if (!esca.activeSelf)
+        {
+            fluo = false;
+            EscaScript script = esca.GetComponent<EscaScript>();
+            script.DestroyInstance();
+            PickUp pick = esca.GetComponent<PickUp>();
+            pick.DestroyInstance();
+            material1 = (Material)Resources.Load("Esca", typeof(Material));
+            esca.GetComponent<Renderer>().material = material1;
+            yield return new WaitForSeconds(3);
+            esca.transform.gameObject.SetActive(true);
+            int random = Random.Range(0, 8) + 1;
+            amo = GameObject.Find("amo (" + random +")");
+            Debug.Log("amo (" + random + ")");
+            esca = amo.transform.GetChild(0).Find("esca").gameObject;
+            esca.AddComponent(typeof(EscaScript));
+            esca.AddComponent(typeof(PickUp));
+            fluo = true;
+        }
     }
 
     private void CheckInteraction()
@@ -192,32 +218,27 @@ public class FPSInteractionManager : MonoBehaviour
                     
                     Rotate(rotatableObject);
 
-                    if (rotatableObject.name == "Cylinder.000")
+                    if (rotatableObject.name == "Cylinder.000") 
                     {
-                        if (counter0 < 5) counter0++;
-                        else
-                        {
-                            counter0 = 0;
-                            Debug.Log("azzera");
-                        }
-                        
+                        if (counter0 < 6) counter0++;
+                        else counter0 = 0;
                     }
 
-                    else if (rotatableObject.name == "Cylinder.001")
+                    if (rotatableObject.name == "Cylinder.001")
                     {
-                        if (counter1 < 5) counter1++;
+                        if (counter1 < 6) counter1++;
                         else counter1 = 0;
                     }
 
-                    else if (rotatableObject.name == "Cylinder.002")
+                    if (rotatableObject.name == "Cylinder.002")
                     {
-                        if (counter2 < 5) counter2++;
+                        if (counter2 < 6) counter2++;
                         else counter2 = 0;
                     }
 
-                    else if (rotatableObject.name == "Cylinder.003")
+                    if (rotatableObject.name == "Cylinder.003")
                     {
-                        if (counter3 < 5) counter3++;
+                        if (counter3 < 6) counter3++;
                         else counter3 = 0;
                     }
 
@@ -247,9 +268,8 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
-
-            //Check if is movelabirinto
-            MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
+// Check if is movelabirinto
+             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
 
             if (_pointingLeva)
@@ -277,7 +297,7 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
                     leve_arrivate.Add(movableObject.name);
-                    
+
                     // Setto flag se angolo già occupato
                     if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
                     {
