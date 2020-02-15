@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.046172652, g: 0.037411135, b: 0.021924317, a: 1}
+  m_IndirectSpecularColor: {r: 0.046172842, g: 0.037411198, b: 0.021924358, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,33 +223,11 @@ MonoBehaviour:
   _grabDistance: 1
   _rotateDistance: 0
   _target: {fileID: 567239103}
-  _pointingInteractable: 0
-  _pointingGrabbable: 0
-  _pointingPick: 0
-  _pointingOpen: 0
-  _pointingOpenCab: 0
-  _pointingRotatable: 0
-  _pointingExamine: 0
-  _pointingLeva: 0
-  fluo: 0
-  pickFluo: 0
-  fpsController: {fileID: 0}
-  rayOrigin: {x: 0, y: 0, z: 0}
-  _grabbedObject: {fileID: 0}
-  _rotatedObject: {fileID: 0}
-  _pickedObject: {fileID: 0}
-  _openedObject: {fileID: 0}
-  _openedCabObject: {fileID: 0}
-  _examinedObject: {fileID: 0}
-  _movedObject: {fileID: 0}
   portaCassaforte: {fileID: 0}
   amo: {fileID: 0}
+  amoColtello: {fileID: 0}
+  finalPositionColtello: {x: 0, y: 0, z: 0}
   esca: {fileID: 0}
-  material1: {fileID: 0}
-  counter0: 0
-  counter1: 0
-  counter2: 0
-  counter3: 0
 --- !u!4 &193545863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
@@ -862,15 +840,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.34
+      value: 7.07
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.775
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.63
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x

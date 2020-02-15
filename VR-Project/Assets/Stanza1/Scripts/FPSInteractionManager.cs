@@ -26,7 +26,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingExamine;
     private bool _pointingLeva;
     private bool fluo;
-    private bool pickFluo;
+    private bool coltello;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -39,7 +39,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
-    public GameObject amo;
+    public GameObject amo;    public GameObject amoColtello;    public Vector3 finalPositionColtello;
     public GameObject esca;
     private Material material1;
     int counter0 = 0;
@@ -52,6 +52,7 @@ public class FPSInteractionManager : MonoBehaviour
     bool angOcc3 = false;
     bool angOcc4 = false;
 
+    int counterFish = 0;
 
     public float InteractionDistance
     {
@@ -71,11 +72,14 @@ public class FPSInteractionManager : MonoBehaviour
     void Start()
     {
         fpsController = GetComponent<CharacterController>();
+        amoColtello = GameObject.Find("amoColtello");
+        finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         esca.AddComponent (typeof(EscaScript));
         esca.AddComponent (typeof(PickUp));
         fluo = true;
+        coltello = false;
     }
 
     void Update()
@@ -105,25 +109,63 @@ public class FPSInteractionManager : MonoBehaviour
     }
 
     IEnumerator Fluo()
-    {
+    {
         if (!esca.activeSelf)
         {
             fluo = false;
-            EscaScript script = esca.GetComponent<EscaScript>();
-            script.DestroyInstance();
-            PickUp pick = esca.GetComponent<PickUp>();
-            pick.DestroyInstance();
-            material1 = (Material)Resources.Load("Esca", typeof(Material));
-            esca.GetComponent<Renderer>().material = material1;
-            yield return new WaitForSeconds(3);
-            esca.transform.gameObject.SetActive(true);
-            int random = Random.Range(0, 8) + 1;
-            amo = GameObject.Find("amo (" + random +")");
-            Debug.Log("amo (" + random + ")");
-            esca = amo.transform.GetChild(0).Find("esca").gameObject;
-            esca.AddComponent(typeof(EscaScript));
-            esca.AddComponent(typeof(PickUp));
-            fluo = true;
+            counterFish++;
+
+            if (counterFish == 5)
+            {
+                if(amoColtello.transform.position.y >= finalPositionColtello.y)
+                {
+                    float pos = amoColtello.transform.position.y;
+                    pos = pos - 0.01f;
+                    amoColtello.transform.position = new Vector3(6.883f, pos, 1.915f);
+                    yield return new WaitForSeconds(.01f);
+                    counterFish--;
+                    fluo = true;
+                }
+                else
+                {
+                    esca = amo.transform.GetChild(0).Find("coltello").gameObject;
+                    esca.AddComponent(typeof(PickUp));
+                }
+            }
+            else
+            {
+
+                EscaScript script = esca.GetComponent<EscaScript>();
+
+                script.DestroyInstance();
+
+                PickUp pick = esca.GetComponent<PickUp>();
+
+                pick.DestroyInstance();
+
+                material1 = (Material)Resources.Load("Esca", typeof(Material));
+
+                esca.GetComponent<Renderer>().material = material1;
+
+                yield return new WaitForSeconds(3);
+
+                esca.transform.gameObject.SetActive(true);
+
+                int random = Random.Range(0, 8) + 1;
+
+                amo = GameObject.Find("amo (" + random + ")");
+
+                Debug.Log("amo (" + random + ")");
+
+                esca = amo.transform.GetChild(0).Find("esca").gameObject;
+
+                esca.AddComponent(typeof(EscaScript));
+
+                esca.AddComponent(typeof(PickUp));
+
+                fluo = true;
+            }
+            
         }
     }
 
