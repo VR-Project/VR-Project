@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.046172652, g: 0.037411135, b: 0.021924317, a: 1}
+  m_IndirectSpecularColor: {r: 0.046172842, g: 0.037411198, b: 0.021924358, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
@@ -600,7 +600,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
@@ -926,7 +926,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
@@ -1015,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
@@ -1500,7 +1500,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: adf120a0747bdc64fb0e248e64fb4c24,
         type: 3}
