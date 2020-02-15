@@ -29,6 +29,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingLeva;
     private bool fluo;
     private bool coltello;
+    private bool _pointingCut;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -101,12 +102,10 @@ public class FPSInteractionManager : MonoBehaviour
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         
         CheckInteraction();
+
         if (fluo == true)
-
         {
-
             StartCoroutine(Fluo());
-
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -155,8 +154,9 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else
                 {
-                    esca = amo.transform.GetChild(0).Find("coltello").gameObject;
+                    esca = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
                     esca.AddComponent(typeof(PickUp));
+                    coltello = true;
                 }
             }
             else
@@ -197,6 +197,7 @@ public class FPSInteractionManager : MonoBehaviour
         }
 
     }
+
 
     private void CheckInteraction()
     {
@@ -379,6 +380,12 @@ public class FPSInteractionManager : MonoBehaviour
 
                 }
 
+            }
+
+            //Check if coltello
+            if(coltello == true)
+            {
+                GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
             }
 
 
