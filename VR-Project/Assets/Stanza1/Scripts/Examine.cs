@@ -14,6 +14,8 @@ public class Examine : MonoBehaviour
 
     //If True Allow Rotation Of Object
     public bool examineMode;
+    private float coeff = 0.7f;
+
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class Examine : MonoBehaviour
             {
                 //ClickedObject Will Be The Object Hit By The Raycast
                 clickedObject = hit.transform.gameObject;
+                if (clickedObject.name == "bigliettoAereo" || clickedObject.name == "foto") coeff = 0.4f;
 
                 //Save The Original Postion And Rotation
                 originaPosition = clickedObject.transform.position;
@@ -53,7 +56,7 @@ public class Examine : MonoBehaviour
                 
                 //clickedObject.transform.position = newPosition;
                 clickedObject.transform.rotation = mainCam.transform.rotation;
-                clickedObject.transform.position = newPosition + transform.forward * 0.7f;
+                clickedObject.transform.position = newPosition + transform.forward * coeff;
                 //Pause The Game
                 Time.timeScale = 0;
 
