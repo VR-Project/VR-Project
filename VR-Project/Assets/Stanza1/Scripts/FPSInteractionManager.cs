@@ -26,6 +26,7 @@ public class FPSInteractionManager : MonoBehaviour
     
     private bool fluo;
     private bool coltello;
+    private bool _pointingCut;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -91,6 +92,7 @@ public class FPSInteractionManager : MonoBehaviour
     {
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         CheckInteraction();
+
         if (fluo == true)
         {
             StartCoroutine(Fluo());
@@ -127,8 +129,9 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else
                 {
-                    esca = amo.transform.GetChild(0).Find("coltello").gameObject;
+                    esca = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
                     esca.AddComponent(typeof(PickUp));
+                    coltello = true;
                 }
             }
             else
@@ -295,7 +298,17 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     ExitExamine();
                 }
-            }             // Check if is movelabirinto
+
+            }
+
+            //Check if coltello
+            if(coltello == true)
+            {
+                GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
+            }
+
+
+// Check if is movelabirinto
              MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
