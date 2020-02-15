@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityStandardAssets.Utility;
+using System.Collections.Generic;
 
 public class FPSInteractionManager : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class FPSInteractionManager : MonoBehaviour
     int counter1 = 0;
     int counter2 = 0;
     int counter3 = 0;
+    private List<string> leve_arrivate= new List<string>();
+
 
 
     public float InteractionDistance
@@ -238,14 +241,23 @@ public class FPSInteractionManager : MonoBehaviour
 
             }
 
+            //Check if is movelabirinto
+
+            
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
             {
-                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null)
+                if (Input.GetKeyDown(KeyCode.E) && _movedObject == null && !leve_arrivate.Contains(movableObject.name))
                 {
                     //movableObject._useCoroutine = true;
                     StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
+                    leve_arrivate.Add(movableObject.name);
+                    
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && leve_arrivate.Contains(movableObject.name))
+                {
+                    movableObject.tornaIndietro();
                 }
 
             }
