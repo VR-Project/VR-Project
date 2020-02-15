@@ -23,6 +23,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingRotatable;
     private bool _pointingExamine;
     private bool _pointingLeva;
+    private bool _pointingMoveQ;
     
     private bool fluo;
     private bool coltello;
@@ -229,6 +230,17 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is MoveQuadro
+            MoveQuadro moveQuadroObject = hit.transform.GetComponent<MoveQuadro>();
+            _pointingMoveQ = moveQuadroObject != null ? true : false;
+            if (_pointingMoveQ)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //StartCoroutine(moveQuadroObject.MoveQ());
+                }
+            }
+
             //Check if is openable
             OpenCabinet openableCabObject = hit.transform.GetComponent<OpenCabinet>();
             _pointingOpenCab = openableCabObject != null ? true : false;
@@ -308,7 +320,7 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
 
-// Check if is movelabirinto
+             // Check if is movelabirinto
              MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
@@ -385,6 +397,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpenCab = false;
             _pointingPick = false;
             _pointingLeva = false;
+            _pointingMoveQ = false;
         }
 
     }
