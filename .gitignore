@@ -28,7 +28,6 @@ ExportedObj/
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
-*.meta
 SteamVR.meta
 StreamingAssets.meta
 *.DS_Store
