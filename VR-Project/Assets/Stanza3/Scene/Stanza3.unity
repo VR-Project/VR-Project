@@ -513,6 +513,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 340863037}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &383477838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1991603709}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383477839}
+  m_Layer: 0
+  m_Name: labirinto_wayPoints (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383477839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1991603709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383477838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 450904554}
+  - {fileID: 572750908}
+  - {fileID: 668735135}
+  - {fileID: 766806695}
+  - {fileID: 874778897}
+  - {fileID: 1106526337}
+  - {fileID: 1126582549}
+  - {fileID: 1409604518}
+  - {fileID: 1454105899}
+  - {fileID: 1564759337}
+  - {fileID: 1670996401}
+  - {fileID: 1684897828}
+  - {fileID: 1731173907}
+  - {fileID: 1775931141}
+  - {fileID: 1961909193}
+  - {fileID: 2014216239}
+  - {fileID: 2028124923}
+  - {fileID: 2061299080}
+  - {fileID: 2083350194}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &393445990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1011,33 +1060,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2f3bae3e1378c574d9dbfb67bd4c24e2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a26f130eca5fe984d9e6fb4f3134bd88, type: 3}
---- !u!1 &870533372
+--- !u!1 &874778896
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: -8470045053010906745, guid: e1ef2ee7614be8b4cb168208c1d4f80d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1991603709}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 870533373}
-  - component: {fileID: 870533377}
-  - component: {fileID: 870533376}
-  - component: {fileID: 870533375}
-  - component: {fileID: 870533374}
+  - component: {fileID: 874778897}
+  - component: {fileID: 874778900}
   m_Layer: 0
-  m_Name: Funziona
+  m_Name: Missing Prefab (Dummy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &870533373
+  m_IsActive: 0
+--- !u!4 &874778897
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_PrefabInstance: {fileID: 1991603709}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870533372}
+  m_GameObject: {fileID: 874778896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.432, y: 0, z: 0}
   m_LocalScale: {x: 0.074969, y: 0.074969, z: 0.074969}
