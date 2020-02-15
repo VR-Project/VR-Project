@@ -35,7 +35,6 @@ public class MoveLabirinto : MonoBehaviour
         int levaN;
         int.TryParse(name, out levaN);
         initPos[levaN-1]= transform.position;
-        Debug.Log(initPos[0]);
         wayPoints = this.gameObject.transform.GetChild(0).gameObject;
 
         while (arrivato==false)
@@ -54,5 +53,6 @@ public class MoveLabirinto : MonoBehaviour
             }
             arrivato = true;
         }
+        arrivato = false;
     }
 }
