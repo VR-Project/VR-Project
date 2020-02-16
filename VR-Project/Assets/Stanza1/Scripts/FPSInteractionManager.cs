@@ -114,6 +114,7 @@ public class FPSInteractionManager : MonoBehaviour
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         esca.AddComponent (typeof(EscaScript));
         esca.AddComponent (typeof(PickUp));
+        esca.AddComponent(typeof(CollisionColorChanger));
         fluo = true;
         coltello = false;
         pickOk = false;
@@ -173,7 +174,7 @@ public class FPSInteractionManager : MonoBehaviour
                 script.DestroyInstance();
                 PickUp pick = esca.GetComponent<PickUp>();
                 pick.DestroyInstance();
-                if (counterFish > 1)
+                if (counterFish >= 1)
                 {
                     CollisionColorChanger color = esca.GetComponent<CollisionColorChanger>();
                     color.DestroyInstance();
