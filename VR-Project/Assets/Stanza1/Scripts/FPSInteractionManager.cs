@@ -39,14 +39,20 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
+
+
     public GameObject scrigno;
+
     public GameObject amo;
+
     public GameObject esca;
-    private Material material1;
+
+    private Material material1;
+
     int counter0 = 0;
     int counter1 = 0;
-    int counter2 = 0;    int counter3 = 0;
-    int counterFish = 0;
+    int counter2 = 0;
+    int counter3 = 0;
 
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
@@ -59,7 +65,10 @@ public class FPSInteractionManager : MonoBehaviour
 
     float posScrigno = 0;
     float angScrigno = 0;
- 
+
+    int counterFish = 0;
+    int pos = 0;
+
     public float InteractionDistance
     {
         get { return _interactionDistance; }
@@ -118,12 +127,11 @@ public class FPSInteractionManager : MonoBehaviour
             counterFish++;
             if (counterFish == 5)
             {
-                if(amoColtello.transform.position.y >= finalPositionColtello.y)
+                if(pos <= 50)
                 {
-                    float pos = amoColtello.transform.position.y;
-                    pos = pos - 0.01f;
+                    pos = pos + 1;
                     //se spostiamo il COLTELLO NON FUNZIONA UN CAZZO
-                    amoColtello.transform.position = new Vector3(6.883f, pos, 1.915f);
+                    amoColtello.transform.Translate(0, -0.01f, 0);
                     yield return new WaitForSeconds(.01f);
                     counterFish--;
                     fluo = true;
@@ -231,13 +239,13 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if is MoveQuadro
-            MoveQuadro moveQuadroObject = hit.transform.GetComponent<MoveQuadro>();
+            Translate moveQuadroObject = hit.transform.GetComponent<Translate>();
             _pointingMoveQ = moveQuadroObject != null ? true : false;
             if (_pointingMoveQ)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //StartCoroutine(moveQuadroObject.MoveQ());
+                    StartCoroutine(moveQuadroObject.MoveQ());
                 }
             }
 
@@ -270,22 +278,22 @@ public class FPSInteractionManager : MonoBehaviour
                    
                     if (rotatableObject.name == "Cylinder.000") 
                     {
-                        if (counter0 < 6) counter0++;
+                        if (counter0 < 5) counter0++;
                         else counter0 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.001")
+                    else if (rotatableObject.name == "Cylinder.001")
                     {
-                        if (counter1 < 6) counter1++;
+                        if (counter1 < 5) counter1++;
                         else counter1 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.002")
+                    else if (rotatableObject.name == "Cylinder.002")
                     {
-                        if (counter2 < 6) counter2++;
+                        if (counter2 < 5) counter2++;
                         else counter2 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.003")
+                    else if (rotatableObject.name == "Cylinder.003")
                     {
-                        if (counter3 < 6) counter3++;
+                        if (counter3 < 5) counter3++;
                         else counter3 = 0;
                     }
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
@@ -381,6 +389,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                 }
                 if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
+
                 {
                     leve_arrivate.Clear();
                     StartCoroutine(openScrigno());
@@ -413,6 +422,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingOpen)
             _target.color = Color.green;
         else if (_pointingOpenCab)
+            _target.color = Color.green;
+        else if (_pointingMoveQ)
             _target.color = Color.green;
         else if (_pointingRotatable)
             _target.color = Color.green;
