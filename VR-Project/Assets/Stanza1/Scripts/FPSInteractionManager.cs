@@ -28,6 +28,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool fluo;
     private bool coltello;
     private bool _pointingCut;
+    private bool pickOk;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -39,6 +40,8 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
+    public CollisionColorChanger colorChanger = null;
+    public Rigidbody collisionRigidBody = null;
 
 
     public GameObject scrigno;
@@ -46,6 +49,20 @@ public class FPSInteractionManager : MonoBehaviour
     public GameObject amo;
 
     public GameObject esca;
+    public GameObject fish;
+    public GameObject fish1;
+    public GameObject fish2;
+    public GameObject fish3;
+    public GameObject fish4;
+    public GameObject fish5;
+    public GameObject fish6;
+    public CharacterCollisionDetecter colli1;
+    public CharacterCollisionDetecter colli2;
+    public CharacterCollisionDetecter colli3;
+    public CharacterCollisionDetecter colli4;
+    public CharacterCollisionDetecter colli5;
+    public CharacterCollisionDetecter colli6;
+    public CharacterCollisionDetecter colli7;
 
     private Material material1;
 
@@ -54,6 +71,8 @@ public class FPSInteractionManager : MonoBehaviour
     int counter2 = 0;
     int counter3 = 0;
     int counterFish = 0;
+    int random;
+    int previousRandom;
 
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
@@ -67,7 +86,6 @@ public class FPSInteractionManager : MonoBehaviour
     float posScrigno = 0;
     float angScrigno = 0;
 
-    int counterFish = 0;
     int pos = 0;
 
     public float InteractionDistance
@@ -97,6 +115,7 @@ public class FPSInteractionManager : MonoBehaviour
         esca.AddComponent (typeof(PickUp));
         fluo = true;
         coltello = false;
+        pickOk = false;
     }
 
     void Update()
@@ -122,16 +141,19 @@ public class FPSInteractionManager : MonoBehaviour
 
     IEnumerator Fluo()
     {
+        fluo = false;
         if (!esca.activeSelf)
         {
-            fluo = false;
-            counterFish++;
+            
+            if (pickOk == true)
+            {
+                counterFish++;
+            }
             if (counterFish == 5)
             {
                 if(pos <= 50)
                 {
                     pos = pos + 1;
-                    //se spostiamo il COLTELLO NON FUNZIONA UN CAZZO
                     amoColtello.transform.Translate(0, -0.01f, 0);
                     yield return new WaitForSeconds(.01f);
                     counterFish--;
@@ -150,19 +172,39 @@ public class FPSInteractionManager : MonoBehaviour
                 script.DestroyInstance();
                 PickUp pick = esca.GetComponent<PickUp>();
                 pick.DestroyInstance();
+                if (counterFish > 1)
+                {
+                    CollisionColorChanger color = esca.GetComponent<CollisionColorChanger>();
+                    color.DestroyInstance();
+                }
                 material1 = (Material)Resources.Load("Esca", typeof(Material));
                 esca.GetComponent<Renderer>().material = material1;
                 yield return new WaitForSeconds(3);
                 esca.transform.gameObject.SetActive(true);
-                int random = Random.Range(0, 8) + 1;
+                esca.tag = "Untagged";
+                random = Random.Range(0, 8) + 1;
+                if (random == previousRandom)
+                {
+                    if (random == 9)
+                    {
+                        random = random - 1;
+                    }
+                    random = random + 1;
+                }
+                previousRandom = random;
+                //random = 1;
                 amo = GameObject.Find("amo (" + random + ")");
                 Debug.Log("amo (" + random + ")");
                 esca = amo.transform.GetChild(0).Find("esca").gameObject;
                 esca.AddComponent(typeof(EscaScript));
                 esca.AddComponent(typeof(PickUp));
-                fluo = true;
+                esca.AddComponent(typeof(CollisionColorChanger));
+                esca.tag = "Target";
+                pickOk = false;
+                
             }
         }
+        fluo = true;
     }
 
     IEnumerator openScrigno()
@@ -218,6 +260,7 @@ public class FPSInteractionManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     pickableObject.transform.gameObject.SetActive(false);
+                    pickOk = true;
                     PickUp(pickableObject);
                 }
             }
@@ -395,7 +438,15 @@ public class FPSInteractionManager : MonoBehaviour
                     leve_arrivate.Clear();
                     StartCoroutine(openScrigno());
                 }
-            }          
+            }
+            //Check if collision
+            //Creare i vari fish che richiamano OnCollisionEnter che ritorna un boolean che chiama ciò che è nell'if
+            /*if (colli1.OnCollisionEnter()== true || colli2.OnCollisionEnter() == true || colli3.OnCollisionEnter() == true || colli4.OnCollisionEnter() == true || colli5.OnCollisionEnter() == true || colli6.OnCollisionEnter() == true || colli7.OnCollisionEnter() == true)
+            {
+                pickOk = false;
+                esca.SetActive(false);
+                //StartCoroutine(Coroutine);
+            }*/
         }
         else
         {
@@ -412,7 +463,7 @@ public class FPSInteractionManager : MonoBehaviour
 
     }
 
-    private void UpdateUITarget()
+        private void UpdateUITarget()
     {
         if (_pointingInteractable)
             _target.color = Color.green;
