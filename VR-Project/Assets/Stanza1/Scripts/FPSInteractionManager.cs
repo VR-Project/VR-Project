@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityStandardAssets.Utility;
-
 using System.Collections.Generic;
 
 public class FPSInteractionManager : MonoBehaviour
@@ -14,55 +13,75 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _pushForce;
     [SerializeField] private float _grabDistance;
     [SerializeField] private float _rotateDistance;
-
     [SerializeField] private Image _target;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
     private bool _pointingPick;
-
     private bool _pointingOpen;
     private bool _pointingOpenCab;
     private bool _pointingRotatable;
-
     private bool _pointingExamine;
     private bool _pointingLeva;
+    private bool _pointingMoveQ;
+    
     private bool fluo;
     private bool coltello;
     private bool _pointingCut;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
-
     private Grabbable _grabbedObject = null;
     private Rotatable _rotatedObject = null;
-
     private PickUp _pickedObject = null;
-
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
-    public GameObject portaCassaforte;
-    public GameObject scrigno;
-    public GameObject amo;
-    public GameObject esca;
+    public GameObject portaCassaforte;
+<<<<<<< HEAD
+
+    public GameObject scrigno;
+
+    public GameObject amo;
+
+    public GameObject esca;
+
+    private Material material1;
+
+    int counter0 = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    
+=======
+    public GameObject scrigno;
+    public GameObject amo;
+    public GameObject esca;
     private Material material1;
     int counter0 = 0;
     int counter1 = 0;
-    int counter2 = 0;    
+    int counter2 = 0;    int counter3 = 0;
+    int counterFish = 0;
+
+>>>>>>> PerFavoreBasta
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
-    int counter3 = 0;
     private List<string> leve_arrivate = new List<string>();
+    
     bool angolo = false;
     bool angOcc2 = false;
     bool angOcc3 = false;
     bool angOcc4 = false;
+
     float posScrigno = 0;
     float angScrigno = 0;
+<<<<<<< HEAD
     int counterFish = 0;
+    int pos = 0;
 
+=======
+ 
+>>>>>>> PerFavoreBasta
     public float InteractionDistance
     {
         get { return _interactionDistance; }
@@ -73,11 +92,11 @@ public class FPSInteractionManager : MonoBehaviour
     {
         set { _grabbedObject = value; }
     }
+
     public Rotatable RotatedObject
     {
         set { _rotatedObject = value; }
     }
-
 
     void Start()
     {
@@ -95,7 +114,6 @@ public class FPSInteractionManager : MonoBehaviour
     void Update()
     {
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
-        
         CheckInteraction();
 
         if (fluo == true)
@@ -115,23 +133,18 @@ public class FPSInteractionManager : MonoBehaviour
     }
 
     IEnumerator Fluo()
-
     {
         if (!esca.activeSelf)
         {
-
             fluo = false;
-
             counterFish++;
-
             if (counterFish == 5)
             {
-                if(amoColtello.transform.position.y >= finalPositionColtello.y)
+                if(pos <= 50)
                 {
-                    float pos = amoColtello.transform.position.y;
-                    pos = pos - 0.01f;
+                    pos = pos + 1;
                     //se spostiamo il COLTELLO NON FUNZIONA UN CAZZO
-                    amoColtello.transform.position = new Vector3(6.883f, pos, 1.915f);
+                    amoColtello.transform.Translate(0, -0.01f, 0);
                     yield return new WaitForSeconds(.01f);
                     counterFish--;
                     fluo = true;
@@ -145,41 +158,23 @@ public class FPSInteractionManager : MonoBehaviour
             }
             else
             {
-
                 EscaScript script = esca.GetComponent<EscaScript>();
-
                 script.DestroyInstance();
-
                 PickUp pick = esca.GetComponent<PickUp>();
-
                 pick.DestroyInstance();
-
                 material1 = (Material)Resources.Load("Esca", typeof(Material));
-
                 esca.GetComponent<Renderer>().material = material1;
-
                 yield return new WaitForSeconds(3);
-
                 esca.transform.gameObject.SetActive(true);
-
                 int random = Random.Range(0, 8) + 1;
-
                 amo = GameObject.Find("amo (" + random + ")");
-
                 Debug.Log("amo (" + random + ")");
-
                 esca = amo.transform.GetChild(0).Find("esca").gameObject;
-
                 esca.AddComponent(typeof(EscaScript));
-
                 esca.AddComponent(typeof(PickUp));
-
                 fluo = true;
             }
-            
-
         }
-
     }
 
     IEnumerator openScrigno()
@@ -199,20 +194,18 @@ public class FPSInteractionManager : MonoBehaviour
             yield return new WaitForSeconds(.01f);
         }
     }
+
     private void CheckInteraction()
     {
-        
         Ray ray = new Ray(rayOrigin, _fpsCameraT.forward);
         RaycastHit hit;
-
         if (Physics.Raycast(ray, out hit, InteractionDistance))
         {
             //Check if is interactable
             Interactable interactable = hit.transform.GetComponent<Interactable>();
             _pointingInteractable = interactable != null ? true : false;
             if (_pointingInteractable)
-            {
-               
+            {              
                 if(Input.GetMouseButtonDown(1))
                     interactable.Interact(gameObject);
             }
@@ -227,15 +220,9 @@ public class FPSInteractionManager : MonoBehaviour
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
                 }                
-
-
-
             }
 
-
-
             //Check if is pickable
-
             PickUp pickableObject = hit.transform.GetComponent<PickUp>();
             _pointingPick = pickableObject != null ? true : false;
             if (_pointingPick)
@@ -245,15 +232,9 @@ public class FPSInteractionManager : MonoBehaviour
                     pickableObject.transform.gameObject.SetActive(false);
                     PickUp(pickableObject);
                 }
-
-
-
             }
 
-
-
             //Check if is openable
-
             Openable openableObject = hit.transform.GetComponent<Openable>();
             _pointingOpen = openableObject != null ? true : false;
             if (_pointingOpen)
@@ -263,22 +244,25 @@ public class FPSInteractionManager : MonoBehaviour
                     openableObject.Open();
                     Open(openableObject);
                 }
-
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
-
                 {
-
                         openableObject.Close();
-
                         Close();
                 }
+            }
 
-
-
+            //Check if is MoveQuadro
+            MoveQuadro moveQuadroObject = hit.transform.GetComponent<MoveQuadro>();
+            _pointingMoveQ = moveQuadroObject != null ? true : false;
+            if (_pointingMoveQ)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //StartCoroutine(moveQuadroObject.MoveQ());
+                }
             }
 
             //Check if is openable
-
             OpenCabinet openableCabObject = hit.transform.GetComponent<OpenCabinet>();
             _pointingOpenCab = openableCabObject != null ? true : false;
             if (_pointingOpenCab)
@@ -288,18 +272,11 @@ public class FPSInteractionManager : MonoBehaviour
                     openableCabObject.Open();
                     OpenCab(openableCabObject);
                 }
-
                 else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
-
                 {
-
                     openableCabObject.Close();
-
                     CloseCab();
                 }
-
-
-
             }
 
             //Check if is rotatable
@@ -307,58 +284,37 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingRotatable = rotatableObject != null ? true : false;
             if (_pointingRotatable)
             {
-
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    rotatableObject.Rotate();
-                    
+                    rotatableObject.Rotate();                    
                     Rotate(rotatableObject);
-
+                   
                     if (rotatableObject.name == "Cylinder.000") 
                     {
                         if (counter0 < 6) counter0++;
                         else counter0 = 0;
                     }
-
                     if (rotatableObject.name == "Cylinder.001")
-
                     {
-
                         if (counter1 < 6) counter1++;
                         else counter1 = 0;
-
                     }
-
                     if (rotatableObject.name == "Cylinder.002")
-
                     {
-
                         if (counter2 < 6) counter2++;
                         else counter2 = 0;
-
                     }
-
-
-
                     if (rotatableObject.name == "Cylinder.003")
-
                     {
                         if (counter3 < 6) counter3++;
                         else counter3 = 0;
-
                     }
-
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
-
                     {
-
                         portaCassaforte = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
-
                         portaCassaforte.gameObject.transform.Rotate(0, -70, 0);
-
                     }
                 }
-
             }
 
             //Check if is examinable
@@ -366,18 +322,14 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingExamine = examinableObject != null ? true : false;
             if (_pointingExamine)
             {
-
                 if (Input.GetMouseButtonDown(0) && _examinedObject == null)
                 {
                     examinableObject.ClickObject();  
                     Examine(examinableObject);
                 }
                 if (examinableObject.examineMode == false && _examinedObject == examinableObject )
-
                 {
-
                     ExitExamine();
-
                 }
 
             }
@@ -389,10 +341,9 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
 
-// Check if is movelabirinto
+             // Check if is movelabirinto
              MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
-
             if (_pointingLeva)
             {
                 // Capisco angolo da considerare
@@ -412,7 +363,6 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     angolo = angOcc4;
                 }
-
 
                 if (Input.GetKeyDown(KeyCode.E) && !leve_arrivate.Contains(movableObject.name) && !angolo)
                 {
@@ -451,13 +401,16 @@ public class FPSInteractionManager : MonoBehaviour
                         angOcc4 = false;
                     }
                 }
-                if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
+                if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
+<<<<<<< HEAD
+
+=======
+>>>>>>> PerFavoreBasta
                 {
                     leve_arrivate.Clear();
                     StartCoroutine(openScrigno());
                 }
-            }
-            
+            }          
         }
         else
         {
@@ -469,6 +422,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpenCab = false;
             _pointingPick = false;
             _pointingLeva = false;
+            _pointingMoveQ = false;
         }
 
     }
@@ -483,7 +437,6 @@ public class FPSInteractionManager : MonoBehaviour
             _target.color = Color.green;
         else if (_pointingOpen)
             _target.color = Color.green;
-
         else if (_pointingOpenCab)
             _target.color = Color.green;
         else if (_pointingRotatable)
@@ -527,33 +480,23 @@ public class FPSInteractionManager : MonoBehaviour
         _grabbedObject = grabbable;
         grabbable.transform.SetParent(_fpsCameraT);
         Vector3 grabPosition = _fpsCameraT.position + transform.forward * _grabDistance;
-
         _target.enabled = false;
     }
-
-
 
     private void PickUp(PickUp pickable)
     {
         _pickedObject = pickable;
     }
 
-
-
     private void Open(Openable openable)
     {
         _openedObject = openable;
-
     }
-
-
 
     private void Close()
     {
         _openedObject = null;
     }
-
-
 
     private void OpenCab(OpenCabinet openCab)
     {
@@ -565,20 +508,15 @@ public class FPSInteractionManager : MonoBehaviour
         _openedCabObject = null;
     }
 
-
-
     private void Examine(Examine examinable)
     {
         _examinedObject = examinable;
     }
 
-
-
     public void ExitExamine()
     {
        _examinedObject = null;
     }
-
 
     private void Rotate(Rotatable rotatable)
     {
