@@ -1038,16 +1038,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bookcase_New
       objectReference: {fileID: 0}
-    - target: {fileID: -8982810363686845514, guid: a26f130eca5fe984d9e6fb4f3134bd88,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 17f6dc41116af6b4c8bf40d464ef2515, type: 2}
-    - target: {fileID: -7994477316157587343, guid: a26f130eca5fe984d9e6fb4f3134bd88,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d1b0bd7f0aaeb8d43b16a17c4365cb5a, type: 2}
     - target: {fileID: -4216859302048453862, guid: a26f130eca5fe984d9e6fb4f3134bd88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1118,6 +1108,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 59.829834
       objectReference: {fileID: 0}
+    - target: {fileID: -8982810363686845514, guid: a26f130eca5fe984d9e6fb4f3134bd88,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 17f6dc41116af6b4c8bf40d464ef2515, type: 2}
+    - target: {fileID: -7994477316157587343, guid: a26f130eca5fe984d9e6fb4f3134bd88,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b0bd7f0aaeb8d43b16a17c4365cb5a, type: 2}
     - target: {fileID: -3571872997191797601, guid: a26f130eca5fe984d9e6fb4f3134bd88,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9464,6 +9464,7 @@ GameObject:
   - component: {fileID: 2605589801329581794}
   - component: {fileID: 4998728256891722241}
   - component: {fileID: 4998728256891722240}
+  - component: {fileID: 4998728256891722239}
   m_Layer: 0
   m_Name: Picture frame
   m_TagString: Untagged
@@ -9471,6 +9472,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4998728256891722239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998728256891722238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e67779d4d43824abac95518383b34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &4998728256891722240
 Rigidbody:
   m_ObjectHideFlags: 0
