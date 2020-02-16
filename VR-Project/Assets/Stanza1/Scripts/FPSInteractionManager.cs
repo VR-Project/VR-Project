@@ -278,22 +278,22 @@ public class FPSInteractionManager : MonoBehaviour
                    
                     if (rotatableObject.name == "Cylinder.000") 
                     {
-                        if (counter0 < 6) counter0++;
+                        if (counter0 < 5) counter0++;
                         else counter0 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.001")
+                    else if (rotatableObject.name == "Cylinder.001")
                     {
-                        if (counter1 < 6) counter1++;
+                        if (counter1 < 5) counter1++;
                         else counter1 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.002")
+                    else if (rotatableObject.name == "Cylinder.002")
                     {
-                        if (counter2 < 6) counter2++;
+                        if (counter2 < 5) counter2++;
                         else counter2 = 0;
                     }
-                    if (rotatableObject.name == "Cylinder.003")
+                    else if (rotatableObject.name == "Cylinder.003")
                     {
-                        if (counter3 < 6) counter3++;
+                        if (counter3 < 5) counter3++;
                         else counter3 = 0;
                     }
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
