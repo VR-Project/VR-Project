@@ -24,7 +24,8 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingExamine;
     private bool _pointingLeva;
     private bool _pointingMoveQ;
-    
+    private bool _pointingBrick;
+
     private bool fluo;
     private bool coltello;
     private bool _pointingCut;
@@ -365,8 +366,19 @@ public class FPSInteractionManager : MonoBehaviour
 
             }
 
+            //Check if is BrickInTheWall
+            BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
+            _pointingBrick = BrickInTheWall != null ? true : false;
+            if (_pointingBrick)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    BrickInTheWall.Torna();
+                }
+            }
+
             //Check if coltello
-            if(coltello == true)
+            if (coltello == true)
             {
                 GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
             }
@@ -459,6 +471,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingPick = false;
             _pointingLeva = false;
             _pointingMoveQ = false;
+            _pointingBrick = false;
         }
 
     }
@@ -482,6 +495,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingExamine)
             _target.color = Color.green;
         else if (_pointingLeva)
+            _target.color = Color.green;
+        else if (_pointingBrick)
             _target.color = Color.green;
         else
             _target.color = Color.white;
@@ -518,7 +533,7 @@ public class FPSInteractionManager : MonoBehaviour
         _grabbedObject = grabbable;
         grabbable.transform.SetParent(_fpsCameraT);
         Vector3 grabPosition = _fpsCameraT.position + transform.forward * _grabDistance;
-        _target.enabled = false;
+        //_target.enabled = false;
     }
 
     private void PickUp(PickUp pickable)

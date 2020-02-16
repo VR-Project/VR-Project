@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.046172842, g: 0.037411198, b: 0.021924358, a: 1}
+  m_IndirectSpecularColor: {r: 0.046172652, g: 0.037411135, b: 0.021924317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -224,9 +224,25 @@ MonoBehaviour:
   _rotateDistance: 0
   _target: {fileID: 567239103}
   portaCassaforte: {fileID: 0}
+  colorChanger: {fileID: 0}
+  collisionRigidBody: {fileID: 0}
   scrigno: {fileID: 0}
   amo: {fileID: 0}
   esca: {fileID: 0}
+  fish: {fileID: 0}
+  fish1: {fileID: 0}
+  fish2: {fileID: 0}
+  fish3: {fileID: 0}
+  fish4: {fileID: 0}
+  fish5: {fileID: 0}
+  fish6: {fileID: 0}
+  colli1: {fileID: 0}
+  colli2: {fileID: 0}
+  colli3: {fileID: 0}
+  colli4: {fileID: 0}
+  colli5: {fileID: 0}
+  colli6: {fileID: 0}
+  colli7: {fileID: 0}
   amoColtello: {fileID: 0}
   finalPositionColtello: {x: 0, y: 0, z: 0}
 --- !u!4 &193545863 stripped
@@ -849,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.05
+      value: -19.89
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
