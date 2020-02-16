@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fpsCameraT: {fileID: 312294426}
   _debugRay: 0
-  _interactionDistance: 2
+  _interactionDistance: 1
   _pushDistance: 0.5
   _pushForce: 100
   _grabDistance: 2
