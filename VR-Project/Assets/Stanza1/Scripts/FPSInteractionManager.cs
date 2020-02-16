@@ -246,7 +246,7 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //StartCoroutine(moveQuadroObject.MoveQ());
+                    StartCoroutine(moveQuadroObject.MoveQ());
                 }
             }
 
@@ -423,6 +423,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingOpen)
             _target.color = Color.green;
         else if (_pointingOpenCab)
+            _target.color = Color.green;
+        else if (_pointingMoveQ)
             _target.color = Color.green;
         else if (_pointingRotatable)
             _target.color = Color.green;
