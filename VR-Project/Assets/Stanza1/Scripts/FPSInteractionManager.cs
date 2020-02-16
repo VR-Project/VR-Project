@@ -51,10 +51,10 @@ public class FPSInteractionManager : MonoBehaviour
 
     int counter0 = 0;
     int counter1 = 0;
-    int counter2 = 0;    int counter3 = 0;
+    int counter2 = 0;
+    int counter3 = 0;
     int counterFish = 0;
 
->>>>>>> PerFavoreBasta
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
     private List<string> leve_arrivate = new List<string>();
@@ -66,13 +66,10 @@ public class FPSInteractionManager : MonoBehaviour
 
     float posScrigno = 0;
     float angScrigno = 0;
-<<<<<<< HEAD
+
     int counterFish = 0;
     int pos = 0;
 
-=======
- 
->>>>>>> PerFavoreBasta
     public float InteractionDistance
     {
         get { return _interactionDistance; }
