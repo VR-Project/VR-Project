@@ -52,19 +52,8 @@ public class FPSInteractionManager : MonoBehaviour
     int counter0 = 0;
     int counter1 = 0;
     int counter2 = 0;
-    
-
-    public GameObject scrigno;
-    public GameObject amo;
-    public GameObject esca;
-    private Material material1;
-
-    int counter0 = 0;
-    int counter1 = 0;
-    int counter2 = 0;
     int counter3 = 0;
     int counterFish = 0;
-
 
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
