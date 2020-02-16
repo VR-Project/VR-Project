@@ -7,6 +7,9 @@ public class TargetFollower : MonoBehaviour
     public float rotationSpeed = 5f;
     public float movSpeed = 1f;
 
+    private bool tar= true;
+    private int random;
+
     public GameObject target;
     // Start is called before the first frame update
     void Start()
@@ -17,8 +20,11 @@ public class TargetFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        target = GameObject.FindGameObjectWithTag("Target");
+        if (tar = true)
+        {
+            StartCoroutine(ChangeFilo());
+        }
+        
         //Compute target direction
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.y = 0f;
@@ -33,6 +39,21 @@ public class TargetFollower : MonoBehaviour
         transform.Translate(Vector3.forward * movSpeed * Time.deltaTime);
         //IS EQUIVALENT TO 
         //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+    }
+
+    IEnumerator ChangeFilo()
+    {
+        tar = false;
+        target = GameObject.FindWithTag("Target");
+
+        if (target == null)
+        {
+            random = Random.Range(1, 9);
+            target = GameObject.Find("amo (" + random + ")");
+
+            yield return new WaitForSeconds(3);
+        }
+        tar = true;
     }
 
 }

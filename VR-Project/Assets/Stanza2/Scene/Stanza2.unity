@@ -1135,8 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.7
+  movSpeed: 0.6
   target: {fileID: 0}
 --- !u!64 &236010587
 MeshCollider:
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1001 &260036490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4990,7 +4990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
+  rotationSpeed: 0.3
   movSpeed: 0.3
   target: {fileID: 0}
 --- !u!64 &1714318974
@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1001 &1774530814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5124,8 +5124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.5
+  movSpeed: 0.4
   target: {fileID: 0}
 --- !u!64 &1807577657
 MeshCollider:
@@ -5154,7 +5154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1 &1816469464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 57d4a8de7d0054c45ab2b38fad82382b,
@@ -5173,8 +5173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.5
+  movSpeed: 0.5
   target: {fileID: 0}
 --- !u!64 &1816469469
 MeshCollider:
@@ -5203,7 +5203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1 &1863108759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,8 +5745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.4
+  movSpeed: 0.2
   target: {fileID: 0}
 --- !u!64 &2073907380
 MeshCollider:
@@ -5775,7 +5775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1 &2099168718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 57d4a8de7d0054c45ab2b38fad82382b,
@@ -5794,8 +5794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.8
+  movSpeed: 0.7
   target: {fileID: 0}
 --- !u!64 &2099168723
 MeshCollider:
@@ -5824,7 +5824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1001 &2111813134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5942,8 +5942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5680375c52c02454eafce9b538956ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
-  movSpeed: 0.3
+  rotationSpeed: 0.5
+  movSpeed: 0.7
   target: {fileID: 0}
 --- !u!64 &2136443598
 MeshCollider:
@@ -5972,7 +5972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   io: {fileID: 0}
-  amo: {fileID: 0}
+  ok: 0
 --- !u!1001 &2138972235
 PrefabInstance:
   m_ObjectHideFlags: 0
