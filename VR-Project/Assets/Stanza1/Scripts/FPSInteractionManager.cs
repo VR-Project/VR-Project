@@ -239,7 +239,7 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if is MoveQuadro
-            MoveQuadro moveQuadroObject = hit.transform.GetComponent<MoveQuadro>();
+            Translate moveQuadroObject = hit.transform.GetComponent<Translate>();
             _pointingMoveQ = moveQuadroObject != null ? true : false;
             if (_pointingMoveQ)
             {
