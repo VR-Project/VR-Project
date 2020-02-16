@@ -39,7 +39,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public GameObject portaCassaforte;
-<<<<<<< HEAD
+
 
     public GameObject scrigno;
 
@@ -49,15 +49,6 @@ public class FPSInteractionManager : MonoBehaviour
 
     private Material material1;
 
-    int counter0 = 0;
-    int counter1 = 0;
-    int counter2 = 0;
-    
-=======
-    public GameObject scrigno;
-    public GameObject amo;
-    public GameObject esca;
-    private Material material1;
     int counter0 = 0;
     int counter1 = 0;
     int counter2 = 0;    int counter3 = 0;
@@ -402,10 +393,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                 }
                 if (leve_arrivate.Contains("1") && leve_arrivate.Contains("4") && leve_arrivate.Contains("6") && leve_arrivate.Contains("9"))
-<<<<<<< HEAD
 
-=======
->>>>>>> PerFavoreBasta
                 {
                     leve_arrivate.Clear();
                     StartCoroutine(openScrigno());
