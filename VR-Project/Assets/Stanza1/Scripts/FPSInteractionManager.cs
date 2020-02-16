@@ -53,7 +53,6 @@ public class FPSInteractionManager : MonoBehaviour
     int counter1 = 0;
     int counter2 = 0;
     int counter3 = 0;
-    int counterFish = 0;
 
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;

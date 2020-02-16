@@ -45,6 +45,7 @@ public class Examine : MonoBehaviour
                 //ClickedObject Will Be The Object Hit By The Raycast
                 clickedObject = hit.transform.gameObject;
                 if (clickedObject.name == "bigliettoAereo" || clickedObject.name == "foto") coeff = 0.4f;
+                else if (clickedObject.name == "anello") coeff = 0.35f;
 
                 //Save The Original Postion And Rotation
                 originaPosition = clickedObject.transform.position;
