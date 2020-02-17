@@ -47,25 +47,25 @@ public class FPSInteractionManager : MonoBehaviour
     public Rigidbody collisionRigidBody = null;
 
 
-    public GameObject scrigno;
+    private GameObject scrigno;
 
-    public GameObject amo;
+    private GameObject amo;
 
-    public GameObject esca;
-    public GameObject fish;
-    public GameObject fish1;
-    public GameObject fish2;
-    public GameObject fish3;
-    public GameObject fish4;
-    public GameObject fish5;
-    public GameObject fish6;
-    public CharacterCollisionDetecter colli1;
-    public CharacterCollisionDetecter colli2;
-    public CharacterCollisionDetecter colli3;
-    public CharacterCollisionDetecter colli4;
-    public CharacterCollisionDetecter colli5;
-    public CharacterCollisionDetecter colli6;
-    public CharacterCollisionDetecter colli7;
+    private GameObject esca;
+    private GameObject fish;
+    private GameObject fish1;
+    private GameObject fish2;
+    private GameObject fish3;
+    private GameObject fish4;
+    private GameObject fish5;
+    private GameObject fish6;
+    private CharacterCollisionDetecter colli1;
+    private CharacterCollisionDetecter colli2;
+    private CharacterCollisionDetecter colli3;
+    private CharacterCollisionDetecter colli4;
+    private CharacterCollisionDetecter colli5;
+    private CharacterCollisionDetecter colli6;
+    private CharacterCollisionDetecter colli7;
 
     private Material material1;
 
