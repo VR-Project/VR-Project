@@ -88,14 +88,20 @@ public class Examine : MonoBehaviour
 
     public void ExitExamineMode()
     {
-            //Reset Object To Original Position
-            clickedObject.transform.position = originaPosition;
-            clickedObject.transform.eulerAngles = originalRotation;
+        //Reset Object To Original Position
+        clickedObject.transform.position = originaPosition;
+        clickedObject.transform.eulerAngles = originalRotation;
 
-            //Unpause Game
-            Time.timeScale = 1;
+        //Unpause Game
+        Time.timeScale = 1;
 
-            //Return To Normal State
-            examineMode = false;
+        //Return To Normal State
+        examineMode = false;
+
+        if (clickedObject == GameObject.Find("scrivania/Scrivania/cassetto_buono/fotoStrappata"))
+        {
+            Bolle.MostraBolle();
+        }
+   
     }
 }
