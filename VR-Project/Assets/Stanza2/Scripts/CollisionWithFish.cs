@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionWithFish : MonoBehaviour
+public class CollisionWithWall : MonoBehaviour
 {
     [SerializeField] private bool _logCollisions = true;
 
@@ -25,20 +25,20 @@ public class CollisionWithFish : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (_logCollisions)
-            Debug.Log("OnCollision ENTER");
+            Debug.Log("OnCollision ENTERFish");
         StartCoroutine(Blink());
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (_logCollisions)
-            Debug.Log("OnCollision STAY");
+            Debug.Log("OnCollision STAYFish");
     }
 
     private void OnCollisionExit(Collision collision)
     {
         if (_logCollisions)
-            Debug.Log("OnCollision EXIT");
+            Debug.Log("OnCollision EXITFish");
     }
 
     public IEnumerator Blink()
