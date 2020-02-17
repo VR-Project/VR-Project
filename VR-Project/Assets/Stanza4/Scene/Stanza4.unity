@@ -581,20 +581,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 420467892}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &528244046
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119381186816811849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5106865848505950063, guid: 8c4117d219e216744b43c31f40199111, type: 3}
 --- !u!1001 &587827102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2016,12 +2002,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b105cbcd987ff7d4e9ae2e9d4a566753,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b105cbcd987ff7d4e9ae2e9d4a566753,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.191
+      value: -0.134
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b105cbcd987ff7d4e9ae2e9d4a566753,
         type: 3}
@@ -2112,6 +2098,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1553436775}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1553436782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553436776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe573adcbe8e88548a772505f2a08d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  examineMode: 0
 --- !u!1001 &1566073910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2779,7 +2778,7 @@ GameObject:
   - component: {fileID: 4538391322150146985}
   - component: {fileID: 772161629650537828}
   - component: {fileID: 6921221742016521379}
-  - component: {fileID: 528244046}
+  - component: {fileID: 1119381186816811850}
   m_Layer: 0
   m_Name: cassetto_buono
   m_TagString: Untagged
@@ -2787,6 +2786,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1119381186816811850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119381186816811849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29345268, y: 0.017126381, z: 0.33834946}
+  m_Center: {x: 0, y: -0.053836104, z: -0.16364416}
 --- !u!1 &2502203976360562545
 GameObject:
   m_ObjectHideFlags: 0
