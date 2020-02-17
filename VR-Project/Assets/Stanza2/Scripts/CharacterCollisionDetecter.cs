@@ -12,12 +12,18 @@ public class CharacterCollisionDetecter : MonoBehaviour
     {
         CollisionColorChanger colorChanger = collision.gameObject.GetComponent<CollisionColorChanger>();
         Rigidbody collisionRigidBody = collision.gameObject.GetComponent<Rigidbody>();
+        CollisionWithWall collisionWall = collision.gameObject.GetComponent<CollisionWithWall>();
 
         if (colorChanger != null && collisionRigidBody == null)
         {
             //colorChanger.blink();
             ok = false;
             //StartCoroutine(Coroutine);
+        }
+
+        if (collisionWall != null)
+        {
+
         }
 
     }
