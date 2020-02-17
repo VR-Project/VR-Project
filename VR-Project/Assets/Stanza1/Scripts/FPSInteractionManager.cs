@@ -24,7 +24,9 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingExamine;
     private bool _pointingLeva;
     private bool _pointingMoveQ;
-    
+    private bool _pointingBrick;
+    private bool _pointingPremuto;
+
     private bool fluo;
     private bool coltello;
     private bool _pointingCut;
@@ -39,6 +41,7 @@ public class FPSInteractionManager : MonoBehaviour
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
+    public PremiBottone _premuto = null;
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
     public Rigidbody collisionRigidBody = null;
@@ -113,6 +116,7 @@ public class FPSInteractionManager : MonoBehaviour
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         esca.AddComponent (typeof(EscaScript));
         esca.AddComponent (typeof(PickUp));
+        esca.AddComponent(typeof(CollisionColorChanger));
         fluo = true;
         coltello = false;
         pickOk = false;
@@ -172,7 +176,7 @@ public class FPSInteractionManager : MonoBehaviour
                 script.DestroyInstance();
                 PickUp pick = esca.GetComponent<PickUp>();
                 pick.DestroyInstance();
-                if (counterFish > 1)
+                if (counterFish >= 1)
                 {
                     CollisionColorChanger color = esca.GetComponent<CollisionColorChanger>();
                     color.DestroyInstance();
@@ -365,8 +369,33 @@ public class FPSInteractionManager : MonoBehaviour
 
             }
 
+            
+
+            //Check if is BrickInTheWall
+            BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
+            _pointingBrick = BrickInTheWall != null ? true : false;
+            if (_pointingBrick)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    BrickInTheWall.Torna();
+                }
+            }
+
+            //Check if is PremiBottone
+            PremiBottone premibile = hit.transform.GetComponent<PremiBottone>();
+            _pointingPremuto = premibile != null ? true : false;
+            if (_pointingPremuto)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _premuto == null)
+                {
+                    premibile.Premi();
+                    Premi(premibile);
+                }
+            }
+
             //Check if coltello
-            if(coltello == true)
+            if (coltello == true)
             {
                 GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
             }
@@ -459,6 +488,8 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingPick = false;
             _pointingLeva = false;
             _pointingMoveQ = false;
+            _pointingBrick = false;
+            _pointingPremuto = false;
         }
 
     }
@@ -482,6 +513,10 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingExamine)
             _target.color = Color.green;
         else if (_pointingLeva)
+            _target.color = Color.green;
+        else if (_pointingBrick)
+            _target.color = Color.green;
+        else if (_pointingPremuto)
             _target.color = Color.green;
         else
             _target.color = Color.white;
@@ -518,7 +553,7 @@ public class FPSInteractionManager : MonoBehaviour
         _grabbedObject = grabbable;
         grabbable.transform.SetParent(_fpsCameraT);
         Vector3 grabPosition = _fpsCameraT.position + transform.forward * _grabDistance;
-        _target.enabled = false;
+        //_target.enabled = false;
     }
 
     private void PickUp(PickUp pickable)
@@ -560,6 +595,13 @@ public class FPSInteractionManager : MonoBehaviour
     {
         _rotatedObject = rotatable;
     }
+
+    private void Premi(PremiBottone premibile)
+    {
+        _premuto = premibile;
+    }
+
+
 
     private void DebugRaycast()
     {
