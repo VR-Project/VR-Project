@@ -3,24 +3,17 @@ using System.Collections;
 
 public class Crouch : MonoBehaviour {
 
-    //=================================================================================
-    // © 2016 Scott Durkin, All rights reserved.
-    // By Downloading and using this script credit must 
-    // be given to the creator know as "Unity3D With Scott".
-    // YouTube Channel: https://www.youtube.com/channel/UC9hfBvn17qSIrdFwAk56oZg
-    //=================================================================================
-
     public CharacterController characterController;
     public bool isCrouched = false;
+    private bool guardaSotto = false;
+   
     void Start ()
     {
-        characterController = gameObject.GetComponent<CharacterController>();
+        characterController = gameObject.GetComponent<CharacterController>();        
     }
 
     void Update ()
     {
-
-        //Vector3 originalPosition = characterController.transform.position;
         if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched == false)
         {
             characterController.height = 0.3f;
@@ -28,10 +21,17 @@ public class Crouch : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched==true)
         {
+            if(guardaSotto == true) transform.localScale += new Vector3(0.0f, 0.8f, 0);
+            
             characterController.height = 1.8f;
             isCrouched = false;
-            //characterController.transform.position = originalPosition;
+            guardaSotto = false;
         }
 
+        if (Input.GetKeyDown(KeyCode.RightControl) && isCrouched == true && guardaSotto == false)
+        {
+            guardaSotto = true;
+            transform.localScale += new Vector3(0.0f, -0.8f, 0);
+        }
     }
 }

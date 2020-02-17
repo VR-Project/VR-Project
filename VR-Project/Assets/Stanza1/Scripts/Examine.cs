@@ -44,7 +44,7 @@ public class Examine : MonoBehaviour
             {
                 //ClickedObject Will Be The Object Hit By The Raycast
                 clickedObject = hit.transform.gameObject;
-                if (clickedObject.name == "bigliettoAereo" || clickedObject.name == "foto") coeff = 0.4f;
+                if (clickedObject.name == "bigliettoAereo" || clickedObject.name == "foto" || clickedObject.name == "fotoStrappata") coeff = 0.4f;
                 else if (clickedObject.name == "anello") coeff = 0.35f;
 
                 //Save The Original Postion And Rotation
@@ -88,14 +88,20 @@ public class Examine : MonoBehaviour
 
     public void ExitExamineMode()
     {
-            //Reset Object To Original Position
-            clickedObject.transform.position = originaPosition;
-            clickedObject.transform.eulerAngles = originalRotation;
+        //Reset Object To Original Position
+        clickedObject.transform.position = originaPosition;
+        clickedObject.transform.eulerAngles = originalRotation;
 
-            //Unpause Game
-            Time.timeScale = 1;
+        //Unpause Game
+        Time.timeScale = 1;
 
-            //Return To Normal State
-            examineMode = false;
+        //Return To Normal State
+        examineMode = false;
+
+        if (clickedObject == GameObject.Find("scrivania/Scrivania/cassetto_buono/fotoStrappata"))
+        {
+            Bolle.MostraBolle();
+        }
+   
     }
 }

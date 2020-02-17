@@ -220,14 +220,14 @@ MonoBehaviour:
   _interactionDistance: 1
   _pushDistance: 0.5
   _pushForce: 100
-  _grabDistance: 1
+  _grabDistance: 2
   _rotateDistance: 0
   _target: {fileID: 567239103}
   customImage: {fileID: 1987689021}
+  _premuto: {fileID: 0}
   portaCassaforte: {fileID: 0}
-  scrigno: {fileID: 0}
-  amo: {fileID: 0}
-  esca: {fileID: 0}
+  colorChanger: {fileID: 0}
+  collisionRigidBody: {fileID: 0}
   amoColtello: {fileID: 0}
   finalPositionColtello: {x: 0, y: 0, z: 0}
 --- !u!4 &193545863 stripped
@@ -840,13 +840,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSController
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8
+      value: -1.61
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.767
+      value: 0.837
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -962,6 +966,14 @@ PrefabInstance:
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: field of view
@@ -1618,17 +1630,17 @@ PrefabInstance:
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.14789315
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.990566
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653444909630, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
