@@ -5,14 +5,23 @@ using UnityEngine;
 public class CharacterCollisionDetecter : MonoBehaviour
 {
 
-    public GameObject io;
+    public GameObject target;
     public bool ok;
+    private double rot;
+    private bool colli = true;
 
     public void OnCollisionEnter(Collision collision)
     {
         CollisionColorChanger colorChanger = collision.gameObject.GetComponent<CollisionColorChanger>();
         Rigidbody collisionRigidBody = collision.gameObject.GetComponent<Rigidbody>();
-        CollisionWithWall collisionWall = collision.gameObject.GetComponent<CollisionWithWall>();
+        CollisionWithFish collisionWall = collision.gameObject.GetComponent<CollisionWithFish>();
+
+
+        if (collisionWall != null && colli == true)
+        {
+            target = GameObject.Find("amoColtello");
+            StartCoroutine(ChangeDirection());
+        }
 
         if (colorChanger != null && collisionRigidBody == null)
         {
@@ -21,10 +30,6 @@ public class CharacterCollisionDetecter : MonoBehaviour
             //StartCoroutine(Coroutine);
         }
 
-        if (collisionWall != null)
-        {
-
-        }
 
     }
 
@@ -33,6 +38,29 @@ public class CharacterCollisionDetecter : MonoBehaviour
         return ok;
     }
 
+    IEnumerator ChangeDirection()
+    {
+        colli = false;
+        while (rot < 1)
+        {
+            Debug.Log("changeDirection");
+            rot = rot + 0.001;
+            Vector3 targetDirection = target.transform.position - transform.position;
+            targetDirection.y = 0f;
+            targetDirection.Normalize();
+
+            //Rotate toward target direction
+            float rotationStep = 5f * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationStep, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
+
+            //Move object along its forward axis
+            transform.Translate(Vector3.forward * 1.5f * Time.deltaTime);
+            yield return new WaitForSeconds(.05f);
+        }
+        rot = 0;
+        colli = true;
+    }
 
 
     /*IEnumerator Coroutine()

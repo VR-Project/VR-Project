@@ -7,19 +7,15 @@ public class CollisionColorChanger : MonoBehaviour
     [SerializeField] private bool _logCollisions = true;
 
     [SerializeField] private float _blinkTime = 0.05f;
-    [SerializeField] private Color _blinkColor;
 
     private GameObject io;
     private FPSInteractionManager Int;
 
-    private Color _originalColor;
     private Renderer _renderer;
     private bool _isBlinking = false;
     void Start()
     {
         _renderer = GetComponent<Renderer>();
-        if (_renderer != null)
-            _originalColor = _renderer.material.color;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -9,7 +9,10 @@ public class TargetFollower : MonoBehaviour
 
     private bool tar= true;
     private bool colli = true;
+    private bool change = true;
     private int random;
+    private double rot;
+    private Collision col;
 
     public GameObject target;
     // Start is called before the first frame update
@@ -25,33 +28,43 @@ public class TargetFollower : MonoBehaviour
         {
             StartCoroutine(ChangeFilo());
         }
-        
-        //Compute target direction
-        Vector3 targetDirection = target.transform.position - transform.position;
-        targetDirection.y = 0f;
-        targetDirection.Normalize();
 
-        //Rotate toward target direction
-        float rotationStep = rotationSpeed * Time.deltaTime;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationStep, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
+        if (change == true)
+        {
+            //Compute target direction
+            Vector3 targetDirection = target.transform.position - transform.position;
+            targetDirection.y = 0f;
+            targetDirection.Normalize();
 
-        //Move object along its forward axis
-        transform.Translate(Vector3.forward * movSpeed * Time.deltaTime);
-        //IS EQUIVALENT TO 
-        //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+            //Rotate toward target direction
+            float rotationStep = rotationSpeed * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationStep, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
+
+            //Move object along its forward axis
+            transform.Translate(Vector3.forward * movSpeed * Time.deltaTime);
+            //IS EQUIVALENT TO 
+            //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+        }
+        else
+        {
+            //Compute target direction
+            Vector3 targetDirection = target.transform.position - transform.position;
+            targetDirection.y = 0f;
+            targetDirection.Normalize();
+
+            //Rotate toward target direction
+            float rotationStep = (rotationSpeed + 2f) * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationStep, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
+
+            //Move object along its forward axis
+            transform.Translate(Vector3.forward * (movSpeed) * Time.deltaTime);
+            //IS EQUIVALENT TO 
+            //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+        }
     }
 
-   /* public void OnCollisionEnter(Collision collision)
-    {
-        CollisionWithWall collisionWall = collision.gameObject.GetComponent<CollisionWithWall>();
-
-        if (collisionWall != null)
-        {
-            StartCoroutine(ChangeDirection());
-        }
-
-    }*/
 
     IEnumerator ChangeFilo()
     {
@@ -62,15 +75,13 @@ public class TargetFollower : MonoBehaviour
         {
             random = Random.Range(1, 9);
             target = GameObject.Find("amo (" + random + ")");
+            change = false;
 
-            yield return new WaitForSeconds(3);
+            random = Random.Range(1, 3);
+            yield return new WaitForSeconds(random);
         }
         tar = true;
     }
 
-    /*IEnumerator ChangeDirection()
-    {
-
-    }*/
 
 }
