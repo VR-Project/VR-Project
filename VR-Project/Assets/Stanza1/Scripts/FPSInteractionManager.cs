@@ -367,6 +367,8 @@ public class FPSInteractionManager : MonoBehaviour
 
             }
 
+            
+
             //Check if is BrickInTheWall
             BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
             _pointingBrick = BrickInTheWall != null ? true : false;
