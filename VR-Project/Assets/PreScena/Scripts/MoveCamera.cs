@@ -62,7 +62,7 @@ public class MoveCamera : MonoBehaviour
 
             //Move object along its forward axis
             transform.Translate(-Vector3.forward * 0.5f * Time.deltaTime);
-            if (transform.rotation.y < 0.02f && finish == true)
+            if (transform.rotation.y < 0.001f && finish == true)
             {
                 finish = false;
                 CameraG.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Nothing");
