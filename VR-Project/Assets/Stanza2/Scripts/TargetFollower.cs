@@ -8,6 +8,7 @@ public class TargetFollower : MonoBehaviour
     public float movSpeed = 1f;
 
     private bool tar= true;
+    private bool colli = true;
     private int random;
 
     public GameObject target;
@@ -20,7 +21,7 @@ public class TargetFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tar = true)
+        if (tar == true)
         {
             StartCoroutine(ChangeFilo());
         }
@@ -41,6 +42,17 @@ public class TargetFollower : MonoBehaviour
         //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
     }
 
+   /* public void OnCollisionEnter(Collision collision)
+    {
+        CollisionWithWall collisionWall = collision.gameObject.GetComponent<CollisionWithWall>();
+
+        if (collisionWall != null)
+        {
+            StartCoroutine(ChangeDirection());
+        }
+
+    }*/
+
     IEnumerator ChangeFilo()
     {
         tar = false;
@@ -55,5 +67,10 @@ public class TargetFollower : MonoBehaviour
         }
         tar = true;
     }
+
+    /*IEnumerator ChangeDirection()
+    {
+
+    }*/
 
 }
