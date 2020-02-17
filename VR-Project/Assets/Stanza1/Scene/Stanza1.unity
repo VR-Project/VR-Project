@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
   isCrouched: 0
+  camera: {fileID: 0}
 --- !u!114 &156620884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   _grabDistance: 2
   _rotateDistance: 0
   _target: {fileID: 567239103}
+  _premuto: {fileID: 0}
   portaCassaforte: {fileID: 0}
   colorChanger: {fileID: 0}
   collisionRigidBody: {fileID: 0}
@@ -861,15 +863,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.85
+      value: 0.582
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.107
+      value: 0.837
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.405
+      value: 10.146
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -976,6 +978,10 @@ PrefabInstance:
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Height
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: field of view
@@ -1632,17 +1638,17 @@ PrefabInstance:
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.14789315
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653029863422, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.990566
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 836195653444909630, guid: d415540adf0e4474097e2c1ffc0f821d,
         type: 3}
@@ -1887,6 +1893,24 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f7bb807c9f355a48bb3a39a7fbaf9b6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf120a0747bdc64fb0e248e64fb4c24, type: 3}
+--- !u!1 &1839323134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 693834622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1839323138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839323134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29866cd005ed5974ba1885eee3f65985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &13092228489428293
 MeshFilter:
   m_ObjectHideFlags: 0

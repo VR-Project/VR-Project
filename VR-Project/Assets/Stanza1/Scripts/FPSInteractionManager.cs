@@ -25,6 +25,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingLeva;
     private bool _pointingMoveQ;
     private bool _pointingBrick;
+    private bool _pointingPremuto;
 
     private bool fluo;
     private bool coltello;
@@ -40,6 +41,7 @@ public class FPSInteractionManager : MonoBehaviour
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
+    public PremiBottone _premuto = null;
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
     public Rigidbody collisionRigidBody = null;
@@ -367,6 +369,8 @@ public class FPSInteractionManager : MonoBehaviour
 
             }
 
+            
+
             //Check if is BrickInTheWall
             BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
             _pointingBrick = BrickInTheWall != null ? true : false;
@@ -375,6 +379,18 @@ public class FPSInteractionManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     BrickInTheWall.Torna();
+                }
+            }
+
+            //Check if is PremiBottone
+            PremiBottone premibile = hit.transform.GetComponent<PremiBottone>();
+            _pointingPremuto = premibile != null ? true : false;
+            if (_pointingPremuto)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _premuto == null)
+                {
+                    premibile.Premi();
+                    Premi(premibile);
                 }
             }
 
@@ -473,6 +489,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingLeva = false;
             _pointingMoveQ = false;
             _pointingBrick = false;
+            _pointingPremuto = false;
         }
 
     }
@@ -498,6 +515,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingLeva)
             _target.color = Color.green;
         else if (_pointingBrick)
+            _target.color = Color.green;
+        else if (_pointingPremuto)
             _target.color = Color.green;
         else
             _target.color = Color.white;
@@ -576,6 +595,13 @@ public class FPSInteractionManager : MonoBehaviour
     {
         _rotatedObject = rotatable;
     }
+
+    private void Premi(PremiBottone premibile)
+    {
+        _premuto = premibile;
+    }
+
+
 
     private void DebugRaycast()
     {

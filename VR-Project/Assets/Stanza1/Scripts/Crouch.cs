@@ -12,9 +12,13 @@ public class Crouch : MonoBehaviour {
 
     public CharacterController characterController;
     public bool isCrouched = false;
+    public CameraGiu camera;
+    //private GameObject cam = GameObject.Find("FPSController/FirstPersonCharacter");
     void Start ()
     {
         characterController = gameObject.GetComponent<CharacterController>();
+        //camera = gameObject.GetComponent<Camera>();
+        
     }
 
     void Update ()
@@ -25,9 +29,14 @@ public class Crouch : MonoBehaviour {
         {
             characterController.height = 0.3f;
             isCrouched = true;
+            if (Input.GetKeyDown(KeyCode.RightControl))
+            {
+                camera.Giu();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched==true)
         {
+            GameObject.Find("FPSController/FirstPersonCharacter").transform.position= new Vector3(0, 0.8f, 0);
             characterController.height = 1.8f;
             isCrouched = false;
             //characterController.transform.position = originalPosition;

@@ -25,7 +25,8 @@ public class BrickIndietro : MonoBehaviour
     public IEnumerator Esci()
     {
         float posZ = 0;
-        float posY = 0;
+        //float posY = 0;
+        float posX = 0;
         while (posZ < 0.2f)
         {
             posZ += 0.01f;
@@ -33,16 +34,20 @@ public class BrickIndietro : MonoBehaviour
             yield return new WaitForSeconds(.06f);
         }
         yield return new WaitForSeconds(0.3f);
-        while (posY < 0.2f)
+        while ( posX<1.1)
         {
-            posY += 0.01f;
-            gameObject.transform.Translate(0, 0.01f, 0);
-            yield return new WaitForSeconds(.06f);
+            //posY += 0.01f;
+            posX += 0.01f;
+            gameObject.transform.Translate(0.01f, 0, 0);
+            yield return new WaitForSeconds(.03f);
         }
         Destroy(this.GetComponent<BrickIndietro>());
         this.gameObject.AddComponent<Grabbable>();
-        Debug.Log(nomeBuco);
         GameObject.Find("muro/Buchi/" + nomeBuco).GetComponent<BoxCollider>().enabled = true;
+        if (this.name == GameObject.Find("muro/Buchi/" + nomeBuco).name)
+        {
+            aperturaVarco.decrMattoniCorretti();
+        }
 
     }
 
