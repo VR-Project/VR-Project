@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - Mura
   - proiettile
+  - Luce
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,8 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingMoveQ;
     private bool _pointingBrick;
     private bool _pointingPremuto;
+    private bool _pointingInterruttore;
+    private bool _pointingTastoCassaforte;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -49,12 +51,15 @@ public class FPSInteractionManager : MonoBehaviour
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
+    private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
     public PremiBottone _premuto = null;
+    public SpegniLuce _spenta = null;
+
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
     public Rigidbody collisionRigidBody = null;
-
+    
 
     private GameObject scrigno;
 
@@ -314,6 +319,18 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is pulsanteluce
+            SpegniLuce interruttore = hit.transform.GetComponent<SpegniLuce>();
+            _pointingInterruttore = interruttore != null ? true : false;
+            if (_pointingInterruttore)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interruttore.Spegni();
+                    //PickUp(pickableObject);
+                }
+            }
+
             //Check if is openable
             Openable openableObject = hit.transform.GetComponent<Openable>();
             _pointingOpen = openableObject != null ? true : false;
@@ -467,6 +484,28 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is PremiTastoCassaforte
+            PremoTastoCassaforte digitabile = hit.transform.GetComponent<PremoTastoCassaforte>();
+            _pointingTastoCassaforte = digitabile != null ? true : false;
+            if (_pointingTastoCassaforte)
+            {
+                if (Input.GetMouseButtonDown(0) && _tastoPremuto == null)
+                {
+                    digitabile.PremoTasto();
+                    StartCoroutine(digitabile.PremoTasto());
+
+                    if (digitabile.name == "2_numero")
+                    {
+                        Debug.Log("primo tasto combinazione");
+                    }
+                }
+            }
+
+            //Check if coltello
+            if (coltello == true)
+            {
+                GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
+            }
 
             // Check if is movelabirinto
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
@@ -557,6 +596,8 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingMoveQ = false;
             _pointingBrick = false;
             _pointingPremuto = false;
+            _pointingInterruttore = false;
+            _pointingTastoCassaforte = false;
         }
 
     }
@@ -584,6 +625,10 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingBrick)
             _target.color = Color.green;
         else if (_pointingPremuto)
+            _target.color = Color.green;
+        else if (_pointingInterruttore)
+            _target.color = Color.green;
+        else if (_pointingTastoCassaforte)
             _target.color = Color.green;
         else
         {
@@ -673,6 +718,10 @@ public class FPSInteractionManager : MonoBehaviour
         _premuto = premibile;
     }
 
+    private void PremoTasto(PremoTastoCassaforte digitabile)
+    {
+        _tastoPremuto = digitabile;
+    }
 
 
     private void DebugRaycast()
