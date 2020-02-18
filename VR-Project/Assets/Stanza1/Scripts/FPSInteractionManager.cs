@@ -146,8 +146,12 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (_grabbedObject.name == ("tazza"))
                 {
-                    ThrowSimulation proiettile = _grabbedObject.gameObject.GetComponent<ThrowSimulation>();
-                    StartCoroutine(proiettile.SimulateProjectile());
+                    /*ThrowSimulation proiettile = _grabbedObject.gameObject.GetComponent<ThrowSimulation>();
+                    StartCoroutine(proiettile.SimulateProjectile());*/
+
+                    Debug.Log("Sono dentro porca troia bastarda");
+                    InvisibleGun gun = GetComponent<InvisibleGun>();
+                    gun.getObject(_grabbedObject.gameObject);
                     Drop();
                 }
                 else
