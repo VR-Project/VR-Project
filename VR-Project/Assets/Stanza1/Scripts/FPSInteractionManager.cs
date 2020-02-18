@@ -28,6 +28,12 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingBrick;
     private bool _pointingPremuto;
 
+    /******AUDIO BOOLEANS******/
+    private bool bigliettoEsaminato = false;
+    private bool chiaveInserita = false;
+    private bool disegnoEsaminato = false;
+
+
     private bool fluo;
     private bool coltello;
     private bool _pointingCut;
@@ -171,6 +177,7 @@ public class FPSInteractionManager : MonoBehaviour
                     esca = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
                     esca.AddComponent(typeof(PickUp));
                     coltello = true;
+                    FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                 }
             }
             else
@@ -272,6 +279,7 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     pickableObject.transform.gameObject.SetActive(false);
                     pickOk = true;
+                    FindObjectOfType<AudioManager>().Play("Interazione");
                     PickUp(pickableObject);
                 }
             }
@@ -285,11 +293,19 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     openableObject.Open();
                     Open(openableObject);
+                    if (chiaveInserita == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("ChiaveSerratura");
+                        chiaveInserita = true;
+                    }
+                    FindObjectOfType<AudioManager>().Play("AperturaCassetto");
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
                 {
                         openableObject.Close();
                         Close();
+                    FindObjectOfType<AudioManager>().Play("AperturaCassetto");
+
                 }
             }
 
@@ -313,11 +329,15 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     openableCabObject.Open();
                     OpenCab(openableCabObject);
+                    FindObjectOfType<AudioManager>().Play("AperturaSportello");
+
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
                 {
                     openableCabObject.Close();
                     CloseCab();
+                    FindObjectOfType<AudioManager>().Play("AperturaSportello");
+
                 }
             }
 
@@ -328,7 +348,8 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    rotatableObject.Rotate();                    
+                    rotatableObject.Rotate();
+                    FindObjectOfType<AudioManager>().Play("RotelleCassaforte");
                     Rotate(rotatableObject);
                    
                     if (rotatableObject.name == "Cylinder.000") 
@@ -354,6 +375,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
                     {
                         portaCassaforte = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
+                        FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                         portaCassaforte.gameObject.transform.Rotate(0, -70, 0);
                     }
                 }
@@ -366,6 +388,20 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && _examinedObject == null)
                 {
+                    if(examinableObject.gameObject == GameObject.Find("bigliettoAereo") && bigliettoEsaminato==false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("voce_biglietto");
+                        bigliettoEsaminato = true;
+                    }
+                    else if(examinableObject.gameObject == GameObject.Find("foto") && disegnoEsaminato == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        disegnoEsaminato = true;
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("Interazione");
+                    }
                     examinableObject.ClickObject();  
                     Examine(examinableObject);
                 }
