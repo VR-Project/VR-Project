@@ -42,9 +42,9 @@ public class TargetFollower : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
 
             //Move object along its forward axis
-            transform.Translate(Vector3.forward * movSpeed * Time.deltaTime);
+            GetComponent<Rigidbody>().MovePosition(Vector3.forward * movSpeed * Time.deltaTime);
             //IS EQUIVALENT TO 
-            //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+            transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
         }
         else
         {
@@ -59,9 +59,9 @@ public class TargetFollower : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
 
             //Move object along its forward axis
-            transform.Translate(Vector3.forward * (movSpeed) * Time.deltaTime);
+            GetComponent<Rigidbody>().MovePosition(Vector3.forward * movSpeed * Time.deltaTime);
             //IS EQUIVALENT TO 
-            //transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
+           transform.Translate(transform.forward * movSpeed * Time.deltaTime, Space.World);
         }
     }
 
