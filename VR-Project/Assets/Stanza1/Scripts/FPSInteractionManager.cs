@@ -144,7 +144,7 @@ public class FPSInteractionManager : MonoBehaviour
         {
             if (_grabbedObject != null)
             {
-                if (_grabbedObject.name == ("tazza"))
+                if (_grabbedObject.gameObject.tag == "proiettile")
                 {
                     ThrowSimulation proiettile = _grabbedObject.gameObject.GetComponent<ThrowSimulation>();
                     StartCoroutine(proiettile.SimulateProjectile());
