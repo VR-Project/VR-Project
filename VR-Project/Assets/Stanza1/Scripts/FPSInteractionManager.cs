@@ -476,6 +476,11 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     digitabile.PremoTasto();
                     StartCoroutine(digitabile.PremoTasto());
+
+                    if (digitabile.name == "2_numero")
+                    {
+                        Debug.Log("primo tasto combinazione");
+                    }
                 }
             }
 
