@@ -10,9 +10,13 @@ public class Bolle : MonoBehaviour
     void Start()
     {
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        //this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(4).transform.GetChild(0).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(4).transform.GetChild(2).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(4).transform.GetChild(3).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
