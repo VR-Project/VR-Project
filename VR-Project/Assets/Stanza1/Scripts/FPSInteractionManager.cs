@@ -134,10 +134,21 @@ public class FPSInteractionManager : MonoBehaviour
         {
             StartCoroutine(Fluo());
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             if (_grabbedObject != null)
-                Drop();
+            {
+                if (_grabbedObject.name == ("tazza"))
+                {
+                    ThrowSimulation proiettile = _grabbedObject.gameObject.GetComponent<ThrowSimulation>();
+                    StartCoroutine(proiettile.SimulateProjectile());
+                    Drop();
+                }
+                else
+                {
+                    Drop();
+                }
+            }
             else
                 Push();
         }
