@@ -52,6 +52,8 @@ public class CollisionWithWall : MonoBehaviour
 
         fps.GetComponent<FPSInteractionManager>().Collision();*/
 
+        //Con rigidBody usare rigidBody.move da applicare nel FixedUpdate
+
         target = GameObject.FindWithTag("Fish");
         Vector3 targetDirection = target.transform.position + transform.position;
         targetDirection.y = 0f;
