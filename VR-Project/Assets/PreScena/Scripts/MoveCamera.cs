@@ -13,6 +13,10 @@ public class MoveCamera : MonoBehaviour
     public GameObject CameraG;
     public Camera Camera;
     public RenderTexture nero;
+    private float red;
+    private float blue;
+    private float green;
+    private Color color;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +43,7 @@ public class MoveCamera : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection, transform.up);
 
             //Move object along its forward axis
-            transform.Translate(Vector3.forward * 5f * Time.deltaTime);
+            transform.Translate(Vector3.forward * 4f * Time.deltaTime);
 
             if (transform.position.y < 3.11f)
             {
@@ -62,16 +66,35 @@ public class MoveCamera : MonoBehaviour
 
             //Move object along its forward axis
             transform.Translate(-Vector3.forward * 0.5f * Time.deltaTime);
-            if (transform.rotation.y < 0.02f && finish == true)
+            if (transform.rotation.y < 0.001f && finish == true)
             {
                 finish = false;
-                CameraG.GetComponent<Camera>().cullingMask = 1 << LayerMask.NameToLayer("Nothing");
-                RenderSettings.fog = false;
+                StartCoroutine(Nero());
             }
         }else if(finishTot)
         {
             CameraG.SetActive(false);
         }
+    }
+
+    IEnumerator Nero()
+    {
+        while(RenderSettings.fogDensity < 1)
+        {
+
+            color.r = RenderSettings.fogColor.r;
+            color.g = RenderSettings.fogColor.g;
+            color.b = RenderSettings.fogColor.b;
+            color.r = color.r - 0.01f;
+            color.b = color.b - 0.01f;
+            color.g = color.g - 0.01f;
+
+            RenderSettings.fogColor = color;
+
+            RenderSettings.fogDensity = RenderSettings.fogDensity + 0.001f;
+            yield return new WaitForSeconds(.01f);
+        }
+        finishTot = true;
     }
 
 }

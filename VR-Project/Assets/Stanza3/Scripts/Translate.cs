@@ -23,7 +23,7 @@ public class Translate : MonoBehaviour
     public IEnumerator MoveQ()
     {
         if (this.name == "LibriMove" || this.name == "cestino") maxSpost = 0.2f;
-        if (this.name == "cestino") dir = -1;
+        if (this.name == "cestino"|| this.name == "Scrivania") dir = -1;
         while (pos < maxSpost)
         {
             pos +=  0.01f;

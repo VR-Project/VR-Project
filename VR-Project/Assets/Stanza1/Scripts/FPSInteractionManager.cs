@@ -14,6 +14,7 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _grabDistance;
     [SerializeField] private float _rotateDistance;
     [SerializeField] private Image _target;
+    [SerializeField] private Image customImage; 
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -47,25 +48,25 @@ public class FPSInteractionManager : MonoBehaviour
     public Rigidbody collisionRigidBody = null;
 
 
-    public GameObject scrigno;
+    private GameObject scrigno;
 
-    public GameObject amo;
+    private GameObject amo;
 
-    public GameObject esca;
-    public GameObject fish;
-    public GameObject fish1;
-    public GameObject fish2;
-    public GameObject fish3;
-    public GameObject fish4;
-    public GameObject fish5;
-    public GameObject fish6;
-    public CharacterCollisionDetecter colli1;
-    public CharacterCollisionDetecter colli2;
-    public CharacterCollisionDetecter colli3;
-    public CharacterCollisionDetecter colli4;
-    public CharacterCollisionDetecter colli5;
-    public CharacterCollisionDetecter colli6;
-    public CharacterCollisionDetecter colli7;
+    private GameObject esca;
+    private GameObject fish;
+    private GameObject fish1;
+    private GameObject fish2;
+    private GameObject fish3;
+    private GameObject fish4;
+    private GameObject fish5;
+    private GameObject fish6;
+    private CharacterCollisionDetecter colli1;
+    private CharacterCollisionDetecter colli2;
+    private CharacterCollisionDetecter colli3;
+    private CharacterCollisionDetecter colli4;
+    private CharacterCollisionDetecter colli5;
+    private CharacterCollisionDetecter colli6;
+    private CharacterCollisionDetecter colli7;
 
     private Material material1;
 
@@ -90,7 +91,8 @@ public class FPSInteractionManager : MonoBehaviour
     float angScrigno = 0;
 
     int pos = 0;
-
+    
+    
     public float InteractionDistance
     {
         get { return _interactionDistance; }
@@ -109,6 +111,7 @@ public class FPSInteractionManager : MonoBehaviour
 
     void Start()
     {
+        customImage.enabled = false;
         fpsController = GetComponent<CharacterController>();
         amoColtello = GameObject.Find("amoColtello");
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
@@ -249,12 +252,16 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingGrabbable = grabbableObject != null ? true : false;
             if (_pointingGrabbable && _grabbedObject == null)
             {
+                customImage.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E) && _grabbedObject == null)
                 {
+                    customImage.enabled = false;
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
                 }                
             }
+            
+
 
             //Check if is pickable
             PickUp pickableObject = hit.transform.GetComponent<PickUp>();
@@ -519,7 +526,12 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingPremuto)
             _target.color = Color.green;
         else
+        {
             _target.color = Color.white;
+            customImage.enabled = false;
+        }
+            
+
     }
 
    private void Push()

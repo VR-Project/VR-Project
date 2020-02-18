@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraGiu : MonoBehaviour
+public class scrip : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,9 +14,5 @@ public class CameraGiu : MonoBehaviour
     void Update()
     {
         
-    }
-    public void Giu()
-    {
-        GameObject.Find("FPSController/FirstPersonCharacter").transform.Translate(0, -0.65f, 0);
     }
 }
