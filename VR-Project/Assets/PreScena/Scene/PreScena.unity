@@ -605,7 +605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2100838823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7ae2e498af6e746bcd41720e9fcac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smooth: 0
+  tiltAngle: 0
 --- !u!81 &2100838824
 AudioListener:
   m_ObjectHideFlags: 0
@@ -651,7 +653,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40
+  field of view: 33
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
