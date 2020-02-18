@@ -74,6 +74,7 @@ public class MoveCamera : MonoBehaviour
         }else if(finishTot)
         {
             CameraG.SetActive(false);
+            RenderSettings.fog = false;
         }
     }
 
