@@ -14,7 +14,7 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _grabDistance;
     [SerializeField] private float _rotateDistance;
     [SerializeField] private Image _target;
-    [SerializeField] private Image customImage; 
+    [SerializeField] private Image customImage;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -27,6 +27,12 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingMoveQ;
     private bool _pointingBrick;
     private bool _pointingPremuto;
+
+    /******AUDIO BOOLEANS******/
+    private bool bigliettoEsaminato = false;
+    private bool chiaveInserita = false;
+    private bool disegnoEsaminato = false;
+
 
     private bool fluo;
     private bool coltello;
@@ -81,7 +87,7 @@ public class FPSInteractionManager : MonoBehaviour
     public GameObject amoColtello;
     public Vector3 finalPositionColtello;
     private List<string> leve_arrivate = new List<string>();
-    
+
     bool angolo = false;
     bool angOcc2 = false;
     bool angOcc3 = false;
@@ -91,8 +97,8 @@ public class FPSInteractionManager : MonoBehaviour
     float angScrigno = 0;
 
     int pos = 0;
-    
-    
+
+
     public float InteractionDistance
     {
         get { return _interactionDistance; }
@@ -117,8 +123,8 @@ public class FPSInteractionManager : MonoBehaviour
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
-        esca.AddComponent (typeof(EscaScript));
-        esca.AddComponent (typeof(PickUp));
+        esca.AddComponent(typeof(EscaScript));
+        esca.AddComponent(typeof(PickUp));
         esca.AddComponent(typeof(CollisionColorChanger));
         fluo = true;
         coltello = false;
@@ -162,14 +168,14 @@ public class FPSInteractionManager : MonoBehaviour
         fluo = false;
         if (!esca.activeSelf)
         {
-            
+
             if (pickOk == true)
             {
                 counterFish++;
             }
             if (counterFish == 5)
             {
-                if(pos <= 50)
+                if (pos <= 50)
                 {
                     pos = pos + 1;
                     amoColtello.transform.Translate(0, -0.01f, 0);
@@ -182,6 +188,7 @@ public class FPSInteractionManager : MonoBehaviour
                     esca = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
                     esca.AddComponent(typeof(PickUp));
                     coltello = true;
+                    FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                 }
             }
             else
@@ -194,6 +201,8 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     CollisionColorChanger color = esca.GetComponent<CollisionColorChanger>();
                     color.DestroyInstance();
+                    FindObjectOfType<AudioManager>().StopPlaying("EscaFosforescente");
+
                 }
                 material1 = (Material)Resources.Load("Esca", typeof(Material));
                 esca.GetComponent<Renderer>().material = material1;
@@ -219,7 +228,7 @@ public class FPSInteractionManager : MonoBehaviour
                 esca.AddComponent(typeof(CollisionColorChanger));
                 esca.tag = "Target";
                 pickOk = false;
-                
+
             }
         }
         fluo = true;
@@ -253,8 +262,8 @@ public class FPSInteractionManager : MonoBehaviour
             Interactable interactable = hit.transform.GetComponent<Interactable>();
             _pointingInteractable = interactable != null ? true : false;
             if (_pointingInteractable)
-            {              
-                if(Input.GetMouseButtonDown(1))
+            {
+                if (Input.GetMouseButtonDown(1))
                     interactable.Interact(gameObject);
             }
 
@@ -269,9 +278,9 @@ public class FPSInteractionManager : MonoBehaviour
                     customImage.enabled = false;
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
-                }                
+                }
             }
-            
+
 
 
             //Check if is pickable
@@ -283,6 +292,7 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     pickableObject.transform.gameObject.SetActive(false);
                     pickOk = true;
+                    FindObjectOfType<AudioManager>().Play("Interazione");
                     PickUp(pickableObject);
                 }
             }
@@ -296,11 +306,19 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     openableObject.Open();
                     Open(openableObject);
+                    if (chiaveInserita == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("ChiaveSerratura");
+                        chiaveInserita = true;
+                    }
+                    FindObjectOfType<AudioManager>().Play("AperturaCassetto");
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
                 {
-                        openableObject.Close();
-                        Close();
+                    openableObject.Close();
+                    Close();
+                    FindObjectOfType<AudioManager>().Play("AperturaCassetto");
+
                 }
             }
 
@@ -324,11 +342,15 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     openableCabObject.Open();
                     OpenCab(openableCabObject);
+                    FindObjectOfType<AudioManager>().Play("AperturaSportello");
+
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
                 {
                     openableCabObject.Close();
                     CloseCab();
+                    FindObjectOfType<AudioManager>().Play("AperturaSportello");
+
                 }
             }
 
@@ -339,10 +361,11 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    rotatableObject.Rotate();                    
+                    rotatableObject.Rotate();
+                    FindObjectOfType<AudioManager>().Play("RotelleCassaforte");
                     Rotate(rotatableObject);
-                   
-                    if (rotatableObject.name == "Cylinder.000") 
+
+                    if (rotatableObject.name == "Cylinder.000")
                     {
                         if (counter0 < 5) counter0++;
                         else counter0 = 0;
@@ -365,6 +388,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
                     {
                         portaCassaforte = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
+                        FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                         portaCassaforte.gameObject.transform.Rotate(0, -70, 0);
                     }
                 }
@@ -377,17 +401,31 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && _examinedObject == null)
                 {
-                    examinableObject.ClickObject();  
+                    if (examinableObject.gameObject == GameObject.Find("bigliettoAereo") && bigliettoEsaminato == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("voce_biglietto");
+                        bigliettoEsaminato = true;
+                    }
+                    else if (examinableObject.gameObject == GameObject.Find("foto") && disegnoEsaminato == false)
+                    {
+                        FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        disegnoEsaminato = true;
+                    }
+                    else
+                    {
+                        FindObjectOfType<AudioManager>().Play("Interazione");
+                    }
+                    examinableObject.ClickObject();
                     Examine(examinableObject);
                 }
-                if (examinableObject.examineMode == false && _examinedObject == examinableObject )
+                if (examinableObject.examineMode == false && _examinedObject == examinableObject)
                 {
                     ExitExamine();
                 }
 
             }
 
-            
+
 
             //Check if is BrickInTheWall
             BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
@@ -419,8 +457,8 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
 
-             // Check if is movelabirinto
-             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
+            // Check if is movelabirinto
+            MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
             {
@@ -512,7 +550,7 @@ public class FPSInteractionManager : MonoBehaviour
 
     }
 
-        private void UpdateUITarget()
+    private void UpdateUITarget()
     {
         if (_pointingInteractable)
             _target.color = Color.green;
@@ -541,11 +579,11 @@ public class FPSInteractionManager : MonoBehaviour
             _target.color = Color.white;
             customImage.enabled = false;
         }
-            
+
 
     }
 
-   private void Push()
+    private void Push()
     {
         Ray ray = new Ray(rayOrigin, _fpsCameraT.forward);
         RaycastHit hit;
@@ -611,7 +649,7 @@ public class FPSInteractionManager : MonoBehaviour
 
     public void ExitExamine()
     {
-       _examinedObject = null;
+        _examinedObject = null;
     }
 
     private void Rotate(Rotatable rotatable)
