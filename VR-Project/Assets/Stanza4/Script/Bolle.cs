@@ -36,7 +36,8 @@ public class Bolle : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(true);
-            MovimentoBolle.MuoviBolle();
+            MovimentoBolle bolla = transform.GetChild(i).transform.GetComponent<MovimentoBolle>();
+            bolla.MuoviBolle();
         }
        
     }
