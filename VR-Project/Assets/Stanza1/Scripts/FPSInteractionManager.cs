@@ -27,6 +27,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingMoveQ;
     private bool _pointingBrick;
     private bool _pointingPremuto;
+    private bool _pointingInterruttore;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -49,10 +50,12 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private MoveLabirinto _movedObject = null;
     public PremiBottone _premuto = null;
+    public SpegniLuce _spenta = null;
+
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
     public Rigidbody collisionRigidBody = null;
-
+    
 
     private GameObject scrigno;
 
@@ -294,6 +297,18 @@ public class FPSInteractionManager : MonoBehaviour
                     pickOk = true;
                     FindObjectOfType<AudioManager>().Play("Interazione");
                     PickUp(pickableObject);
+                }
+            }
+
+            //Check if is pulsanteluce
+            SpegniLuce interruttore = hit.transform.GetComponent<SpegniLuce>();
+            _pointingInterruttore = interruttore != null ? true : false;
+            if (_pointingInterruttore)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interruttore.Spegni();
+                    //PickUp(pickableObject);
                 }
             }
 
@@ -546,6 +561,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingMoveQ = false;
             _pointingBrick = false;
             _pointingPremuto = false;
+            _pointingInterruttore = false;
         }
 
     }
@@ -573,6 +589,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingBrick)
             _target.color = Color.green;
         else if (_pointingPremuto)
+            _target.color = Color.green;
+        else if (_pointingInterruttore)
             _target.color = Color.green;
         else
         {
