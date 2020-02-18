@@ -28,6 +28,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingBrick;
     private bool _pointingPremuto;
     private bool _pointingInterruttore;
+    private bool _pointingTastoCassaforte;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -48,6 +49,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
+    private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
     public PremiBottone _premuto = null;
     public SpegniLuce _spenta = null;
@@ -465,6 +467,18 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is PremiTastoCassaforte
+            PremoTastoCassaforte digitabile = hit.transform.GetComponent<PremoTastoCassaforte>();
+            _pointingTastoCassaforte = digitabile != null ? true : false;
+            if (_pointingTastoCassaforte)
+            {
+                if (Input.GetMouseButtonDown(0) && _tastoPremuto == null)
+                {
+                    digitabile.PremoTasto();
+                    StartCoroutine(digitabile.PremoTasto());
+                }
+            }
+
             //Check if coltello
             if (coltello == true)
             {
@@ -562,6 +576,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingBrick = false;
             _pointingPremuto = false;
             _pointingInterruttore = false;
+            _pointingTastoCassaforte = false;
         }
 
     }
@@ -591,6 +606,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingPremuto)
             _target.color = Color.green;
         else if (_pointingInterruttore)
+            _target.color = Color.green;
+        else if (_pointingTastoCassaforte)
             _target.color = Color.green;
         else
         {
@@ -680,6 +697,10 @@ public class FPSInteractionManager : MonoBehaviour
         _premuto = premibile;
     }
 
+    private void PremoTasto(PremoTastoCassaforte digitabile)
+    {
+        _tastoPremuto = digitabile;
+    }
 
 
     private void DebugRaycast()
