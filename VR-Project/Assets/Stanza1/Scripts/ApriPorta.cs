@@ -15,17 +15,21 @@ public class ApriPorta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (apri == true) StartCoroutine(Apri());
+        if (apri == true)
+        {
+            StartCoroutine(Apri());
+            apri = false;
+        }
     }
 
-    public IEnumerator Apri()
+    private IEnumerator Apri()
     {
         yield return new WaitForSeconds(0.3f);
-        while (pos > -120)
+        while (pos > -100)
         {
             pos -= 1f;
             transform.Rotate(0, 0, -1);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(0.005f);
         }
 
     }

@@ -27,8 +27,8 @@ public class CollisionColorChanger : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision STAY");
+        //if (_logCollisions)
+            //Debug.Log("OnCollision STAY");
     }
 
     private void OnCollisionExit(Collision collision)
@@ -49,7 +49,10 @@ public class CollisionColorChanger : MonoBehaviour
         fps.GetComponent<FPSInteractionManager>().Collision();*/
 
         io = GameObject.FindWithTag("Target");
-        io.SetActive(false);
+        if (io != null)
+        {
+            io.SetActive(false);
+        }
 
         yield return new WaitForSeconds(_blinkTime);
 

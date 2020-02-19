@@ -6,7 +6,7 @@ public class ThrowObject : MonoBehaviour
     public Transform player;
     public Transform playerCam;
     public GameObject obj;
-    public float throwForce = 500;
+    public float throwForce = 800;
     bool hasPlayer = false;
     bool beingCarried = false;
     public AudioClip[] soundToPlay;

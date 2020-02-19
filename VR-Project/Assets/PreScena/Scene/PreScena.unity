@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1290624566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   target: {fileID: 0}
   nearClipPlane: 0
   CameraG: {fileID: 0}
+  FPS: {fileID: 0}
   Camera: {fileID: 0}
   nero: {fileID: 0}
 --- !u!81 &1290624567

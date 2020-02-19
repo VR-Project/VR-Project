@@ -35,6 +35,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingInterruttore;
     private bool _pointingTastoCassaforte;
     private bool _pointingThrowable;
+    private bool _pointingsedia;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -62,6 +63,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
+    private MoveSedia _movedSedia = null;
     public PremiBottone _premuto = null;
     public SpegniLuce _spenta = null;
 
@@ -71,11 +73,15 @@ public class FPSInteractionManager : MonoBehaviour
     
 
     private GameObject scrigno;
+    private GameObject cassaforte;
+    private Material tastierinoRosso;
+    private Material tastierinoVerde;
     private GameObject cassaforteStanza4;
     private GameObject cassaforteStanza1;
 
     private GameObject amo;
     private GameObject pickedColtello;
+    private GameObject Tastierino;
 
     private GameObject esca;
     private GameObject fish;
@@ -150,6 +156,9 @@ public class FPSInteractionManager : MonoBehaviour
         pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
+        tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
+        tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
+        Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         esca.AddComponent(typeof(EscaScript));
         esca.AddComponent(typeof(PickUp));
         esca.AddComponent(typeof(CollisionColorChanger));
@@ -310,6 +319,12 @@ public class FPSInteractionManager : MonoBehaviour
             cassaforteStanza4.gameObject.transform.Rotate(0, 1, 0);
             yield return new WaitForSeconds(.02f);
         }
+        
+        yield return new WaitForSeconds(.4f);
+        GameObject sasso = GameObject.Find("Masso").transform.GetChild(0).gameObject;
+        sasso.SetActive(true);
+        sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
+
     }
 
     private void CheckInteraction()
@@ -411,6 +426,18 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is sedia
+            MoveSedia sedia = hit.transform.GetComponent<MoveSedia>();
+            _pointingsedia = sedia != null ? true : false;
+            if (_pointingsedia && _movedSedia== null)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    StartCoroutine(sedia.MoveS());
+                    MoveSedia(sedia);
+                }
+            }
+
             //Check if is openable
             OpenCabinet openableCabObject = hit.transform.GetComponent<OpenCabinet>();
             _pointingOpenCab = openableCabObject != null ? true : false;
@@ -493,6 +520,11 @@ public class FPSInteractionManager : MonoBehaviour
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
                     }
+                    else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
+                    {
+                        //FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        ApriPorta.apri = true;
+                    }
                     else
                     {
                         FindObjectOfType<AudioManager>().Play("Interazione");
@@ -572,6 +604,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if(numeroCombinazione == numeroCorretto && combCorretta == true)
                     {
                         //Debug.Log("combinazione corretta");
+                        //Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
@@ -579,6 +612,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
+                        //Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
                         //Debug.Log("combinazione errata");
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
@@ -684,6 +718,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingInterruttore = false;
             _pointingTastoCassaforte = false;
             _pointingThrowable = false;
+            _pointingsedia = false;
         }
 
     }
@@ -717,6 +752,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingTastoCassaforte)
             _target.color = Color.green;
         else if (_pointingThrowable)
+            _target.color = Color.green;
+        else if (_pointingsedia)
             _target.color = Color.green;
         else
         {
@@ -779,6 +816,10 @@ public class FPSInteractionManager : MonoBehaviour
     private void Close()
     {
         _openedObject = null;
+    }
+    private void MoveSedia(MoveSedia sedia)
+    {
+        _movedSedia = sedia;
     }
 
     private void OpenCab(OpenCabinet openCab)
