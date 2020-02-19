@@ -36,7 +36,7 @@ public class Examine : MonoBehaviour
     public void ClickObject()
     {
         if (examineMode == false)
-        {
+        {      
             RaycastHit hit;
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
