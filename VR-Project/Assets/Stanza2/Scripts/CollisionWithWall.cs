@@ -31,8 +31,9 @@ public class CollisionWithFish : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (_logCollisions)
+        /*if (_logCollisions)
             Debug.Log("OnCollision STAY");
+            */
     }
 
     private void OnCollisionExit(Collision collision)

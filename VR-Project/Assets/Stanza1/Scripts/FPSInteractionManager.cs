@@ -20,6 +20,7 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private Image Rilascia;
     [SerializeField] private Image Ruota;
     [SerializeField] private Image Striscia;
+    [SerializeField] private Image Chiave;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -150,6 +151,7 @@ public class FPSInteractionManager : MonoBehaviour
         Ruota.enabled = false;
         Rilascia.enabled = false;
         Striscia.enabled = false;
+        Chiave.enabled = false;
         fpsController = GetComponent<CharacterController>();
         amoColtello = GameObject.Find("amoColtello");
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
@@ -372,10 +374,16 @@ public class FPSInteractionManager : MonoBehaviour
                         coltelloPreso = true;
                         funk = true;
                     }
+                    if (pickableObject.gameObject.name == "Chiave")
+                    {
+                        Chiave.enabled = true;
+                        Debug.Log("bella");
+                    }
                     pickableObject.transform.gameObject.SetActive(false);
                     pickOk = true;
                     FindObjectOfType<AudioManager>().Play("Interazione");
                     PickUp(pickableObject);
+                    
                 }
             }
 
@@ -408,6 +416,7 @@ public class FPSInteractionManager : MonoBehaviour
                         chiaveInserita = true;
                     }
                     FindObjectOfType<AudioManager>().Play("AperturaCassetto");
+                    Chiave.enabled = false;
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
                 {
@@ -631,10 +640,10 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if coltello
-            if (coltello == true)
+            /*if (coltello == true)
             {
                 GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
-            }
+            }*/
 
             // Check if is movelabirinto
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
