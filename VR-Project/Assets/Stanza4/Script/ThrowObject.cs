@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThrowSimulation : MonoBehaviour
+public class ThrowObject : MonoBehaviour
 {
     public Transform player;
     public Transform playerCam;
