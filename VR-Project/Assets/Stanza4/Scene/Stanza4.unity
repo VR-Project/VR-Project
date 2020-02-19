@@ -3461,6 +3461,7 @@ GameObject:
   - component: {fileID: 6739473891651731737}
   - component: {fileID: 8625025513744952615}
   - component: {fileID: 638017456}
+  - component: {fileID: 862764498449598841}
   m_Layer: 0
   m_Name: Anta
   m_TagString: Untagged
@@ -3468,6 +3469,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &862764498449598841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862764498449598840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06552733, y: 1.0773138, z: 1.1378094}
+  m_Center: {x: 0.032763664, y: 0, z: -0.5689046}
 --- !u!4 &1058884167227540621
 Transform:
   m_ObjectHideFlags: 0
@@ -4159,6 +4173,7 @@ GameObject:
   - component: {fileID: 6279196105115805253}
   - component: {fileID: 8080315059245326466}
   - component: {fileID: 3573188649395222309}
+  - component: {fileID: 3070296975838428190}
   m_Layer: 0
   m_Name: Tastierino
   m_TagString: Untagged
@@ -4166,6 +4181,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &3070296975838428190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070296975838428189}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.037626218, y: 0.4604291, z: 0.35303378}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3101537745227277011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,6 +5679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5006512735444202678}
+  - component: {fileID: 8296172668546713254}
   m_Layer: 0
   m_Name: cassaforte_stanza4
   m_TagString: Untagged
@@ -5658,6 +5687,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8296172668546713254
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668546713253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
 --- !u!1 &8296172669241590849
 GameObject:
   m_ObjectHideFlags: 0

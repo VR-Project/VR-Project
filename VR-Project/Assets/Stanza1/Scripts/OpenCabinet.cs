@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OpenCabinet : MonoBehaviour
 {
+
+    private float pos = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +26,4 @@ public class OpenCabinet : MonoBehaviour
     {
         transform.Rotate(0, 70, 0);
     }
-
 }
