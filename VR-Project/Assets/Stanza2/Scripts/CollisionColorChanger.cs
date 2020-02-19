@@ -49,7 +49,10 @@ public class CollisionColorChanger : MonoBehaviour
         fps.GetComponent<FPSInteractionManager>().Collision();*/
 
         io = GameObject.FindWithTag("Target");
-        io.SetActive(false);
+        if (io != null)
+        {
+            io.SetActive(false);
+        }
 
         yield return new WaitForSeconds(_blinkTime);
 

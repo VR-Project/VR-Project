@@ -11,12 +11,14 @@ public class MoveCamera : MonoBehaviour
 
     public float nearClipPlane = 0;
     public GameObject CameraG;
+    public GameObject FPS;
     public Camera Camera;
     public RenderTexture nero;
     private float red;
     private float blue;
     private float green;
     private Color color;
+    public Material nerog;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class MoveCamera : MonoBehaviour
         target = GameObject.Find("Stone5ok17");
         CameraG = GameObject.Find("Camera");
         Camera = CameraG.GetComponent<Camera>();
+        FPS = GameObject.Find("FPSController");
+        nerog = (Material)Resources.Load("Nero", typeof(Material));
     }
 
     // Update is called once per frame
@@ -73,14 +77,17 @@ public class MoveCamera : MonoBehaviour
             }
         }else if(finishTot)
         {
+            Debug.Log("Transizione");
             CameraG.SetActive(false);
+            RenderSettings.skybox = nerog;
+            FPS.SetActive(true);
             RenderSettings.fog = false;
         }
     }
 
     IEnumerator Nero()
     {
-        while(RenderSettings.fogDensity < 1)
+        while(RenderSettings.fogDensity < 0.5f)
         {
 
             color.r = RenderSettings.fogColor.r;
