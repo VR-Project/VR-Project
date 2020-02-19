@@ -324,6 +324,7 @@ public class FPSInteractionManager : MonoBehaviour
         GameObject sasso = GameObject.Find("Masso").transform.GetChild(0).gameObject;
         sasso.SetActive(true);
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
+        ApriPorta.apri = true;
 
     }
 
