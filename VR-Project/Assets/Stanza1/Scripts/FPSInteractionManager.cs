@@ -36,6 +36,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingInterruttore;
     private bool _pointingTastoCassaforte;
     private bool _pointingThrowable;
+    private bool _pointingsedia;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -63,6 +64,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Examine _examinedObject = null;
     private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
+    private MoveSedia _movedSedia = null;
     public PremiBottone _premuto = null;
     public SpegniLuce _spenta = null;
 
@@ -419,6 +421,18 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is sedia
+            MoveSedia sedia = hit.transform.GetComponent<MoveSedia>();
+            _pointingsedia = sedia != null ? true : false;
+            if (_pointingsedia)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    StartCoroutine(sedia.MoveS());
+                    MoveSedia(sedia);
+                }
+            }
+
             //Check if is openable
             OpenCabinet openableCabObject = hit.transform.GetComponent<OpenCabinet>();
             _pointingOpenCab = openableCabObject != null ? true : false;
@@ -690,6 +704,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingInterruttore = false;
             _pointingTastoCassaforte = false;
             _pointingThrowable = false;
+            _pointingsedia = false;
         }
 
     }
@@ -723,6 +738,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingTastoCassaforte)
             _target.color = Color.green;
         else if (_pointingThrowable)
+            _target.color = Color.green;
+        else if (_pointingsedia)
             _target.color = Color.green;
         else
         {
@@ -785,6 +802,10 @@ public class FPSInteractionManager : MonoBehaviour
     private void Close()
     {
         _openedObject = null;
+    }
+    private void MoveSedia(MoveSedia sedia)
+    {
+        _movedSedia = sedia;
     }
 
     private void OpenCab(OpenCabinet openCab)
