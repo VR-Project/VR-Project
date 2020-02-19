@@ -36,6 +36,7 @@ public class MoveLabirinto : MonoBehaviour
         int.TryParse(name, out levaN);
         initPos[levaN-1]= transform.position;
         wayPoints = this.gameObject.transform.GetChild(0).gameObject;
+        FindObjectOfType<AudioManager>().Play("IngranaggiLeve");
 
         while (arrivato==false)
         {
@@ -52,6 +53,7 @@ public class MoveLabirinto : MonoBehaviour
                 yield return new WaitForSeconds(_nextWayPointWaitTime);
             }
             arrivato = true;
+            FindObjectOfType<AudioManager>().StopPlaying("IngranaggiLeve");
         }
         arrivato = false;
     }

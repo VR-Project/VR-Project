@@ -378,8 +378,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     if (pickableObject.gameObject.name == "reteCentrale")
                     {
-                        pickableObject.GetComponent<AudioSource>().Play();
-                        Debug.Log("Sono entrato");
+                        FindObjectOfType<AudioManager>().Play("ReteTagliata");
                     }
                     else FindObjectOfType<AudioManager>().Play("Interazione");
                     pickableObject.transform.gameObject.SetActive(false);
