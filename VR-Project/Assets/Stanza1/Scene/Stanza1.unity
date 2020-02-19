@@ -770,7 +770,6 @@ MonoBehaviour:
   _grabDistance: 2
   _rotateDistance: 0
   _target: {fileID: 567239103}
-  Apri: {fileID: 514539239}
   Esamina: {fileID: 2129867621}
   Interagisci: {fileID: 1526533814}
   Prendi: {fileID: 1987689021}
@@ -2339,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_TagString

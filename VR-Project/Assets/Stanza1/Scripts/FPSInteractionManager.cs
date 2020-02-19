@@ -14,7 +14,6 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _grabDistance;
     [SerializeField] private float _rotateDistance;
     [SerializeField] private Image _target;
-    [SerializeField] private Image Apri;
     [SerializeField] private Image Esamina;
     [SerializeField] private Image Interagisci;
     [SerializeField] private Image Prendi;
@@ -445,8 +444,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpenCab = openableCabObject != null ? true : false;
             if (_pointingOpenCab)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E) && _openedCabObject == null)
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(openableCabObject.Open());
                     OpenCab(openableCabObject);
                     FindObjectOfType<AudioManager>().Play("AperturaSportello");
@@ -466,8 +467,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingRotatable = rotatableObject != null ? true : false;
             if (_pointingRotatable)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(rotatableObject.Rotate());
                     Rotate(rotatableObject);
 
@@ -821,7 +824,7 @@ public class FPSInteractionManager : MonoBehaviour
     }
 
     private void OpenCab(OpenCabinet openCab)
-    {
+    {   
         _openedCabObject = openCab;
     }
 
