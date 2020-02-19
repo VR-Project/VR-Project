@@ -18,12 +18,26 @@ public class OpenCabinet : MonoBehaviour
 
     }
 
-    public void Open()
+   public IEnumerator Open()
     {
-        transform.Rotate(0, -70, 0);
+        yield return new WaitForSeconds(0.3f);
+        while (pos > -70)
+        {
+            pos -= 1f;
+            transform.Rotate(0, -1, 0);
+            yield return new WaitForSeconds(.01f);
+        }
     }
-    public void Close()
+
+    public IEnumerator Close()
     {
-        transform.Rotate(0, 70, 0);
+        yield return new WaitForSeconds(0.3f);
+        while (pos < 0)
+        {
+            pos += 1f;
+            transform.Rotate(0, 1, 0);
+            yield return new WaitForSeconds(.01f);
+        }
     }
+
 }

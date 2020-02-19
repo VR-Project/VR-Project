@@ -65,7 +65,8 @@ public class FPSInteractionManager : MonoBehaviour
     
 
     private GameObject scrigno;
-    private GameObject cassaforte;
+    private GameObject cassaforteStanza4;
+    private GameObject cassaforteStanza1;
 
     private GameObject amo;
     private GameObject pickedColtello;
@@ -106,7 +107,8 @@ public class FPSInteractionManager : MonoBehaviour
     bool angOcc4 = false;
 
     float posScrigno = 0;
-    float posCass = 0;
+    float posCass1 = 0;
+    float posCass4 = 0;
     float angScrigno = 0;
 
     int pos = 0;
@@ -274,14 +276,27 @@ public class FPSInteractionManager : MonoBehaviour
         }
     }
 
-    public IEnumerator AproCassaforte()
+    public IEnumerator AproCassaforteStanza1()
     {
-        cassaforte = GameObject.Find("cassaforte_stanza4/Anta");
-        yield return new WaitForSeconds(0.3f);
-        while (posCass < 70)
+        cassaforteStanza1 = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
+        yield return new WaitForSeconds(1.6f);
+        FindObjectOfType<AudioManager>().Play("InterazioneImportante");
+        while (posCass1 > -70)
         {
-            posCass += 1f;
-            cassaforte.gameObject.transform.Rotate(0, 1, 0);
+            posCass1 -= 1f;
+            cassaforteStanza1.gameObject.transform.Rotate(0, -1, 0);
+            yield return new WaitForSeconds(.02f);
+        }
+    }
+
+    public IEnumerator AproCassaforteStanza4()
+    {
+        cassaforteStanza4 = GameObject.Find("cassaforte_stanza4/Anta");
+        yield return new WaitForSeconds(0.3f);
+        while (posCass4 < 70)
+        {
+            posCass4 += 1f;
+            cassaforteStanza4.gameObject.transform.Rotate(0, 1, 0);
             yield return new WaitForSeconds(.02f);
         }
     }
@@ -353,7 +368,7 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null && _openedObject == null)
                 {
-                    openableObject.Open();
+                    StartCoroutine(openableObject.Open()); 
                     Open(openableObject);
                     if (chiaveInserita == false)
                     {
@@ -364,7 +379,7 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
                 {
-                    openableObject.Close();
+                    StartCoroutine(openableObject.Close());
                     Close();
                     FindObjectOfType<AudioManager>().Play("AperturaCassetto");
 
@@ -389,14 +404,14 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E) && _openedCabObject == null)
                 {
-                    openableCabObject.Open();
+                    StartCoroutine(openableCabObject.Open());
                     OpenCab(openableCabObject);
                     FindObjectOfType<AudioManager>().Play("AperturaSportello");
 
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
                 {
-                    openableCabObject.Close();
+                    StartCoroutine(openableCabObject.Close());
                     CloseCab();
                     FindObjectOfType<AudioManager>().Play("AperturaSportello");
 
@@ -410,8 +425,7 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    rotatableObject.Rotate();
-                    FindObjectOfType<AudioManager>().Play("RotelleCassaforte");
+                    StartCoroutine(rotatableObject.Rotate());
                     Rotate(rotatableObject);
 
                     if (rotatableObject.name == "Cylinder.000")
@@ -436,9 +450,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     if (counter0 == 4 && counter1 == 1 && counter2 == 5 && counter3 == 0)
                     {
-                        portaCassaforte = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
-                        FindObjectOfType<AudioManager>().Play("InterazioneImportante");
-                        portaCassaforte.gameObject.transform.Rotate(0, -70, 0);
+                        StartCoroutine(AproCassaforteStanza1());
                     }
                 }
             }
@@ -534,7 +546,7 @@ public class FPSInteractionManager : MonoBehaviour
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
-                        StartCoroutine(AproCassaforte());
+                        StartCoroutine(AproCassaforteStanza4());
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
