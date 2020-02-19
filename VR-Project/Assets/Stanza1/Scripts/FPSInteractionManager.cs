@@ -20,6 +20,8 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private Image Rilascia;
     [SerializeField] private Image Ruota;
     [SerializeField] private Image Striscia;
+    [SerializeField] private Image Chiave;
+    [SerializeField] private Image Knife;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -154,6 +156,8 @@ public class FPSInteractionManager : MonoBehaviour
         Ruota.enabled = false;
         Rilascia.enabled = false;
         Striscia.enabled = false;
+        Chiave.enabled = false;
+        Knife.enabled = false;
         fpsController = GetComponent<CharacterController>();
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
         tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
@@ -379,7 +383,13 @@ public class FPSInteractionManager : MonoBehaviour
                     if (pickableObject.gameObject == pickedColtello && funk == false)
                     {   
                         coltelloPreso = true;
+                        Knife.enabled = true;
                         funk = true;
+                    }
+                    if (pickableObject.gameObject.name == "Chiave")
+                    {
+                        Chiave.enabled = true;
+                        Debug.Log("bella");
                     }
                     if (pickableObject.gameObject.name == "reteCentrale")
                     {
@@ -390,6 +400,7 @@ public class FPSInteractionManager : MonoBehaviour
                     pickOk = true;
 
                     PickUp(pickableObject);
+                    
                 }
             }
 
@@ -398,8 +409,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingInterruttore = interruttore != null ? true : false;
             if (_pointingInterruttore)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Interagisci.enabled = false;
                     interruttore.Spegni();
                     //PickUp(pickableObject);
                 }
@@ -422,6 +435,7 @@ public class FPSInteractionManager : MonoBehaviour
                         chiaveInserita = true;
                     }
                     FindObjectOfType<AudioManager>().Play("AperturaCassetto");
+                    Chiave.enabled = false;
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedObject != null)
                 {
@@ -446,8 +460,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingMoveQ = moveQuadroObject != null ? true : false;
             if (_pointingMoveQ)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(moveQuadroObject.MoveQ());
                 }
             }
@@ -657,6 +673,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
             {
+                Interagisci.enabled = true;
                 // Capisco angolo da considerare
                 if (movableObject.name == "1")
                 {
@@ -677,6 +694,7 @@ public class FPSInteractionManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E) && !leve_arrivate.Contains(movableObject.name) && !angolo)
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(movableObject.MoveAlongWaipointsCoroutine());
                     leve_arrivate.Add(movableObject.name);
 
