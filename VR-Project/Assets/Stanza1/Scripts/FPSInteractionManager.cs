@@ -43,6 +43,8 @@ public class FPSInteractionManager : MonoBehaviour
     private int numeroCombinazione = 0;
     private int numeroCorretto = 0;
     private bool combCorretta = false;
+    private bool coltelloPreso = false;
+    private bool funk = false;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -66,6 +68,7 @@ public class FPSInteractionManager : MonoBehaviour
     private GameObject cassaforte;
 
     private GameObject amo;
+    private GameObject pickedColtello;
 
     private GameObject esca;
     private GameObject fish;
@@ -131,6 +134,7 @@ public class FPSInteractionManager : MonoBehaviour
         fpsController = GetComponent<CharacterController>();
         amoColtello = GameObject.Find("amoColtello");
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
+        pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         esca.AddComponent(typeof(EscaScript));
@@ -149,6 +153,14 @@ public class FPSInteractionManager : MonoBehaviour
         if (fluo == true)
         {
             StartCoroutine(Fluo());
+        }
+
+        if(coltelloPreso == true)
+        {
+            coltelloPreso = false;
+            Debug.Log("ColtelloPreso");
+            esca = GameObject.Find("reteCentrale").gameObject;
+            esca.AddComponent(typeof(PickUp));
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -310,6 +322,11 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    if(pickableObject.gameObject == pickedColtello && funk == false)
+                    {
+                        coltelloPreso = true;
+                        funk = true;
+                    }
                     pickableObject.transform.gameObject.SetActive(false);
                     pickOk = true;
                     FindObjectOfType<AudioManager>().Play("Interazione");
@@ -533,7 +550,6 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
             }
-
 
             // Check if is movelabirinto
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
