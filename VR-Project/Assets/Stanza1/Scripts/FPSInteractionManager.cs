@@ -40,6 +40,9 @@ public class FPSInteractionManager : MonoBehaviour
     private bool coltello;
     private bool _pointingCut;
     private bool pickOk;
+    private int numeroCombinazione = 0;
+    private int numeroCorretto = 0;
+    private bool combCorretta = false;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -60,6 +63,7 @@ public class FPSInteractionManager : MonoBehaviour
     
 
     private GameObject scrigno;
+    private GameObject cassaforte;
 
     private GameObject amo;
 
@@ -99,6 +103,7 @@ public class FPSInteractionManager : MonoBehaviour
     bool angOcc4 = false;
 
     float posScrigno = 0;
+    float posCass = 0;
     float angScrigno = 0;
 
     int pos = 0;
@@ -257,6 +262,18 @@ public class FPSInteractionManager : MonoBehaviour
         }
     }
 
+    public IEnumerator AproCassaforte()
+    {
+        cassaforte = GameObject.Find("cassaforte_stanza4/Anta");
+        yield return new WaitForSeconds(0.3f);
+        while (posCass < 70)
+        {
+            posCass += 1f;
+            cassaforte.gameObject.transform.Rotate(0, 1, 0);
+            yield return new WaitForSeconds(.02f);
+        }
+    }
+
     private void CheckInteraction()
     {
         Ray ray = new Ray(rayOrigin, _fpsCameraT.forward);
@@ -285,8 +302,6 @@ public class FPSInteractionManager : MonoBehaviour
                     Grab(grabbableObject);
                 }
             }
-
-
 
             //Check if is pickable
             PickUp pickableObject = hit.transform.GetComponent<PickUp>();
@@ -474,12 +489,41 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && _tastoPremuto == null)
                 {
+                    numeroCombinazione++;
                     digitabile.PremoTasto();
                     StartCoroutine(digitabile.PremoTasto());
 
-                    if (digitabile.name == "2_numero")
+                    if (digitabile.name == "2_numero" && numeroCorretto == 0)
                     {
-                        Debug.Log("primo tasto combinazione");
+                        numeroCorretto++;
+                    }
+                    else if (digitabile.name == "8_numero" && numeroCorretto == 1)
+                    {
+                        numeroCorretto++;
+                    }
+                    else if (digitabile.name == "8_numero" && numeroCorretto == 2)
+                    {
+                        numeroCorretto++;
+                    }
+                    else if (digitabile.name == "2_numero" && numeroCorretto == 3)
+                    {
+                        numeroCorretto++;
+                        combCorretta = true;
+                    }
+
+                    if(numeroCombinazione == numeroCorretto && combCorretta == true)
+                    {
+                        //Debug.Log("combinazione corretta");
+                        numeroCombinazione = 0;
+                        numeroCorretto = 0;
+                        combCorretta = false;
+                        StartCoroutine(AproCassaforte());
+                    }
+                    else if (numeroCombinazione == 4 && combCorretta == false)
+                    {
+                        //Debug.Log("combinazione errata");
+                        numeroCombinazione = 0;
+                        numeroCorretto = 0;
                     }
                 }
             }
