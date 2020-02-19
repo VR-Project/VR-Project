@@ -66,11 +66,15 @@ public class FPSInteractionManager : MonoBehaviour
     
 
     private GameObject scrigno;
+    private GameObject cassaforte;
+    private Material tastierinoRosso;
+    private Material tastierinoVerde;
     private GameObject cassaforteStanza4;
     private GameObject cassaforteStanza1;
 
     private GameObject amo;
     private GameObject pickedColtello;
+    private GameObject Tastierino;
 
     private GameObject esca;
     private GameObject fish;
@@ -140,6 +144,9 @@ public class FPSInteractionManager : MonoBehaviour
         pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
+        tastierinoRosso = (Material)Resources.Load("Tastierino_rosso");
+        tastierinoVerde = (Material)Resources.Load("Tastierino_verde");
+        Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         esca.AddComponent(typeof(EscaScript));
         esca.AddComponent(typeof(PickUp));
         esca.AddComponent(typeof(CollisionColorChanger));
@@ -549,6 +556,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if(numeroCombinazione == numeroCorretto && combCorretta == true)
                     {
                         //Debug.Log("combinazione corretta");
+                        Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
@@ -556,6 +564,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
+                        Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
                         //Debug.Log("combinazione errata");
                         numeroCombinazione = 0;
                         numeroCorretto = 0;

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 5bf93d8e3a9355b478824c543569d393, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 90fca34debf97944a8d4bd31edb6e9c7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.012021206, g: 0.045396853, b: 0.04687882, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000008, guid: a2df1a3762456fb4a8bcfbfbdbc9dc04,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1225,8 +1226,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251074622}
-  m_LocalRotation: {x: 0.06901349, y: -0.789774, z: 0.0904261, w: 0.60275817}
-  m_LocalPosition: {x: 20.556631, y: 18.816246, z: 6.5518475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.968, y: 12.993806, z: -1.615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1450,6 +1451,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6ffa847f307289e44aa1014fed265d98, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 4060b32c27d9349fb8a1344a0ec560f7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4060b32c27d9349fb8a1344a0ec560f7, type: 3}
 --- !u!1 &266723556 stripped
@@ -1467,7 +1473,7 @@ BoxCollider:
   m_GameObject: {fileID: 266723556}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.17415597, y: 2.05071, z: 3.9125085}
   m_Center: {x: -0.017290138, y: -0.1254332, z: 0.005031109}
@@ -6136,6 +6142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113646247}
   - component: {fileID: 2113646246}
+  - component: {fileID: 2113646248}
   m_Layer: 0
   m_Name: Water4AdvancedReflectionFirstPersonCharacter
   m_TagString: Untagged
@@ -6193,13 +6200,22 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113646245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.69, y: 13.645805, z: -0.26}
+  m_LocalRotation: {x: 0.047844373, y: 0.20439254, z: 0.010001663, w: -0.977668}
+  m_LocalPosition: {x: 55.004364, y: 10.1227865, z: -74.65799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &2113646248
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113646245}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &2136443593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 57d4a8de7d0054c45ab2b38fad82382b,
@@ -7035,7 +7051,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172668883309578}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 5.1, y: 4.17, z: -4.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7092,7 +7108,7 @@ Transform:
   - {fileID: 62187909}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &5006512735738310652
 Transform:
   m_ObjectHideFlags: 0
