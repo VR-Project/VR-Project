@@ -24,6 +24,9 @@ public class EscaScript : MonoBehaviour
     {
         material1 = (Material)Resources.Load("EscaFluo", typeof(Material));
         this.GetComponent<Renderer>().material = material1;
+        AudioSource active = gameObject.transform.parent.GetComponent<AudioSource>();
+        active.Play();
+        gameObject.GetComponent<AudioSource>().Play();
         fluo = true;
     }
 
