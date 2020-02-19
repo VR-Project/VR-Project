@@ -24,21 +24,21 @@ public class CollisionWithFish : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision ENTER");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision ENTER");
         StartCoroutine(Blink());
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision STAY");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision STAY");
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision EXIT");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision EXIT");
     }
 
     public IEnumerator Blink()

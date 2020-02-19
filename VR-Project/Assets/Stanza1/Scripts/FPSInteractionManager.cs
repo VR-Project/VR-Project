@@ -180,7 +180,6 @@ public class FPSInteractionManager : MonoBehaviour
         if(coltelloPreso == true)
         {
             coltelloPreso = false;
-            Debug.Log("ColtelloPreso");
             esca = GameObject.Find("reteCentrale").gameObject;
             esca.AddComponent(typeof(PickUp));
         }
@@ -217,14 +216,14 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 counterFish++;
             }
-            if (counterFish == 5)
+            if (counterFish >= 5)
             {
                 if (pos <= 50)
                 {
                     pos = pos + 1;
                     amoColtello.transform.Translate(0, -0.01f, 0);
                     yield return new WaitForSeconds(.01f);
-                    counterFish--;
+                    counterFish++;
                     fluo = true;
                 }
                 else
@@ -239,14 +238,13 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 EscaScript script = esca.GetComponent<EscaScript>();
                 script.DestroyInstance();
+       
                 PickUp pick = esca.GetComponent<PickUp>();
                 pick.DestroyInstance();
                 if (counterFish >= 1)
                 {
                     CollisionColorChanger color = esca.GetComponent<CollisionColorChanger>();
                     color.DestroyInstance();
-                    FindObjectOfType<AudioManager>().StopPlaying("EscaFosforescente");
-
                 }
                 material1 = (Material)Resources.Load("Esca", typeof(Material));
                 esca.GetComponent<Renderer>().material = material1;
@@ -265,7 +263,7 @@ public class FPSInteractionManager : MonoBehaviour
                 previousRandom = random;
                 //random = 1;
                 amo = GameObject.Find("amo (" + random + ")");
-                Debug.Log("amo (" + random + ")");
+               // Debug.Log("amo (" + random + ")");
                 esca = amo.transform.GetChild(0).Find("esca").gameObject;
                 esca.AddComponent(typeof(EscaScript));
                 esca.AddComponent(typeof(PickUp));
@@ -372,9 +370,15 @@ public class FPSInteractionManager : MonoBehaviour
                         coltelloPreso = true;
                         funk = true;
                     }
+                    if (pickableObject.gameObject.name == "reteCentrale")
+                    {
+                        pickableObject.GetComponent<AudioSource>().Play();
+                        Debug.Log("Sono entrato");
+                    }
+                    else FindObjectOfType<AudioManager>().Play("Interazione");
                     pickableObject.transform.gameObject.SetActive(false);
                     pickOk = true;
-                    FindObjectOfType<AudioManager>().Play("Interazione");
+
                     PickUp(pickableObject);
                 }
             }
@@ -622,10 +626,10 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if coltello
-            if (coltello == true)
+            /*if (coltello == true)
             {
                 GameObject.Find("reteCentrale").AddComponent(typeof(PickUp));
-            }
+            }*/
 
             // Check if is movelabirinto
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
