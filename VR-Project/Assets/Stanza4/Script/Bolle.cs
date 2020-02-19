@@ -37,7 +37,6 @@ public class Bolle : MonoBehaviour
 
     public void AttivoBolle()
     {
-        GameObject.Find("room_4/Room.001/tetto_s4").GetComponent<BoxCollider>().gameObject.SetActive(true);
         for(int i = 0; i < 4; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(true);

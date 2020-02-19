@@ -100,6 +100,7 @@ public class Examine : MonoBehaviour
 
         if (clickedObject == GameObject.Find("scrivania/Scrivania/cassetto_buono/fotoStrappata"))
         {
+            GameObject.Find("room_4/Room.001/tetto_s4").GetComponent<BoxCollider>().enabled = true;
             Bolle.MostraBolle();
         }
    
