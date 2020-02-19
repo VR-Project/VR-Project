@@ -35,6 +35,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingPremuto;
     private bool _pointingInterruttore;
     private bool _pointingTastoCassaforte;
+    private bool _pointingThrowable;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -486,6 +487,7 @@ public class FPSInteractionManager : MonoBehaviour
                     else if (examinableObject.gameObject == GameObject.Find("foto") && disegnoEsaminato == false)
                     {
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        ApriPorta.apri = true;
                         disegnoEsaminato = true;
                     }
                     else
@@ -530,6 +532,10 @@ public class FPSInteractionManager : MonoBehaviour
                     Premi(premibile);
                 }
             }
+
+            //Check if is lanciabile
+            ThrowObject lanciabile = hit.transform.GetComponent<ThrowObject>();
+            _pointingThrowable = lanciabile != null ? true : false;
 
             //Check if is PremiTastoCassaforte
             PremoTastoCassaforte digitabile = hit.transform.GetComponent<PremoTastoCassaforte>();
@@ -674,6 +680,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingPremuto = false;
             _pointingInterruttore = false;
             _pointingTastoCassaforte = false;
+            _pointingThrowable = false;
         }
 
     }
@@ -705,6 +712,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingInterruttore)
             _target.color = Color.green;
         else if (_pointingTastoCassaforte)
+            _target.color = Color.green;
+        else if (_pointingThrowable)
             _target.color = Color.green;
         else
         {
