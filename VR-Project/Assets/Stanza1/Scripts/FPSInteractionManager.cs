@@ -78,6 +78,7 @@ public class FPSInteractionManager : MonoBehaviour
     private GameObject cassaforte;
     private Material tastierinoRosso;
     private Material tastierinoVerde;
+    private Material tastierinoNero;
     private GameObject cassaforteStanza4;
     private GameObject cassaforteStanza1;
 
@@ -161,6 +162,7 @@ public class FPSInteractionManager : MonoBehaviour
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
         tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
+        tastierinoNero = (Material)Resources.Load("Tastierino_Nero");
         scala = GameObject.Find("stanza5/scala");
         Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         esca.AddComponent(typeof(EscaScript));
@@ -622,7 +624,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if(numeroCombinazione == numeroCorretto && combCorretta == true)
                     {
                         //Debug.Log("combinazione corretta");
-                        //Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
+                        Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
@@ -630,7 +632,8 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
-                        //Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
+                        Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
+                        StartCoroutine(TastierinoNero());
                         //Debug.Log("combinazione errata");
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
@@ -752,6 +755,12 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingscala = false;
         }
 
+    }
+
+    IEnumerator TastierinoNero()
+    {
+        yield return new WaitForSeconds(1f);
+        Tastierino.GetComponent<Renderer>().material = tastierinoNero;
     }
 
     private void UpdateUITarget()
