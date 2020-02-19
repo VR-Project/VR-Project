@@ -157,8 +157,8 @@ public class FPSInteractionManager : MonoBehaviour
         pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
-        tastierinoRosso = (Material)Resources.Load("Tastierino_rosso");
-        tastierinoVerde = (Material)Resources.Load("Tastierino_verde");
+        tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
+        tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
         Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         esca.AddComponent(typeof(EscaScript));
         esca.AddComponent(typeof(PickUp));
@@ -320,6 +320,12 @@ public class FPSInteractionManager : MonoBehaviour
             cassaforteStanza4.gameObject.transform.Rotate(0, 1, 0);
             yield return new WaitForSeconds(.02f);
         }
+        
+        yield return new WaitForSeconds(.4f);
+        GameObject sasso = GameObject.Find("Masso").transform.GetChild(0).gameObject;
+        sasso.SetActive(true);
+        sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
+
     }
 
     private void CheckInteraction()
@@ -595,7 +601,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if(numeroCombinazione == numeroCorretto && combCorretta == true)
                     {
                         //Debug.Log("combinazione corretta");
-                        Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
+                        //Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
@@ -603,7 +609,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
-                        Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
+                        //Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
                         //Debug.Log("combinazione errata");
                         numeroCombinazione = 0;
                         numeroCorretto = 0;

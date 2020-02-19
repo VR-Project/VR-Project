@@ -27,8 +27,8 @@ public class CollisionColorChanger : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision STAY");
+        //if (_logCollisions)
+            //Debug.Log("OnCollision STAY");
     }
 
     private void OnCollisionExit(Collision collision)
