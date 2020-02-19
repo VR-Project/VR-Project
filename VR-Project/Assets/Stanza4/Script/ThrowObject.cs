@@ -36,53 +36,56 @@ public class ThrowObject : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit);
 
-       /* if (hit.transform.GetComponent<ThrowObject>()!=null)
+        /* if (hit.transform.GetComponent<ThrowObject>()!=null)
+         {
+             isPointing = true;
+         }*/
+        if (hit.transform != null)
         {
-            isPointing = true;
-        }*/
-
-        if (this.transform.name == hit.transform.name)
-        {
-            hasPlayer = true;
-        }
-        else
-        {
-            hasPlayer = false;
-        }
-        if (hasPlayer && Input.GetKeyDown(KeyCode.Q) && !hasObjectAlready)
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-            transform.parent = playerCam;
-            beingCarried = true;
-            thrower.hasObject = true;
-        }
-        if (beingCarried)
-        {
-            if (touched)
+            if (this.transform.name == hit.transform.name)
             {
-                GetComponent<Rigidbody>().isKinematic = false;
-                transform.parent = null;
-                beingCarried = false;
-                touched = false;
+                hasPlayer = true;
             }
-            if (Input.GetMouseButtonDown(0))
+            else
             {
-                GetComponent<Rigidbody>().isKinematic = false;
-                transform.parent = null;
-                beingCarried = false;
-                GetComponent<Rigidbody>().AddForce(playerCam.forward * throwForce);
-                thrower.hasObject = false;
-                //RandomAudio();
+                hasPlayer = false;
             }
-            else if (Input.GetMouseButtonDown(1))
+            if (hasPlayer && Input.GetKeyDown(KeyCode.Q) && !hasObjectAlready)
             {
-                GetComponent<Rigidbody>().isKinematic = false;
-                transform.parent = null;
-                beingCarried = false;
-                thrower.hasObject = false;
+                GetComponent<Rigidbody>().isKinematic = true;
+                transform.parent = playerCam;
+                beingCarried = true;
+                thrower.hasObject = true;
+            }
+            if (beingCarried)
+            {
+                if (touched)
+                {
+                    GetComponent<Rigidbody>().isKinematic = false;
+                    transform.parent = null;
+                    beingCarried = false;
+                    touched = false;
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GetComponent<Rigidbody>().isKinematic = false;
+                    transform.parent = null;
+                    beingCarried = false;
+                    GetComponent<Rigidbody>().AddForce(playerCam.forward * throwForce);
+                    thrower.hasObject = false;
+                    //RandomAudio();
+                }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    GetComponent<Rigidbody>().isKinematic = false;
+                    transform.parent = null;
+                    beingCarried = false;
+                    thrower.hasObject = false;
+                }
             }
         }
     }
+
     void RandomAudio()
     {
         if (audio.isPlaying)

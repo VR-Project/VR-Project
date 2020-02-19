@@ -155,19 +155,11 @@ public class FPSInteractionManager : MonoBehaviour
         Rilascia.enabled = false;
         Striscia.enabled = false;
         fpsController = GetComponent<CharacterController>();
-        amoColtello = GameObject.Find("amoColtello");
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
-        pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
-        amo = GameObject.Find("amo");
-        esca = amo.transform.GetChild(0).Find("esca1").gameObject;
         tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
         tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
         tastierinoNero = (Material)Resources.Load("Tastierino_Nero");
-        scala = GameObject.Find("stanza5/scala");
         Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
-        esca.AddComponent(typeof(EscaScript));
-        esca.AddComponent(typeof(PickUp));
-        esca.AddComponent(typeof(CollisionColorChanger));
         fluo = true;
         coltello = false;
         pickOk = false;
@@ -175,10 +167,23 @@ public class FPSInteractionManager : MonoBehaviour
 
     void Update()
     {
+        amoColtello = GameObject.Find("amoColtello");
+        if (amoColtello!= null)
+        {
+            pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
+        }
+        amo = GameObject.Find("amo");
+        if (amo != null)
+        {
+            esca = amo.transform.GetChild(0).Find("esca1").gameObject;
+            esca.AddComponent(typeof(EscaScript));
+            esca.AddComponent(typeof(PickUp));
+            esca.AddComponent(typeof(CollisionColorChanger));
+        }
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         CheckInteraction();
 
-        if (fluo == true)
+        if (fluo == true && amo != null)
         {
             StartCoroutine(Fluo());
         }
@@ -328,7 +333,7 @@ public class FPSInteractionManager : MonoBehaviour
         GameObject sasso = GameObject.Find("Masso").transform.GetChild(0).gameObject;
         sasso.SetActive(true);
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
-        ApriPorta.apri = true;
+        ApriPorta4.apri4 = true;
 
     }
 
@@ -543,8 +548,9 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
                     {
+                        
                         //FindObjectOfType<AudioManager>().Play("voce_disegno");
-                        ApriPorta.apri = true;
+                        ApriPorta3.apri3 = true;
                     }
                     else
                     {

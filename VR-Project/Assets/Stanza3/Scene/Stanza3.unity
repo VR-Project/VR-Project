@@ -639,7 +639,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 594744348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4701f668f4900194ba2a674b4c437141, type: 3}
+  m_Script: {fileID: 11500000, guid: 0df0e0949464f134e822d1011db9dbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &645961996
@@ -3689,6 +3689,7 @@ GameObject:
   - component: {fileID: 2947560587111708928}
   - component: {fileID: 2760387202261222871}
   - component: {fileID: 5598494991566685859}
+  - component: {fileID: 763387996754209053}
   m_Layer: 0
   m_Name: Scrigno_coperchio
   m_TagString: Untagged
@@ -3696,6 +3697,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &763387996754209053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763387996754209052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0034281241, y: 0.0033542267, z: 0.0010209394}
+  m_Center: {x: -0.0016401345, y: 0.0000000020700706, z: 0.0004365703}
 --- !u!33 &775664675736936756
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7811,7 +7825,6 @@ GameObject:
   - component: {fileID: 8860972409558427466}
   - component: {fileID: 1974022566756353033}
   - component: {fileID: 5521914546248871839}
-  - component: {fileID: 3840426227208341737}
   - component: {fileID: 3840426227208341736}
   m_Layer: 0
   m_Name: Room
@@ -7834,18 +7847,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 1654167623372299304, guid: 937b54a5bba2dce4a90a056cc9ea5072, type: 3}
---- !u!114 &3840426227208341737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3840426227208341735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e1a2119256f6349a72ce1ad39ac6ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &3849658417588551321
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13547,6 +13548,10 @@ GameObject:
   - component: {fileID: 2088756436016952525}
   - component: {fileID: 7522696186524930745}
   - component: {fileID: 7522696186524930746}
+  - component: {fileID: 7522696186524930750}
+  - component: {fileID: 7522696186524930749}
+  - component: {fileID: 7522696186524930748}
+  - component: {fileID: 7522696186524930747}
   m_Layer: 0
   m_Name: Scrigno_corpo
   m_TagString: Untagged
@@ -13583,6 +13588,58 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0033542244, y: 0.003354225, z: 0.00016152111}
   m_Center: {x: 0, y: 4.059633e-19, z: -0.00023994611}
+--- !u!65 &7522696186524930747
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522696186524930744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0033542267, y: 0.00015768337, z: 0.0010834717}
+  m_Center: {x: 0.000000030056455, y: 0.0015982734, z: 0.00022102773}
+--- !u!65 &7522696186524930748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522696186524930744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00010266583, y: 0.0033542267, z: 0.0010834717}
+  m_Center: {x: 0.0016258103, y: 0.0000000017586403, z: 0.0002210274}
+--- !u!65 &7522696186524930749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522696186524930744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00013880063, y: 0.0033542267, z: 0.0010834717}
+  m_Center: {x: -0.0016076836, y: 0.0000000020773556, z: 0.00022102769}
+--- !u!65 &7522696186524930750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522696186524930744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0033542267, y: 0.00027416312, z: 0.00096413546}
+  m_Center: {x: 0.000000029563031, y: -0.0015400305, z: 0.00016135922}
 --- !u!1 &7533890787845291790
 GameObject:
   m_ObjectHideFlags: 0
