@@ -400,8 +400,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingOpen = openableObject != null ? true : false;
             if (_pointingOpen)
             {
-                if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null && _openedObject == null)
+                Interagisci.enabled = true;
+                if (Input.GetKeyDown(KeyCode.E) && _pickedObject != null && _openedObject == null )
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(openableObject.Open()); 
                     Open(openableObject);
                     if (chiaveInserita == false)
@@ -419,6 +421,15 @@ public class FPSInteractionManager : MonoBehaviour
 
                 }
             }
+            if (_pointingOpen && _examinedObject == null){
+                Interagisci.enabled = true;
+            }
+            else Interagisci.enabled = false;
+            if (_pointingExamine)
+            {
+                Interagisci.enabled = false;
+            }
+
 
             //Check if is MoveQuadro
             Translate moveQuadroObject = hit.transform.GetComponent<Translate>();
@@ -436,8 +447,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingsedia = sedia != null ? true : false;
             if (_pointingsedia && _movedSedia== null)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Interagisci.enabled = false;
                     StartCoroutine(sedia.MoveS());
                     MoveSedia(sedia);
                 }
@@ -510,10 +523,8 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingExamine = examinableObject != null ? true : false;
             if (_pointingExamine)
             {
-                if (Input.GetMouseButtonDown(0) && _examinedObject == null)
+                if (Input.GetKeyDown(KeyCode.E) && _examinedObject == null)
                 {
-                    
-                    
                     if (examinableObject.gameObject == GameObject.Find("bigliettoAereo") && bigliettoEsaminato == false)
                     {
                         FindObjectOfType<AudioManager>().Play("voce_biglietto");
@@ -547,8 +558,6 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 Esamina.enabled = true;
             }
-
-
 
                 //Check if is BrickInTheWall
                 BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
@@ -758,7 +767,7 @@ public class FPSInteractionManager : MonoBehaviour
             _target.color = Color.green;
         else if (_pointingThrowable)
             _target.color = Color.green;
-        else if (_pointingsedia)
+        else if (_pointingsedia && _movedSedia==null)
             _target.color = Color.green;
         else
         {
@@ -842,11 +851,14 @@ public class FPSInteractionManager : MonoBehaviour
         _examinedObject = examinable;
         Esamina.enabled = false;
         Ruota.enabled = true;
+        Interagisci.enabled = false;
+        _pointingOpen = false;
     }
 
     public void ExitExamine()
     {
         _examinedObject = null;
+        Ruota.enabled = false;
     }
 
     private void Rotate(Rotatable rotatable)
