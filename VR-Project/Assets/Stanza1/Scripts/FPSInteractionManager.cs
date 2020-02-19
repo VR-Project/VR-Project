@@ -14,7 +14,13 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private float _grabDistance;
     [SerializeField] private float _rotateDistance;
     [SerializeField] private Image _target;
-    [SerializeField] private Image customImage;
+    [SerializeField] private Image Apri;
+    [SerializeField] private Image Esamina;
+    [SerializeField] private Image Interagisci;
+    [SerializeField] private Image Prendi;
+    [SerializeField] private Image Rilascia;
+    [SerializeField] private Image Ruota;
+    [SerializeField] private Image Striscia;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -132,7 +138,12 @@ public class FPSInteractionManager : MonoBehaviour
 
     void Start()
     {
-        customImage.enabled = false;
+        Prendi.enabled = false;
+        Interagisci.enabled = false;
+        Esamina.enabled = false;
+        Ruota.enabled = false;
+        Rilascia.enabled = false;
+        Striscia.enabled = false;
         fpsController = GetComponent<CharacterController>();
         amoColtello = GameObject.Find("amoColtello");
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
@@ -321,10 +332,11 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingGrabbable = grabbableObject != null ? true : false;
             if (_pointingGrabbable && _grabbedObject == null)
             {
-                customImage.enabled = true;
+                Prendi.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E) && _grabbedObject == null)
                 {
-                    customImage.enabled = false;
+                    Prendi.enabled = false;
+                    Rilascia.enabled = true;
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
                 }
@@ -335,10 +347,12 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingPick = pickableObject != null ? true : false;
             if (_pointingPick)
             {
+                Prendi.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if(pickableObject.gameObject == pickedColtello && funk == false)
-                    {
+                    Prendi.enabled = false;
+                    if (pickableObject.gameObject == pickedColtello && funk == false)
+                    {   
                         coltelloPreso = true;
                         funk = true;
                     }
@@ -462,6 +476,8 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0) && _examinedObject == null)
                 {
+                    
+                    
                     if (examinableObject.gameObject == GameObject.Find("bigliettoAereo") && bigliettoEsaminato == false)
                     {
                         FindObjectOfType<AudioManager>().Play("voce_biglietto");
@@ -485,11 +501,15 @@ public class FPSInteractionManager : MonoBehaviour
                 }
 
             }
+            if (_pointingExamine && _examinedObject == null)
+            {
+                Esamina.enabled = true;
+            }
 
 
 
-            //Check if is BrickInTheWall
-            BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
+                //Check if is BrickInTheWall
+                BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
             _pointingBrick = BrickInTheWall != null ? true : false;
             if (_pointingBrick)
             {
@@ -689,7 +709,12 @@ public class FPSInteractionManager : MonoBehaviour
         else
         {
             _target.color = Color.white;
-            customImage.enabled = false;
+            Prendi.enabled = false;
+            Interagisci.enabled = false;
+            Esamina.enabled = false;
+            Ruota.enabled = false;
+            Rilascia.enabled = false;
+            Striscia.enabled = false;
         }
 
 
@@ -757,6 +782,8 @@ public class FPSInteractionManager : MonoBehaviour
     private void Examine(Examine examinable)
     {
         _examinedObject = examinable;
+        Esamina.enabled = false;
+        Ruota.enabled = true;
     }
 
     public void ExitExamine()
