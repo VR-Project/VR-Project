@@ -20,8 +20,8 @@ public class CollisionColorChanger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision ENTER");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision ENTER");
         StartCoroutine(Blink());
     }
 
@@ -33,8 +33,8 @@ public class CollisionColorChanger : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision EXIT");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision EXIT");
     }
 
     public IEnumerator Blink()

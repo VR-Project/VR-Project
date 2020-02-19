@@ -2510,7 +2510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6290901
+      value: -0.010954683
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2518,7 +2518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.77733237
+      value: 0.99994004
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RootOrder
@@ -2530,7 +2530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -77.966
+      value: -1.2550001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3160,6 +3160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: portaOk
       objectReference: {fileID: 0}
+    - target: {fileID: -8733040240986845777, guid: 3b2eabf4c885968428719b61a2cd1d8b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a90af4c5cd852384289a44b8822480e6, type: 2}
     - target: {fileID: -4216859302048453862, guid: 3b2eabf4c885968428719b61a2cd1d8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3215,11 +3220,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8733040240986845777, guid: 3b2eabf4c885968428719b61a2cd1d8b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a90af4c5cd852384289a44b8822480e6, type: 2}
     - target: {fileID: -1835110200850362654, guid: 3b2eabf4c885968428719b61a2cd1d8b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5838,7 +5838,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: ChiaveSerratura
-    clip: {fileID: 8300000, guid: f72c2a99d1eda4a54b53117a917f8a68, type: 3}
+    clip: {fileID: 8300000, guid: ab771381bac89b545a1617c530bad4f2, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -5882,8 +5882,8 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: InterazioneImportante
-    clip: {fileID: 8300000, guid: 941f4946b6e1e45b2bd784b0b7fe3dba, type: 3}
+  - name: AperturaCassaforte
+    clip: {fileID: 8300000, guid: 9873c13a5619d92498ec40f34f8a5235, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -5892,7 +5892,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: RotelleCassaforte
-    clip: {fileID: 8300000, guid: 2e46db63f4973443e88a51ed4c2d464b, type: 3}
+    clip: {fileID: 8300000, guid: 35e9fa9d5825c4f479fc7575857ebc43, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -5901,12 +5901,48 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_disegno
-    clip: {fileID: 8300000, guid: 8a064b6a6e5cc4b1db4663a1402f8406, type: 3}
+    clip: {fileID: 8300000, guid: 4ec2c4a78b5dc204dbc28627736319bc, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SediaTranslate
+    clip: {fileID: 8300000, guid: a0701932474ad544887bd9bbd05fcd64, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ReteTagliata
+    clip: {fileID: 8300000, guid: afe572b4f0bd844d190a155d7fe6e02e, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: voce_pescare
+    clip: {fileID: 8300000, guid: 8767347e7b4df4a6fad5d41fc58729cb, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: IngranaggiLeve
+    clip: {fileID: 8300000, guid: 98048e2ec7b0947dfbfe63b0c1f89e6c, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1789013115

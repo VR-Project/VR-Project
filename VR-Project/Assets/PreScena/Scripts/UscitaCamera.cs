@@ -13,6 +13,13 @@ public class UscitaCamera : MonoBehaviour
     public float tiltAngle= 90.0f;
     private bool up = true;
     private float moveSpeed;
+    private Color azzurro;
+    private Color colore;
+    private float red;
+    private float green;
+    private float blue;
+    private bool transFog = true;
+    private bool finish = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,28 +33,67 @@ public class UscitaCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        smooth = 2.0f;
-        tiltAngle = 90.0f;
-
-        if (collision)
+        if (transFog)
         {
-            if (transform.position.y > 12)
+            StartCoroutine(transizioneFog());
+        }
+        if (finish)
+        {
+
+            smooth = 2.0f;
+            tiltAngle = 90.0f;
+
+            if (collision)
             {
-                RenderSettings.fog = false;
-                target = GameObject.Find("TargetDirezione");
-                StartCoroutine(Rotate());
-            }
-            else
-            {
-                if (up)
+                if (transform.position.y > 12)
                 {
-                    StartCoroutine(SwimUp());
-                } else if (!up)
+                    RenderSettings.fog = false;
+                    target = GameObject.Find("TargetDirezione");
+                    StartCoroutine(Rotate());
+                }
+                else
                 {
-                    StartCoroutine(SwimDown());
+                    if (up)
+                    {
+                        StartCoroutine(SwimUp());
+                    }
+                    else if (!up)
+                    {
+                        StartCoroutine(SwimDown());
+                    }
                 }
             }
         }
+    }
+
+    public void SetColor(Color color)
+    {
+        azzurro = color;
+    }
+
+    IEnumerator transizioneFog()
+    {
+        transFog = false;
+        colore = RenderSettings.fogColor;
+        while (RenderSettings.fogColor.r >= azzurro.r || RenderSettings.fogColor.g >= azzurro.g || RenderSettings.fogColor.b >= azzurro.b)
+        {
+            //SETTA I COLORI
+            if (colore.r >= azzurro.r)
+            {
+                colore.r -= 0.01f;
+            }
+            if (colore.g >= azzurro.g)
+            {
+                colore.g -= 0.01f;
+            }
+            if (colore.b >= azzurro.b)
+            {
+                colore.b -= 0.01f;
+            }
+            RenderSettings.fogColor = colore;
+            yield return new WaitForSeconds(0.01f);
+        }
+        finish = true;
     }
 
     IEnumerator SwimUp()
