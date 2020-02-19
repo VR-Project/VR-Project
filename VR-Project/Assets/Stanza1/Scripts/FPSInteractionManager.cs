@@ -424,7 +424,7 @@ public class FPSInteractionManager : MonoBehaviour
             //Check if is sedia
             MoveSedia sedia = hit.transform.GetComponent<MoveSedia>();
             _pointingsedia = sedia != null ? true : false;
-            if (_pointingsedia)
+            if (_pointingsedia && _movedSedia== null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -510,6 +510,11 @@ public class FPSInteractionManager : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
+                    }
+                    else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
+                    {
+                        //FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        ApriPorta.apri = true;
                     }
                     else
                     {

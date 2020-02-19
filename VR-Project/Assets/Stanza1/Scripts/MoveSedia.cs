@@ -19,6 +19,7 @@ public class MoveSedia : MonoBehaviour
     }
     public IEnumerator MoveS()
     {
+        yield return new WaitForSeconds(.03f);
         while (posX < 0.5 && posZ<1.5)
         {
             posX += 0.01f;
