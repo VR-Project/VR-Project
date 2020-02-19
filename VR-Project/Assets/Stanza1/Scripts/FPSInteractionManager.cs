@@ -37,6 +37,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingTastoCassaforte;
     private bool _pointingThrowable;
     private bool _pointingsedia;
+    private bool _pointingscala;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -67,6 +68,7 @@ public class FPSInteractionManager : MonoBehaviour
     private MoveSedia _movedSedia = null;
     public PremiBottone _premuto = null;
     public SpegniLuce _spenta = null;
+    private SaliScala _saliScala = null;
 
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
@@ -83,6 +85,7 @@ public class FPSInteractionManager : MonoBehaviour
     private GameObject amo;
     private GameObject pickedColtello;
     private GameObject Tastierino;
+    private GameObject scala;
 
     private GameObject esca;
     private GameObject fish;
@@ -157,8 +160,9 @@ public class FPSInteractionManager : MonoBehaviour
         pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         amo = GameObject.Find("amo");
         esca = amo.transform.GetChild(0).Find("esca1").gameObject;
-        tastierinoRosso = (Material)Resources.Load("Tastierino_rosso");
-        tastierinoVerde = (Material)Resources.Load("Tastierino_verde");
+        tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
+        tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
+        scala = GameObject.Find("stanza5/scala");
         Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         esca.AddComponent(typeof(EscaScript));
         esca.AddComponent(typeof(PickUp));
@@ -684,6 +688,18 @@ public class FPSInteractionManager : MonoBehaviour
                     StartCoroutine(openScrigno());
                 }
             }
+
+            //Check if scala
+            SaliScala upScala = hit.transform.GetComponent<SaliScala>();
+            _pointingscala = upScala != null ? true : false;
+
+            if (_pointingscala)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                    upScala.SaliERuota();
+            }
+
+
             //Check if collision
             //Creare i vari fish che richiamano OnCollisionEnter che ritorna un boolean che chiama ciò che è nell'if
             /*if (colli1.OnCollisionEnter()== true || colli2.OnCollisionEnter() == true || colli3.OnCollisionEnter() == true || colli4.OnCollisionEnter() == true || colli5.OnCollisionEnter() == true || colli6.OnCollisionEnter() == true || colli7.OnCollisionEnter() == true)
@@ -710,6 +726,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingTastoCassaforte = false;
             _pointingThrowable = false;
             _pointingsedia = false;
+            _pointingscala = false;
         }
 
     }
@@ -745,6 +762,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingThrowable)
             _target.color = Color.green;
         else if (_pointingsedia)
+            _target.color = Color.green;
+        else if (_pointingscala)
             _target.color = Color.green;
         else
         {

@@ -36,10 +36,10 @@ public class ThrowObject : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit);
 
-        if (hit.transform.GetComponent<ThrowObject>()!=null)
+       /* if (hit.transform.GetComponent<ThrowObject>()!=null)
         {
             isPointing = true;
-        }
+        }*/
 
         if (this.transform.name == hit.transform.name)
         {

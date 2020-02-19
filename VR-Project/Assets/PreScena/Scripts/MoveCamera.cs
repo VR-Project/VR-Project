@@ -12,6 +12,7 @@ public class MoveCamera : MonoBehaviour
     public float nearClipPlane = 0;
     public GameObject CameraG;
     public GameObject FPS;
+    private GameObject light;
     public Camera Camera;
     public RenderTexture nero;
     private float red;
@@ -28,6 +29,7 @@ public class MoveCamera : MonoBehaviour
         Camera = CameraG.GetComponent<Camera>();
         FPS = GameObject.Find("FPSController");
         nerog = (Material)Resources.Load("Nero", typeof(Material));
+        light = GameObject.Find("Directional Light (2)");
     }
 
     // Update is called once per frame
@@ -79,6 +81,7 @@ public class MoveCamera : MonoBehaviour
         {
             Debug.Log("Transizione");
             CameraG.SetActive(false);
+            light.GetComponent<Light>().enabled = false;
             RenderSettings.skybox = nerog;
             FPS.SetActive(true);
             RenderSettings.fog = false;
