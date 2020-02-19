@@ -6,7 +6,7 @@ public class ThrowObject : MonoBehaviour
     public Transform player;
     public Transform playerCam;
     public GameObject obj;
-    public float throwForce = 10;
+    public float throwForce = 500;
     bool hasPlayer = false;
     bool beingCarried = false;
     public AudioClip[] soundToPlay;
@@ -15,6 +15,8 @@ public class ThrowObject : MonoBehaviour
     private bool touched = false;
     private bool hasObjectAlready;
     public Thrower thrower;
+    private bool isPointing;
+    
 
     void Start()
     {
@@ -23,15 +25,21 @@ public class ThrowObject : MonoBehaviour
         player = obj.transform;
         playerCam = GameObject.Find("FirstPersonCharacter").transform;
         thrower = obj.GetComponent<Thrower>();
+        isPointing = false;
     }
 
     void Update()
     {
         hasObjectAlready = thrower.hasObject;
-        float dist = Vector3.Distance(gameObject.transform.position, player.position);
+        //float dist = Vector3.Distance(gameObject.transform.position, player.position);
 
         RaycastHit hit;
         Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit);
+
+        if (hit.transform.GetComponent<ThrowObject>()!=null)
+        {
+            isPointing = true;
+        }
 
         if (this.transform.name == hit.transform.name)
         {
@@ -64,7 +72,7 @@ public class ThrowObject : MonoBehaviour
                 beingCarried = false;
                 GetComponent<Rigidbody>().AddForce(playerCam.forward * throwForce);
                 thrower.hasObject = false;
-                RandomAudio();
+                //RandomAudio();
             }
             else if (Input.GetMouseButtonDown(1))
             {
@@ -91,5 +99,10 @@ public class ThrowObject : MonoBehaviour
         {
             touched = true;
         }
+    }
+
+    public bool IsPointingThrowable()
+    {
+        return isPointing;
     }
 }

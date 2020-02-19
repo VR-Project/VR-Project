@@ -27,6 +27,8 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingMoveQ;
     private bool _pointingBrick;
     private bool _pointingPremuto;
+    private bool _pointingThrowable;
+
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -52,6 +54,7 @@ public class FPSInteractionManager : MonoBehaviour
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
     public Rigidbody collisionRigidBody = null;
+    
 
 
     private GameObject scrigno;
@@ -149,9 +152,9 @@ public class FPSInteractionManager : MonoBehaviour
                     /*ThrowSimulation proiettile = _grabbedObject.gameObject.GetComponent<ThrowSimulation>();
                     StartCoroutine(proiettile.SimulateProjectile());*/
 
-                    Debug.Log("Sono dentro porca troia bastarda");
+                    /*Debug.Log("Sono dentro porca troia bastarda");
                     InvisibleGun gun = GetComponent<InvisibleGun>();
-                    gun.getObject(_grabbedObject.gameObject);
+                    gun.getObject(_grabbedObject.gameObject);*/
                     Drop();
                 }
                 else
@@ -454,6 +457,11 @@ public class FPSInteractionManager : MonoBehaviour
                 }
             }
 
+            //Check if is Lanciabile
+            ThrowObject lanciabile = hit.transform.GetComponent<ThrowObject>();
+            _pointingThrowable = lanciabile != null ? true : false;
+
+
             //Check if coltello
             if (coltello == true)
             {
@@ -550,6 +558,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingMoveQ = false;
             _pointingBrick = false;
             _pointingPremuto = false;
+            _pointingThrowable = false;
         }
 
     }
@@ -577,6 +586,8 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingBrick)
             _target.color = Color.green;
         else if (_pointingPremuto)
+            _target.color = Color.green;
+        else if(_pointingThrowable)
             _target.color = Color.green;
         else
         {
