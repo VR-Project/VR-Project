@@ -9,6 +9,8 @@ TagManager:
   - Mura
   - proiettile
   - Luce
+  - Camera
+  - FPS
   layers:
   - Default
   - TransparentFX

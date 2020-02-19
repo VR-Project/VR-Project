@@ -9797,7 +9797,7 @@ Transform:
   - {fileID: 6576984553521793762}
   - {fileID: 5593537111003576163}
   m_Father: {fileID: 8860972409558427466}
-  m_RootOrder: 12
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5006512736774702650
 Transform:
@@ -15283,17 +15283,17 @@ Transform:
   - {fileID: 8149164290476558763}
   - {fileID: 10630172}
   - {fileID: 442311102459180251}
+  - {fileID: 5006512736125241361}
   - {fileID: 547997044}
   - {fileID: 734975579}
   - {fileID: 76324048}
   - {fileID: 340863038}
-  - {fileID: 5006512736125241361}
   - {fileID: 112451038}
   - {fileID: 1349029531}
   - {fileID: 883987153}
   - {fileID: 1815635921}
-  - {fileID: 1750596890}
   - {fileID: 839045102}
+  - {fileID: 1750596890}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 270}
