@@ -27,7 +27,7 @@ public class MoveCamera : MonoBehaviour
         target = GameObject.Find("Stone5ok17");
         CameraG = GameObject.Find("Camera");
         Camera = CameraG.GetComponent<Camera>();
-        FPS = GameObject.Find("FPSController");
+        FPS = GameObject.Find("Fps");
         nerog = (Material)Resources.Load("Nero", typeof(Material));
         light = GameObject.Find("Directional Light (2)");
     }
@@ -83,7 +83,7 @@ public class MoveCamera : MonoBehaviour
             CameraG.SetActive(false);
             light.GetComponent<Light>().enabled = false;
             RenderSettings.skybox = nerog;
-            FPS.SetActive(true);
+            FPS.transform.GetChild(0).gameObject.SetActive(true);
             RenderSettings.fog = false;
         }
     }

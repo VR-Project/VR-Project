@@ -198,6 +198,7 @@ public class FPSInteractionManager : MonoBehaviour
             coltelloPreso = false;
             esca = GameObject.Find("reteCentrale").gameObject;
             esca.AddComponent(typeof(PickUp));
+            //Knife.enabled = false;
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -391,7 +392,6 @@ public class FPSInteractionManager : MonoBehaviour
                     if (pickableObject.gameObject.name == "Chiave")
                     {
                         Chiave.enabled = true;
-                        //Debug.Log("bella");
                     }
                     if (pickableObject.gameObject.name == "reteCentrale")
                     {
@@ -404,6 +404,7 @@ public class FPSInteractionManager : MonoBehaviour
 
                     PickUp(pickableObject);
                     
+
                 }
             }
 
