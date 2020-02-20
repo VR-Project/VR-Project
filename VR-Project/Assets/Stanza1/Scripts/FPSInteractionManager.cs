@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityStandardAssets.Utility;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class FPSInteractionManager : MonoBehaviour
 {
@@ -338,6 +339,7 @@ public class FPSInteractionManager : MonoBehaviour
         sasso.SetActive(true);
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
         ApriPorta4.apri4 = true;
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza5", LoadSceneMode.Additive);
 
     }
 
@@ -389,11 +391,12 @@ public class FPSInteractionManager : MonoBehaviour
                     if (pickableObject.gameObject.name == "Chiave")
                     {
                         Chiave.enabled = true;
-                        Debug.Log("bella");
+                        //Debug.Log("bella");
                     }
                     if (pickableObject.gameObject.name == "reteCentrale")
                     {
                         FindObjectOfType<AudioManager>().Play("ReteTagliata");
+                        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza3", LoadSceneMode.Additive);
                     }
                     else FindObjectOfType<AudioManager>().Play("Interazione");
                     pickableObject.transform.gameObject.SetActive(false);
@@ -561,12 +564,14 @@ public class FPSInteractionManager : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
+                        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza2", LoadSceneMode.Additive);
                     }
                     else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
                     {
                         
                         //FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta3.apri3 = true;
+                        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza4", LoadSceneMode.Additive);
                     }
                     else
                     {
