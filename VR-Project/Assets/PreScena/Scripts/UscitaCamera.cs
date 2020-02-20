@@ -20,6 +20,7 @@ public class UscitaCamera : MonoBehaviour
     private float blue;
     private bool transFog = true;
     private bool finish = false;
+    private float density;
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +76,7 @@ public class UscitaCamera : MonoBehaviour
     {
         transFog = false;
         colore = RenderSettings.fogColor;
+        density = RenderSettings.fogDensity;
         while (RenderSettings.fogColor.r >= azzurro.r || RenderSettings.fogColor.g >= azzurro.g || RenderSettings.fogColor.b >= azzurro.b)
         {
             //SETTA I COLORI
@@ -90,7 +92,14 @@ public class UscitaCamera : MonoBehaviour
             {
                 colore.b -= 0.01f;
             }
+            RenderSettings.fogDensity = density;
             RenderSettings.fogColor = colore;
+            yield return new WaitForSeconds(0.01f);
+        }
+        while(RenderSettings.fogDensity>= 0.1f)
+        {
+            density -= 0.01f;
+            RenderSettings.fogDensity = density;
             yield return new WaitForSeconds(0.01f);
         }
         finish = true;

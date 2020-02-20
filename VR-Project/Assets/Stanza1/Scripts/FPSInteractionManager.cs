@@ -40,6 +40,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingThrowable;
     private bool _pointingsedia;
     private bool _pointingscala;
+    private bool _pointingExamine2;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -56,6 +57,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool combCorretta = false;
     private bool coltelloPreso = false;
     private bool funk = false;
+    private bool boolAmo = false;
 
     private CharacterController fpsController;
     private Vector3 rayOrigin;
@@ -65,6 +67,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
     private Examine _examinedObject = null;
+    private Examine2 _examinedObject2 = null;
     private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
     private MoveSedia _movedSedia = null;
@@ -161,10 +164,6 @@ public class FPSInteractionManager : MonoBehaviour
         Knife.enabled = false;
         fpsController = GetComponent<CharacterController>();
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
-        tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
-        tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
-        tastierinoNero = (Material)Resources.Load("Tastierino_Nero");
-        Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
         fluo = true;
         coltello = false;
         pickOk = false;
@@ -177,13 +176,17 @@ public class FPSInteractionManager : MonoBehaviour
         {
             pickedColtello = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
         }
-        amo = GameObject.Find("amo");
-        if (amo != null)
+        if (boolAmo == false)
         {
-            esca = amo.transform.GetChild(0).Find("esca1").gameObject;
-            esca.AddComponent(typeof(EscaScript));
-            esca.AddComponent(typeof(PickUp));
-            esca.AddComponent(typeof(CollisionColorChanger));
+            amo = GameObject.Find("amo");
+            if (amo != null)
+            {
+                esca = amo.transform.GetChild(0).Find("esca1").gameObject;
+                esca.AddComponent(typeof(EscaScript));
+                esca.AddComponent(typeof(PickUp));
+                esca.AddComponent(typeof(CollisionColorChanger));
+                boolAmo = true;
+            }
         }
         rayOrigin = _fpsCameraT.position + fpsController.radius * _fpsCameraT.forward;
         CheckInteraction();
@@ -340,7 +343,7 @@ public class FPSInteractionManager : MonoBehaviour
         sasso.SetActive(true);
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
         ApriPorta4.apri4 = true;
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza5", LoadSceneMode.Additive);
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Scene5", LoadSceneMode.Additive);
 
     }
 
@@ -396,6 +399,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if (pickableObject.gameObject.name == "reteCentrale")
                     {
                         FindObjectOfType<AudioManager>().Play("ReteTagliata");
+                        Knife.enabled = false;
                         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza3", LoadSceneMode.Additive);
                     }
                     else FindObjectOfType<AudioManager>().Play("Interazione");
@@ -592,8 +596,29 @@ public class FPSInteractionManager : MonoBehaviour
                 Esamina.enabled = true;
             }
 
-                //Check if is BrickInTheWall
-                BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
+            //Check if is examinable
+            Examine2 examinableObject2 = hit.transform.GetComponent<Examine2>();
+            _pointingExamine2 = examinableObject2 != null ? true : false;
+            if (_pointingExamine2)
+            {
+                if (Input.GetKeyDown(KeyCode.E) && _examinedObject2 == null)
+                {
+                    examinableObject2.ClickObject();
+                    Examine2(examinableObject2);
+                }
+                if (examinableObject2.examineMode == false && _examinedObject2 == examinableObject2)
+                {
+                    ExitExamine2();
+                }
+
+            }
+            if (_pointingExamine2 && _examinedObject2 == null)
+            {
+                Esamina.enabled = true;
+            }
+
+            //Check if is BrickInTheWall
+            BrickIndietro BrickInTheWall = hit.transform.GetComponent<BrickIndietro>();
             _pointingBrick = BrickInTheWall != null ? true : false;
             if (_pointingBrick)
             {
@@ -622,10 +647,15 @@ public class FPSInteractionManager : MonoBehaviour
             //Check if is PremiTastoCassaforte
             PremoTastoCassaforte digitabile = hit.transform.GetComponent<PremoTastoCassaforte>();
             _pointingTastoCassaforte = digitabile != null ? true : false;
+            tastierinoRosso = (Material)Resources.Load("Tastierino_Rosso");
+            tastierinoVerde = (Material)Resources.Load("Tastierino_Verde");
+            tastierinoNero = (Material)Resources.Load("Tastierino_Nero");
+            Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
             if (_pointingTastoCassaforte)
             {
                 if (Input.GetMouseButtonDown(0) && _tastoPremuto == null)
                 {
+
                     numeroCombinazione++;
                     digitabile.PremoTasto();
                     StartCoroutine(digitabile.PremoTasto());
@@ -911,10 +941,22 @@ public class FPSInteractionManager : MonoBehaviour
         Interagisci.enabled = false;
         _pointingOpen = false;
     }
+    private void Examine2(Examine2 examinable2)
+    {
+        _examinedObject2 = examinable2;
+        Esamina.enabled = false;
+        Ruota.enabled = true;
+        Interagisci.enabled = false;
+    }
 
     public void ExitExamine()
     {
         _examinedObject = null;
+        Ruota.enabled = false;
+    }
+    public void ExitExamine2()
+    {
+        _examinedObject2 = null;
         Ruota.enabled = false;
     }
 

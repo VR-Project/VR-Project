@@ -20,6 +20,7 @@ public class MoveCamera : MonoBehaviour
     private float green;
     private Color color;
     public Material nerog;
+    private GameObject preScena;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class MoveCamera : MonoBehaviour
         FPS = GameObject.Find("Fps");
         nerog = (Material)Resources.Load("Nero", typeof(Material));
         light = GameObject.Find("Directional Light (2)");
+        preScena = GameObject.Find("PreScena");
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class MoveCamera : MonoBehaviour
         {
             Debug.Log("Transizione");
             CameraG.SetActive(false);
+            preScena.SetActive(false);
             light.GetComponent<Light>().enabled = false;
             RenderSettings.skybox = nerog;
             FPS.transform.GetChild(0).gameObject.SetActive(true);

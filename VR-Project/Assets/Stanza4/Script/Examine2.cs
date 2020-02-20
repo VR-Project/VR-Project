@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Examine : MonoBehaviour
+public class Examine2 : MonoBehaviour
 {
 
     Camera mainCam;//Camera Object Will Be Placed In Front Of

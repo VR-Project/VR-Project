@@ -50,7 +50,7 @@ public class ThrowObject : MonoBehaviour
             {
                 hasPlayer = false;
             }
-            if (hasPlayer && Input.GetKeyDown(KeyCode.Q) && !hasObjectAlready)
+            if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
             {
                 GetComponent<Rigidbody>().isKinematic = true;
                 transform.parent = playerCam;

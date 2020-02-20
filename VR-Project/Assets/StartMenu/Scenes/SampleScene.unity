@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: CameraMenu
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 851266967}
   m_Layer: 0
   m_Name: CameraOpzioni
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

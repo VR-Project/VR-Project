@@ -42,8 +42,12 @@ public class SaliScala : MonoBehaviour
         bianco = (Material)Resources.Load("Bianco", typeof(Material));
         RenderSettings.skybox = bianco;
         sinapsi = GameObject.Find("Sinapsi");
-        sinapsi.SetActive(false);
-        room1 = GameObject.Find("Room_new");
+        if (sinapsi != null)
+        {
+            sinapsi.SetActive(false);
+
+        }
+       /* room1 = GameObject.Find("Room_new");
         room2 = GameObject.Find("room_2");
         room3 = GameObject.Find("Room");
         room4 = GameObject.Find("room_4");
@@ -53,7 +57,7 @@ public class SaliScala : MonoBehaviour
         room2.SetActive(false);
         room3.SetActive(false);
         room4.SetActive(false);
-        prescena.SetActive(false);
+        prescena.SetActive(false);*/
 
         fps = GameObject.Find("FPSController");
         uscita = GameObject.Find("EmptyCamera");
@@ -67,7 +71,7 @@ public class SaliScala : MonoBehaviour
         RenderSettings.fogColor = Color.white;
         RenderSettings.fogDensity = 0f;
 
-        while(uscita.transform.GetChild(0).transform.position.z < 7.2)
+        while(uscita.transform.GetChild(0).transform.position.z < 0.19)
         {
             uscita.transform.GetChild(0).transform.Translate(0, 0, 0.01f);
             yield return new WaitForSeconds(0.01f);
@@ -81,7 +85,7 @@ public class SaliScala : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
             else{ 
-            RenderSettings.fogDensity += 0.001f;
+            RenderSettings.fogDensity += 0.01f;
             uscita.transform.GetChild(0).transform.Translate(0, 0.005f, 0.01f);
             yield return new WaitForSeconds(0.01f);
             counter += 0.01f;

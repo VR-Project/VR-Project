@@ -24,10 +24,6 @@ public class EscOpzioni : MonoBehaviour
             cameraMenu.transform.GetChild(0).gameObject.SetActive(true);
             cameraOpzioni.transform.GetChild(0).gameObject.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && cameraOpzioni.transform.GetChild(0).gameObject.active == false)
-        {
-            cameraOpzioni.transform.GetChild(0).gameObject.SetActive(true);
-        }
 
     }
 }
