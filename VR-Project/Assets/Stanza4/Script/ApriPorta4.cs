@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApriPorta : MonoBehaviour
+public class ApriPorta4 : MonoBehaviour
 {
-    private float pos = 0;
-    public static bool apri = false;
+    private float pos4 = 0;
+    public static bool apri4 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,20 +15,19 @@ public class ApriPorta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (apri == true)
+        if (apri4 == true)
         {
-            Debug.Log("apri porta");
-            StartCoroutine(Apri());
-            apri = false;
+            StartCoroutine(Apri4());
+            apri4 = false;
         }
     }
 
-    private IEnumerator Apri()
+    private IEnumerator Apri4()
     {
         yield return new WaitForSeconds(0.3f);
-        while (pos > -100)
+        while (pos4 > -100)
         {
-            pos -= 1f;
+            pos4 -= 1f;
             transform.Rotate(0, 0, -1);
             yield return new WaitForSeconds(0.005f);
         }

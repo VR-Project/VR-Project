@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApriPorta : MonoBehaviour
+public class ApriPorta3 : MonoBehaviour
 {
-    private float pos = 0;
-    public static bool apri = false;
+    private float pos3 = 0;
+    public static bool apri3 = false;
     // Start is called before the first frame update
     void Start()
     {
-
+  
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (apri == true)
+        if (apri3 == true)
         {
-            Debug.Log("apri porta");
-            StartCoroutine(Apri());
-            apri = false;
+            StartCoroutine(Apri3());
+            apri3 = false;
         }
     }
 
-    private IEnumerator Apri()
+    private IEnumerator Apri3()
     {
         yield return new WaitForSeconds(0.3f);
-        while (pos > -100)
+        while (pos3 > -100)
         {
-            pos -= 1f;
+            pos3 -= 1f;
             transform.Rotate(0, 0, -1);
             yield return new WaitForSeconds(0.005f);
         }
