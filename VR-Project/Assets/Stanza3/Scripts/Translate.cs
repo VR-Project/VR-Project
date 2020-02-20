@@ -24,6 +24,7 @@ public class Translate : MonoBehaviour
     {
         if (this.name == "LibriMove" || this.name == "cestino") maxSpost = 0.2f;
         if (this.name == "cestino"|| this.name == "Scrivania") dir = -1;
+        FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
         while (pos < maxSpost)
         {
             pos +=  0.01f;
@@ -31,6 +32,7 @@ public class Translate : MonoBehaviour
             yield return new WaitForSeconds(.02f);
         }
         yield return new WaitForSeconds(0.3f);
+        FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
         while (pos > 0)
         {
             pos -= 0.01f;

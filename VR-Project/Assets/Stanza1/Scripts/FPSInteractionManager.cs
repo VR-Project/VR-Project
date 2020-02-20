@@ -312,6 +312,8 @@ public class FPSInteractionManager : MonoBehaviour
             scrigno.transform.GetChild(0).gameObject.transform.Rotate(0, 1, 0);
             yield return new WaitForSeconds(.01f);
         }
+        FindObjectOfType<AudioManager>().Play("AperturaScrigno");
+
     }
 
     public IEnumerator AproCassaforteStanza1()
@@ -341,6 +343,7 @@ public class FPSInteractionManager : MonoBehaviour
         yield return new WaitForSeconds(.4f);
         GameObject sasso = GameObject.Find("Masso").transform.GetChild(0).gameObject;
         sasso.SetActive(true);
+        sasso.GetComponent<AudioSource>().Play();
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
         ApriPorta4.apri4 = true;
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Scene5", LoadSceneMode.Additive);
@@ -506,6 +509,8 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && _openedCabObject != null)
                 {
+                    //FORSE E' QUA L'ERRORE?
+                    //Interagisci.enabled = false;
                     StartCoroutine(openableCabObject.Close());
                     CloseCab();
                     FindObjectOfType<AudioManager>().Play("AperturaSportello");
@@ -574,7 +579,7 @@ public class FPSInteractionManager : MonoBehaviour
                     else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
                     {
                         
-                        //FindObjectOfType<AudioManager>().Play("voce_disegno");
+                        FindObjectOfType<AudioManager>().Play("voce_fede");
                         ApriPorta3.apri3 = true;
                         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza4", LoadSceneMode.Additive);
                     }
@@ -685,10 +690,12 @@ public class FPSInteractionManager : MonoBehaviour
                         numeroCombinazione = 0;
                         numeroCorretto = 0;
                         combCorretta = false;
+                        FindObjectOfType<AudioManager>().Play("CorrettoCassaforte");
                         StartCoroutine(AproCassaforteStanza4());
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
+                        FindObjectOfType<AudioManager>().Play("ErroreCassaforte");
                         Tastierino.GetComponent<Renderer>().material = tastierinoRosso;
                         StartCoroutine(TastierinoNero());
                         //Debug.Log("combinazione errata");

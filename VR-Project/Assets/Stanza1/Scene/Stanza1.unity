@@ -2660,7 +2660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_TagString
@@ -2668,15 +2668,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -615.791
+      value: -614.98
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 268.632
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.668
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6158,7 +6158,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Interazione
-    clip: {fileID: 8300000, guid: 56b473ee6d57549dda170ffa5964a76e, type: 3}
+    clip: {fileID: 8300000, guid: 22e156ff453784f859ff51ab373f2f4e, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6167,7 +6167,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: FineLivello
-    clip: {fileID: 8300000, guid: 899e27388cf1a453183d11e6abd065d9, type: 3}
+    clip: {fileID: 8300000, guid: 9babb54d14ae443ffb359a5be86b5226, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6194,7 +6194,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_disegno
-    clip: {fileID: 8300000, guid: 4ec2c4a78b5dc204dbc28627736319bc, type: 3}
+    clip: {fileID: 8300000, guid: 73205bb41ce26455e892c4a948a5d619, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6236,6 +6236,114 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ErroreLeva
+    clip: {fileID: 8300000, guid: 0795ba66d20b944f5851f5dd90e242e0, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: TraslazioneOggetti
+    clip: {fileID: 8300000, guid: 26505b94185614ce0964d6171fa0d222, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ArrivoLeva
+    clip: {fileID: 8300000, guid: ab771381bac89b545a1617c530bad4f2, type: 3}
+    volume: 0.58
+    volumeVariance: 0
+    pitch: 1.59
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: AperturaScrigno
+    clip: {fileID: 8300000, guid: df7e77cc089904aa08b4071b71e111de, type: 3}
+    volume: 0.7
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: voce_fede
+    clip: {fileID: 8300000, guid: fb9094cb1c3494ef1ac72f7a14e02820, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ErroreCassaforte
+    clip: {fileID: 8300000, guid: ffebf8521e3844c15ada480b1012dc91, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: CorrettoCassaforte
+    clip: {fileID: 8300000, guid: 5d215751c85994816af768f2da930125, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SuonoPulsanteCassaforte
+    clip: {fileID: 8300000, guid: 384c14fc47dd646e287569a2dc7feba2, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MattoneInserito
+    clip: {fileID: 8300000, guid: 1aa1a7f2221ec40a7851c2fecacc8abf, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MattoneTolto
+    clip: {fileID: 8300000, guid: b4cc0d8cb9f5b4a62953097807b5aed1, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SpostamentoMuro
+    clip: {fileID: 8300000, guid: 6381b29a33f4846d2a12a10725959446, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: postScena_audio
+    clip: {fileID: 8300000, guid: 1a2bd5512144649ba96b5cb9e63eefc9, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1789013115

@@ -27,6 +27,8 @@ public class BrickIndietro : MonoBehaviour
         float posZ = 0;
         //float posY = 0;
         float posX = 0;
+        FindObjectOfType<AudioManager>().Play("MattoneTolto");
+
         while (posZ < 0.2f)
         {
             posZ += 0.01f;

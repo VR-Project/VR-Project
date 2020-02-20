@@ -35,6 +35,7 @@ public class SaliScala : MonoBehaviour
     public void SaliERuota()
     {
         StartCoroutine(SeR());
+        FindObjectOfType<AudioManager>().Play("postScena_audio");
     }
 
     public IEnumerator SeR()

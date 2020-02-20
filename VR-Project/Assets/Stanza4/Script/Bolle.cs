@@ -40,6 +40,7 @@ public class Bolle : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(true);
+            this.gameObject.transform.GetChild(i).gameObject.GetComponent<AudioSource>().Play();
             MovimentoBolle bolla = transform.GetChild(i).transform.GetComponent<MovimentoBolle>();
             bolla.MuoviBolle();
         }

@@ -25,6 +25,8 @@ public class ApriPorta3 : MonoBehaviour
     private IEnumerator Apri3()
     {
         yield return new WaitForSeconds(0.3f);
+        FindObjectOfType<AudioManager>().Play("FineLivello");
+
         while (pos3 > -100)
         {
             pos3 -= 1f;

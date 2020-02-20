@@ -20,12 +20,14 @@ public class PremiBottone : MonoBehaviour
     public void Premi()
     {
         transform.Translate(0, 0.02f, 0);
+        this.gameObject.GetComponent<AudioSource>().Play();
         StartCoroutine(Apri());
     }
 
     public IEnumerator Apri()
     {
         GameObject cassetto = GameObject.Find("scrivania/Scrivania/cassetto_buono");
+        cassetto.gameObject.GetComponent<AudioSource>().Play();
         while (pos < 0.25)
         {
             pos += 0.01f;

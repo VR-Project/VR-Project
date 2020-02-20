@@ -12,7 +12,9 @@ public class BrickTrigger : MonoBehaviour
 
         //the result of the dot product returns > 0 if relative position 
         float dotResult = Vector3.Dot(othersPositionRelativeTo, transform.forward);
-        
+        FindObjectOfType<AudioManager>().Play("MattoneInserito");
+
+
         GameObject brick = other.gameObject;
         brick.transform.parent = originalParent.transform;        
         brick.transform.rotation = Quaternion.Euler(0,180,0);

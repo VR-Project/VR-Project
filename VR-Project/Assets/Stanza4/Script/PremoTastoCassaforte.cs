@@ -18,6 +18,7 @@ public class PremoTastoCassaforte : MonoBehaviour
 
     public IEnumerator PremoTasto()
     {
+        FindObjectOfType<AudioManager>().Play("SuonoPulsanteCassaforte");
         transform.Translate(0.005f, 0, 0);
         yield return new WaitForSeconds(0.3f);
         transform.Translate(-0.005f, 0, 0);

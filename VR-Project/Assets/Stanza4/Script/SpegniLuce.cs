@@ -19,7 +19,7 @@ public class SpegniLuce : MonoBehaviour
     public void Spegni()
     {
         GameObject.Find("lampadario/SpotLight").SetActive(false);
-        
+        this.gameObject.GetComponent<AudioSource>().Play();
         material1 = (Material)Resources.Load("wall_conScritta", typeof(Material));
         GameObject.Find("room_4/Room.001").GetComponent<Renderer>().material = material1;
     }

@@ -16,7 +16,11 @@ public class aperturaVarco : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter == 5) StartCoroutine(ApriVarco());
+        if (counter == 5)
+        {
+            StartCoroutine(ApriVarco());
+            FindObjectOfType<AudioManager>().Play("SpostamentoMuro");
+        }
     }
 
     public static void contaMattoniCorretti()
@@ -30,6 +34,8 @@ public class aperturaVarco : MonoBehaviour
 
     public IEnumerator ApriVarco()
     {
+        
+
         while (pos < 1.44f)
         {
             pos += 0.001f;
