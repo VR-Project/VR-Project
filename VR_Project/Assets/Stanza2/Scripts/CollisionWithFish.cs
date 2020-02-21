@@ -24,21 +24,21 @@ public class CollisionWithWall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision ENTERFish");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision ENTERFish");
         StartCoroutine(Blink());
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision STAYFish");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision STAYFish");
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (_logCollisions)
-            Debug.Log("OnCollision EXITFish");
+        //if (_logCollisions)
+        //    Debug.Log("OnCollision EXITFish");
     }
 
     public IEnumerator Blink()

@@ -11,12 +11,6 @@ public class Openable : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public IEnumerator Open()
     {
         yield return new WaitForSeconds(0.3f);

@@ -14,7 +14,9 @@ public class Examine : MonoBehaviour
 
     //If True Allow Rotation Of Object
     public bool examineMode;
+    private bool ruota = false;
     private float coeff = 0.7f;
+    public static bool exit = false;
 
 
     void Start()
@@ -28,7 +30,10 @@ public class Examine : MonoBehaviour
 
         //Decide What Object To Examine
 
-        TurnObject();//Allows Object To Be Rotated
+        if (ruota == true)
+        {
+            TurnObject();//Allows Object To Be Rotated
+        }
 
         //ExitExamineMode();//Returns Object To Original Postion
     }
@@ -36,6 +41,7 @@ public class Examine : MonoBehaviour
 
     public void ClickObject()
     {
+        exit = false;
         mainCam = Camera.main;
         examineMode = false;
         if (examineMode == false)
@@ -66,6 +72,7 @@ public class Examine : MonoBehaviour
 
                 //Turn Examine Mode To True
                 examineMode = true;
+                ruota = true;
                 clickedObject.transform.eulerAngles = originalRotation;
             }
         }
@@ -85,7 +92,9 @@ public class Examine : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1) && examineMode)
         {
+            ruota = false;
             ExitExamineMode();
+            
         }
     }
 
@@ -100,7 +109,7 @@ public class Examine : MonoBehaviour
 
         //Return To Normal State
         examineMode = false;
-
+        FPSInteractionManager._examinedObject = null;
         if (clickedObject == GameObject.Find("scrivania/Scrivania/cassetto_buono/fotoStrappata"))
         {
             GameObject.Find("room_4/Room.001/tetto_s4").GetComponent<BoxCollider>().enabled = true;

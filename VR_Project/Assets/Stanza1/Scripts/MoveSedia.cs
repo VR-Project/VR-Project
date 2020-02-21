@@ -12,11 +12,6 @@ public class MoveSedia : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public IEnumerator MoveS()
     {
         yield return new WaitForSeconds(.03f);

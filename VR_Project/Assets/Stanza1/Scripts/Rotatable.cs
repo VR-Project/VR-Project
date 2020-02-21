@@ -11,12 +11,6 @@ public class Rotatable : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public IEnumerator Rotate()
     {
         yield return new WaitForSeconds(0.3f);

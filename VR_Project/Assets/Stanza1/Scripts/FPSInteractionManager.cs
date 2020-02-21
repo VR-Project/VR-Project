@@ -40,7 +40,6 @@ public class FPSInteractionManager : MonoBehaviour
     private bool _pointingThrowable;
     private bool _pointingsedia;
     private bool _pointingscala;
-    private bool _pointingExamine2;
 
     /******AUDIO BOOLEANS******/
     private bool bigliettoEsaminato = false;
@@ -66,8 +65,7 @@ public class FPSInteractionManager : MonoBehaviour
     private PickUp _pickedObject = null;
     private Openable _openedObject = null;
     private OpenCabinet _openedCabObject = null;
-    private Examine _examinedObject = null;
-    private Examine2 _examinedObject2 = null;
+    public static Examine _examinedObject=null;
     private PremoTastoCassaforte _tastoPremuto = null;
     private MoveLabirinto _movedObject = null;
     private MoveSedia _movedSedia = null;
@@ -283,7 +281,7 @@ public class FPSInteractionManager : MonoBehaviour
                 previousRandom = random;
                 //random = 1;
                 amo = GameObject.Find("amo (" + random + ")");
-               // Debug.Log("amo (" + random + ")");
+                //Debug.Log("amo (" + random + ")");
                 esca = amo.transform.GetChild(0).Find("esca").gameObject;
                 esca.AddComponent(typeof(EscaScript));
                 esca.AddComponent(typeof(PickUp));
@@ -358,15 +356,6 @@ public class FPSInteractionManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, InteractionDistance))
         {
-            //Check if is interactable
-            Interactable interactable = hit.transform.GetComponent<Interactable>();
-            _pointingInteractable = interactable != null ? true : false;
-            if (_pointingInteractable)
-            {
-                if (Input.GetMouseButtonDown(1))
-                    interactable.Interact(gameObject);
-            }
-
             //Check if is grabbable
             Grabbable grabbableObject = hit.transform.GetComponent<Grabbable>();
             _pointingGrabbable = grabbableObject != null ? true : false;
@@ -592,11 +581,11 @@ public class FPSInteractionManager : MonoBehaviour
                     examinableObject.ClickObject();
                     Examine(examinableObject);
                 }
-                if (examinableObject.examineMode == false && _examinedObject == examinableObject)
-                {
-                    ExitExamine();
-                }
 
+                //if (examinableObject.examineMode == false && _examinedObject == examinableObject)
+                //{
+                //    ExitExamine();
+                //}
             }
             if (_pointingExamine && _examinedObject == null)
             {
@@ -694,6 +683,7 @@ public class FPSInteractionManager : MonoBehaviour
             }*/
 
             // Check if is movelabirinto
+           
             MoveLabirinto movableObject = hit.transform.GetComponent<MoveLabirinto>();
             _pointingLeva = movableObject != null ? true : false;
             if (_pointingLeva)
@@ -930,24 +920,12 @@ public class FPSInteractionManager : MonoBehaviour
         Interagisci.enabled = false;
         _pointingOpen = false;
     }
-    private void Examine2(Examine2 examinable2)
-    {
-        _examinedObject2 = examinable2;
-        Esamina.enabled = false;
-        Ruota.enabled = true;
-        Interagisci.enabled = false;
-    }
 
-    public void ExitExamine()
-    {
-        _examinedObject = null;
-        Ruota.enabled = false;
-    }
-    public void ExitExamine2()
-    {
-        _examinedObject2 = null;
-        Ruota.enabled = false;
-    }
+    //public void ExitExamine()
+    //{
+    //    _examinedObject = null;
+    //    Ruota.enabled = false;
+    //}
 
     private void Rotate(Rotatable rotatable)
     {

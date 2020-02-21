@@ -17,7 +17,6 @@ public class ApriPorta : MonoBehaviour
     {
         if (apri == true)
         {
-            Debug.Log("apri porta");
             StartCoroutine(Apri());
             apri = false;
         }

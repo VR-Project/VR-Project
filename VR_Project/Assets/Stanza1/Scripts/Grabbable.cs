@@ -24,11 +24,6 @@ public class Grabbable : MonoBehaviour
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void Grab(GameObject grabber)
     {
         _collider.enabled = true;
