@@ -465,6 +465,7 @@ public class FPSInteractionManager : MonoBehaviour
                 Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
                     Interagisci.enabled = false;
                     StartCoroutine(moveQuadroObject.MoveQ());
                 }
@@ -921,11 +922,6 @@ public class FPSInteractionManager : MonoBehaviour
         _pointingOpen = false;
     }
 
-    //public void ExitExamine()
-    //{
-    //    _examinedObject = null;
-    //    Ruota.enabled = false;
-    //}
 
     private void Rotate(Rotatable rotatable)
     {

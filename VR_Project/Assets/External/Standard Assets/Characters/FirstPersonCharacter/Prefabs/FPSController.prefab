@@ -72,7 +72,23 @@ MonoBehaviour:
   _pushDistance: 2
   _pushForce: 100
   _grabDistance: 2
+  _rotateDistance: 0
   _target: {fileID: 0}
+  Esamina: {fileID: 0}
+  Interagisci: {fileID: 0}
+  Prendi: {fileID: 0}
+  Rilascia: {fileID: 0}
+  Ruota: {fileID: 0}
+  Striscia: {fileID: 0}
+  Chiave: {fileID: 0}
+  Knife: {fileID: 0}
+  _premuto: {fileID: 0}
+  _spenta: {fileID: 0}
+  portaCassaforte: {fileID: 0}
+  colorChanger: {fileID: 0}
+  collisionRigidBody: {fileID: 0}
+  amoColtello: {fileID: 0}
+  finalPositionColtello: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

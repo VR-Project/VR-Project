@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Examine : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class Examine : MonoBehaviour
                 examineMode = true;
                 ruota = true;
                 clickedObject.transform.eulerAngles = originalRotation;
+                GameObject.Find("Fps/FPSController").GetComponent<FirstPersonController>().enabled = false;
             }
         }
     }
@@ -100,10 +102,11 @@ public class Examine : MonoBehaviour
 
     public void ExitExamineMode()
     {
+
         //Reset Object To Original Position
         clickedObject.transform.position = originaPosition;
         clickedObject.transform.eulerAngles = originalRotation;
-
+        GameObject.Find("Fps/FPSController").GetComponent<FirstPersonController>().enabled = true;
         //Unpause Game
         Time.timeScale = 1;
 

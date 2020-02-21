@@ -6,6 +6,7 @@ public class BrickIndietro : MonoBehaviour
 {
     private Vector3[] BuchiPos = new Vector3[5];
     string nomeBuco;
+    private bool tolto = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,7 @@ public class BrickIndietro : MonoBehaviour
         {
             aperturaVarco.decrMattoniCorretti();
         }
-
+        tolto = true;
     }
 
     public void Torna()
@@ -62,6 +63,11 @@ public class BrickIndietro : MonoBehaviour
                 nomeBuco = (i + 1).ToString();
             }
         }
-        StartCoroutine(Esci());
+        if (tolto == true)
+        {
+            StartCoroutine(Esci());
+            tolto = false;
+        }
+        
     }
 }
