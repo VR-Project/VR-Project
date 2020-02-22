@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class aperturaVarco : MonoBehaviour
 {
@@ -34,8 +35,7 @@ public class aperturaVarco : MonoBehaviour
 
     public IEnumerator ApriVarco()
     {
-        
-
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza4");
         while (pos < 1.44f)
         {
             pos += 0.001f;

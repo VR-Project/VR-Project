@@ -199,6 +199,7 @@ public class FPSInteractionManager : MonoBehaviour
             coltelloPreso = false;
             esca = GameObject.Find("reteCentrale").gameObject;
             esca.AddComponent(typeof(PickUp));
+            AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza1");
             //Knife.enabled = false;
         }
         if (Input.GetMouseButtonDown(1))
@@ -346,6 +347,7 @@ public class FPSInteractionManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("voce_scoglio");
 
         ApriPorta4.apri4 = true;
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza3");
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Scene5", LoadSceneMode.Additive);
 
     }
@@ -465,7 +467,6 @@ public class FPSInteractionManager : MonoBehaviour
                 Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
                     Interagisci.enabled = false;
                     StartCoroutine(moveQuadroObject.MoveQ());
                 }
@@ -573,6 +574,7 @@ public class FPSInteractionManager : MonoBehaviour
                         
                         FindObjectOfType<AudioManager>().Play("voce_fede");
                         ApriPorta3.apri3 = true;
+                        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
                         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza4", LoadSceneMode.Additive);
                     }
                     else
