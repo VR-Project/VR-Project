@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ThrowObject : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class ThrowObject : MonoBehaviour
     private bool hasObjectAlready;
     public Thrower thrower;
     private bool isPointing;
-    
+    [SerializeField] public Image Lancia;
+
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class ThrowObject : MonoBehaviour
         {
             if (this.transform.name == hit.transform.name)
             {
+                
                 hasPlayer = true;
             }
             else
@@ -52,6 +55,7 @@ public class ThrowObject : MonoBehaviour
             }
             if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
             {
+                Lancia.enabled = true;
                 GetComponent<Rigidbody>().isKinematic = true;
                 transform.parent = playerCam;
                 beingCarried = true;
@@ -68,6 +72,7 @@ public class ThrowObject : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
                     beingCarried = false;
@@ -77,6 +82,7 @@ public class ThrowObject : MonoBehaviour
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
+                    Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
                     beingCarried = false;

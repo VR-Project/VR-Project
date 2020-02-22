@@ -20,9 +20,14 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private Image Prendi;
     [SerializeField] private Image Rilascia;
     [SerializeField] private Image Ruota;
-    [SerializeField] private Image Striscia;
     [SerializeField] private Image Chiave;
     [SerializeField] private Image Knife;
+    [SerializeField] private Image Esca0;
+    [SerializeField] private Image Esca1;
+    [SerializeField] private Image Esca2;
+    [SerializeField] private Image Esca3;
+    [SerializeField] private Image Esca4;
+    [SerializeField] private Image Esca5;
 
     private bool _pointingInteractable;
     private bool _pointingGrabbable;
@@ -157,7 +162,6 @@ public class FPSInteractionManager : MonoBehaviour
         Esamina.enabled = false;
         Ruota.enabled = false;
         Rilascia.enabled = false;
-        Striscia.enabled = false;
         Chiave.enabled = false;
         Knife.enabled = false;
         fpsController = GetComponent<CharacterController>();
@@ -223,6 +227,36 @@ public class FPSInteractionManager : MonoBehaviour
         UpdateUITarget();
         if (_debugRay)
             DebugRaycast();
+
+        if (counterFish == 0)
+        {
+            Esca0.enabled =true;
+        }
+        else if (counterFish == 1)
+        {
+            Esca0.enabled = false;
+            Esca1.enabled = true;
+        }
+        else if (counterFish == 2)
+        {
+            Esca1.enabled = false;
+            Esca2.enabled = true;
+        }
+        else if (counterFish == 3)
+        {
+            Esca2.enabled = false;
+            Esca3.enabled = true;
+        }
+        else if (counterFish == 4)
+        {
+            Esca3.enabled = false;
+            Esca4.enabled = true;
+        }
+        else if (counterFish == 5)
+        {
+            Esca4.enabled = false;
+            Esca5.enabled = true;
+        }
     }
 
     IEnumerator Fluo()
@@ -385,6 +419,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if (pickableObject.gameObject == pickedColtello && funk == false)
                     {   
                         coltelloPreso = true;
+                        Esca5.enabled = false;
                         Knife.enabled = true;
                         funk = true;
                     }
@@ -584,15 +619,11 @@ public class FPSInteractionManager : MonoBehaviour
                     examinableObject.ClickObject();
                     Examine(examinableObject);
                 }
-
-                //if (examinableObject.examineMode == false && _examinedObject == examinableObject)
-                //{
-                //    ExitExamine();
-                //}
             }
             if (_pointingExamine && _examinedObject == null)
             {
                 Esamina.enabled = true;
+                Ruota.enabled = false;
             }
 
 
@@ -601,8 +632,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingBrick = BrickInTheWall != null ? true : false;
             if (_pointingBrick)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Interagisci.enabled = false;
                     BrickInTheWall.Torna();
                 }
             }
@@ -612,8 +645,10 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingPremuto = premibile != null ? true : false;
             if (_pointingPremuto)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E) && _premuto == null)
                 {
+                    Interagisci.enabled = false;
                     premibile.Premi();
                     Premi(premibile);
                 }
@@ -762,8 +797,13 @@ public class FPSInteractionManager : MonoBehaviour
 
             if (_pointingscala)
             {
+                Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Interagisci.enabled = false;
                     upScala.SaliERuota();
+                }
+                    
             }
 
 
@@ -833,7 +873,11 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingTastoCassaforte)
             _target.color = Color.green;
         else if (_pointingThrowable)
+        {
             _target.color = Color.green;
+            Prendi.enabled = true;
+        }
+           
         else if (_pointingsedia && _movedSedia==null)
             _target.color = Color.green;
         else if (_pointingscala)
@@ -846,7 +890,6 @@ public class FPSInteractionManager : MonoBehaviour
             Esamina.enabled = false;
             Ruota.enabled = false;
             Rilascia.enabled = false;
-            Striscia.enabled = false;
         }
 
 
