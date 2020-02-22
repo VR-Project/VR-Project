@@ -164,6 +164,12 @@ public class FPSInteractionManager : MonoBehaviour
         Rilascia.enabled = false;
         Chiave.enabled = false;
         Knife.enabled = false;
+        Esca0.enabled = false;
+        Esca1.enabled = false;
+        Esca2.enabled = false;
+        Esca3.enabled = false;
+        Esca4.enabled = false;
+        Esca5.enabled = false;
         fpsController = GetComponent<CharacterController>();
         finalPositionColtello = new Vector3(6.883f, 0.021f, 1.915f);
         fluo = true;
@@ -196,6 +202,7 @@ public class FPSInteractionManager : MonoBehaviour
         if (fluo == true && amo != null)
         {
             StartCoroutine(Fluo());
+
         }
 
         if(coltelloPreso == true)
@@ -228,9 +235,9 @@ public class FPSInteractionManager : MonoBehaviour
         if (_debugRay)
             DebugRaycast();
 
-        if (counterFish == 0)
+        if (counterFish == 0 && FloorTrigger.esca0 == true)
         {
-            Esca0.enabled =true;
+            Esca0.enabled = true;
         }
         else if (counterFish == 1)
         {
