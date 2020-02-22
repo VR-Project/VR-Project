@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveCamera : MonoBehaviour
 {
@@ -82,12 +83,13 @@ public class MoveCamera : MonoBehaviour
         }else if(finishTot)
         {
             Debug.Log("Transizione");
-            CameraG.SetActive(false);
-            preScena.SetActive(false);
+            /*CameraG.SetActive(false);
+            preScena.SetActive(false);*/
             light.GetComponent<Light>().enabled = false;
             RenderSettings.skybox = nerog;
-            FPS.transform.GetChild(0).gameObject.SetActive(true);
-            RenderSettings.fog = false;
+            //FPS.transform.GetChild(0).gameObject.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //RenderSettings.fog = false;
         }
     }
 
@@ -110,5 +112,4 @@ public class MoveCamera : MonoBehaviour
         }
         finishTot = true;
     }
-
 }

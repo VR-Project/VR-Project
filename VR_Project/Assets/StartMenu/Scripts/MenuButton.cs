@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
@@ -31,10 +32,9 @@ public class MenuButton : MonoBehaviour
 				animatorFunctions.disableOnce = true;
 				if (thisIndex == 0)
 				{
-					miaCamera.SetActive(false);
-					RenderSettings.fog = true;
-					cameraInizio.transform.GetChild(0).gameObject.SetActive(true);
-				}
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+                }
 				if (thisIndex == 1)
 				{
 					miaCamera.SetActive(false);

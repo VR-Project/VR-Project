@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaliScala : MonoBehaviour
 {
@@ -95,8 +96,9 @@ public class SaliScala : MonoBehaviour
         prescena.SetActive(true);
         uscita.transform.GetChild(0).gameObject.SetActive(false);
         cameraPost = GameObject.Find("EmptyPost");
-        cameraPost.transform.GetChild(0).gameObject.SetActive(true);
+        //cameraPost.transform.GetChild(0).gameObject.SetActive(true);
         cameraPost.transform.GetChild(0).gameObject.GetComponent<UscitaCamera>().SetColor(azzurro);
+        SceneManager.LoadScene(8);
 
 
     }

@@ -35,7 +35,7 @@ public class aperturaVarco : MonoBehaviour
 
     public IEnumerator ApriVarco()
     {
-        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza4");
+        //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza4");
         while (pos < 1.44f)
         {
             pos += 0.001f;
