@@ -98,7 +98,7 @@ public class SaliScala : MonoBehaviour
         cameraPost = GameObject.Find("EmptyPost");
         //cameraPost.transform.GetChild(0).gameObject.SetActive(true);
         cameraPost.transform.GetChild(0).gameObject.GetComponent<UscitaCamera>().SetColor(azzurro);
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(7);
 
 
     }
