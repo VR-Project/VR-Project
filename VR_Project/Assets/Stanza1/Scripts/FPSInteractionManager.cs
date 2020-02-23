@@ -359,7 +359,7 @@ public class FPSInteractionManager : MonoBehaviour
     public IEnumerator AproCassaforteStanza1()
     {
         cassaforteStanza1 = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.8f);
         FindObjectOfType<AudioManager>().Play("InterazioneImportante");
         while (posCass1 > -70)
         {
