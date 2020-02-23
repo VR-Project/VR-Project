@@ -18,7 +18,7 @@ public class Crouch : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouched == false)
         {
-            Striscia.enabled = true;
+            if(Stanza4Trigger.floor4 == true) Striscia.enabled = true;
             characterController.height = 0.3f;
             isCrouched = true;
         }
@@ -29,14 +29,14 @@ public class Crouch : MonoBehaviour {
             characterController.height = 1.8f;
             isCrouched = false;
             guardaSotto = false;
-            Striscia.enabled = false;
+            if (Stanza4Trigger.floor4 == true) Striscia.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.RightControl) && isCrouched == true && guardaSotto == false)
         {
             guardaSotto = true;
             transform.localScale += new Vector3(0.0f, -0.8f, 0);
-            Striscia.enabled = false;
+            if (Stanza4Trigger.floor4 == true) Striscia.enabled = false;
         }
     }
 }
