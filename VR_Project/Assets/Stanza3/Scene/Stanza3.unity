@@ -11278,6 +11278,8 @@ GameObject:
   - component: {fileID: 6121148214314538878}
   - component: {fileID: 2543849717140639320}
   - component: {fileID: 5961265118578296929}
+  - component: {fileID: 5961265118578296930}
+  - component: {fileID: 5961265118578296931}
   m_Layer: 0
   m_Name: Floor.001
   m_TagString: Untagged
@@ -11298,6 +11300,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.870943, y: 0.0076963603, z: 4.000001}
   m_Center: {x: 2.435471, y: 0.0038468053, z: -2.0000005}
+--- !u!65 &5961265118578296930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961265118578296928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.870943, y: 0.95760584, z: 4.0000014}
+  m_Center: {x: 2.435471, y: 0.4788015, z: -2.0000007}
+--- !u!114 &5961265118578296931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961265118578296928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b60c7fae05d29b4a8347fad440b6f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &6009521681453230387
 MeshFilter:
   m_ObjectHideFlags: 0

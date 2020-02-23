@@ -82,7 +82,7 @@ public class MoveCamera : MonoBehaviour
             }
         }else if(finishTot)
         {
-            Debug.Log("Transizione");
+            //Debug.Log("Transizione");
             /*CameraG.SetActive(false);
             preScena.SetActive(false);*/
             light.GetComponent<Light>().enabled = false;
