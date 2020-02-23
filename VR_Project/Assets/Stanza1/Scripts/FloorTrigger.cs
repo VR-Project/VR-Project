@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FloorTrigger : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FloorTrigger : MonoBehaviour
         if(other.gameObject.name == persona.name)
         {
             esca0 = true;
+            Destroy(GameObject.Find("Room_new"));
         }
     }
 

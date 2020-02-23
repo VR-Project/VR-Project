@@ -613,7 +613,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
                     {
-                        
+
                         FindObjectOfType<AudioManager>().Play("voce_fede");
                         ApriPorta3.apri3 = true;
                         //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
@@ -624,6 +624,7 @@ public class FPSInteractionManager : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("Interazione");
                     }
                     examinableObject.ClickObject();
+                    _target.enabled = false;
                     Examine(examinableObject);
                 }
             }
@@ -631,6 +632,7 @@ public class FPSInteractionManager : MonoBehaviour
             {
                 Esamina.enabled = true;
                 Ruota.enabled = false;
+                _target.enabled = true;
             }
 
 
