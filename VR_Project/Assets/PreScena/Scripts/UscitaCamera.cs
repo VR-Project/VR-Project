@@ -19,7 +19,7 @@ public class UscitaCamera : MonoBehaviour
     private float green;
     private float blue;
     private bool transFog = true;
-    private bool finish = false;
+    private bool finish = true;
     private float density;
 
     // Start is called before the first frame update
@@ -34,10 +34,10 @@ public class UscitaCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transFog)
+        /*if (transFog)
         {
             StartCoroutine(transizioneFog());
-        }
+        }*/
         if (finish)
         {
 
