@@ -227,6 +227,7 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else
                 {
+                    Rilascia.enabled = false;
                     Drop();
                 }
             }
@@ -414,6 +415,10 @@ public class FPSInteractionManager : MonoBehaviour
                     grabbableObject.Grab(gameObject);
                     Grab(grabbableObject);
                 }
+            }
+            if (_grabbedObject == null)
+            {
+                Rilascia.enabled = false;
             }
 
             //Check if is pickable
@@ -668,6 +673,14 @@ public class FPSInteractionManager : MonoBehaviour
             //Check if is lanciabile
             ThrowObject lanciabile = hit.transform.GetComponent<ThrowObject>();
             _pointingThrowable = lanciabile != null ? true : false;
+           if (_pointingThrowable )
+            {
+                Prendi.enabled = true;
+            }
+            //else if (ThrowObject.beingCarried == true)
+            //{
+            //    Prendi.enabled = false;
+            //}
 
             //Check if is PremiTastoCassaforte
             PremoTastoCassaforte digitabile = hit.transform.GetComponent<PremoTastoCassaforte>();
@@ -887,7 +900,6 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingThrowable)
         {
             _target.color = Color.green;
-            Prendi.enabled = true;
         }
            
         else if (_pointingsedia && _movedSedia==null)
@@ -902,7 +914,7 @@ public class FPSInteractionManager : MonoBehaviour
             Esamina.enabled = false;
             Digita.enabled = false;
             Ruota.enabled = false;
-            Rilascia.enabled = false;
+            //Rilascia.enabled = false;
         }
 
 
