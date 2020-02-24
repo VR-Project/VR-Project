@@ -17,6 +17,7 @@ public class FPSInteractionManager : MonoBehaviour
     [SerializeField] private Image _target;
     [SerializeField] private Image Esamina;
     [SerializeField] private Image Interagisci;
+    [SerializeField] private Image Digita;
     [SerializeField] private Image Prendi;
     [SerializeField] private Image Rilascia;
     [SerializeField] private Image Ruota;
@@ -160,6 +161,7 @@ public class FPSInteractionManager : MonoBehaviour
         Prendi.enabled = false;
         Interagisci.enabled = false;
         Esamina.enabled = false;
+        Digita.enabled = false;
         Ruota.enabled = false;
         Rilascia.enabled = false;
         Chiave.enabled = false;
@@ -676,9 +678,10 @@ public class FPSInteractionManager : MonoBehaviour
             Tastierino = GameObject.Find("cassaforte_stanza4/Anta/Tastierino");
             if (_pointingTastoCassaforte)
             {
+                Digita.enabled = true;
                 if (Input.GetMouseButtonDown(0) && _tastoPremuto == null)
                 {
-
+                    Digita.enabled = false;
                     numeroCombinazione++;
                     digitabile.PremoTasto();
                     StartCoroutine(digitabile.PremoTasto());
@@ -897,6 +900,7 @@ public class FPSInteractionManager : MonoBehaviour
             Prendi.enabled = false;
             Interagisci.enabled = false;
             Esamina.enabled = false;
+            Digita.enabled = false;
             Ruota.enabled = false;
             Rilascia.enabled = false;
         }
