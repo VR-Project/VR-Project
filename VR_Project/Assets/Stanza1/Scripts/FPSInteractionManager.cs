@@ -458,7 +458,7 @@ public class FPSInteractionManager : MonoBehaviour
             }
 
             //Check if is pulsanteluce
-            SpegniLuce interruttore = hit.transform.GetComponent<SpegniLuce>();
+            SpegniLuce interruttore = hit.collider.GetComponent<SpegniLuce>();
             _pointingInterruttore = interruttore != null ? true : false;
             if (_pointingInterruttore)
             {
@@ -501,7 +501,7 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingOpen && _examinedObject == null){
                 Interagisci.enabled = true;
             }
-            else Interagisci.enabled = false;
+            //else Interagisci.enabled = false;
             if (_pointingExamine)
             {
                 Interagisci.enabled = false;
