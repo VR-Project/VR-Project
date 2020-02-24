@@ -30,9 +30,9 @@ public class SpegniLuce : MonoBehaviour
         this.gameObject.GetComponent<AudioSource>().Play();
         while (pos < 80)
         {
-            pos += 1;
-            transform.Rotate(0, 0, 1, Space.Self);
-            yield return new WaitForSeconds(0.005f);
+            pos += 4;
+            transform.Rotate(0, 0, 4, Space.Self);
+            yield return new WaitForSeconds(0f);
         }
     }
 }
