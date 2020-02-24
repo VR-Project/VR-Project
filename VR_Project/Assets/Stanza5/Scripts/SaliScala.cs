@@ -93,12 +93,12 @@ public class SaliScala : MonoBehaviour
             counter += 0.01f;
             }
         }
-        prescena.SetActive(true);
-        uscita.transform.GetChild(0).gameObject.SetActive(false);
-        cameraPost = GameObject.Find("EmptyPost");
+        //prescena.SetActive(true);
+        //uscita.transform.GetChild(0).gameObject.SetActive(false);
+        /*cameraPost = GameObject.Find("EmptyPost");
         //cameraPost.transform.GetChild(0).gameObject.SetActive(true);
-        cameraPost.transform.GetChild(0).gameObject.GetComponent<UscitaCamera>().SetColor(azzurro);
-        SceneManager.LoadScene(7);
+        cameraPost.transform.GetChild(0).gameObject.GetComponent<UscitaCamera>().SetColor(azzurro);*/
+       SceneManager.LoadScene(7);
 
 
     }
