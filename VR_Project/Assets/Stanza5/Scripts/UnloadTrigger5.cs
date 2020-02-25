@@ -12,6 +12,7 @@ public class UnloadTrigger5 : MonoBehaviour
         {
             AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza4");
             Stanza4Trigger.floor4 = false;
+            GameObject.Find("stanza5/Pavimento").GetComponent<BoxCollider>().enabled = false;
         }
     }
 
