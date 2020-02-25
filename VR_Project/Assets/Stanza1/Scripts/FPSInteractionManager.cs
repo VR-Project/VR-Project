@@ -384,7 +384,8 @@ public class FPSInteractionManager : MonoBehaviour
     public IEnumerator AproCassaforteStanza4()
     {
         cassaforteStanza4 = GameObject.Find("cassaforte_stanza4/Anta");
-        yield return new WaitForSeconds(0.3f);
+        //yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
         while (posCass4 < 70)
         {
             posCass4 += 1f;
@@ -397,7 +398,7 @@ public class FPSInteractionManager : MonoBehaviour
         sasso.SetActive(true);
         sasso.GetComponent<AudioSource>().Play();
         sasso.GetComponent<Rigidbody>().AddForce(0, 0, -50f);
-        FindObjectOfType<AudioManager>().Play("voce_scoglio");
+        //FindObjectOfType<AudioManager>().Play("voce_scoglio");
 
         ApriPorta4.apri4 = true;
         //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza3");
@@ -622,7 +623,7 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (examinableObject.gameObject == GameObject.Find("foto") && disegnoEsaminato == false)
                     {
-                        yield return new WaitForSeconds(.04f);
+                        //yield return new WaitForSeconds(.04f);
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
