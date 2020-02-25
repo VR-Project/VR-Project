@@ -65,10 +65,12 @@ public class ThrowObject : MonoBehaviour
             {
                 if (touched)
                 {
+                    Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
                     beingCarried = false;
                     touched = false;
+                    thrower.hasObject = false;
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
