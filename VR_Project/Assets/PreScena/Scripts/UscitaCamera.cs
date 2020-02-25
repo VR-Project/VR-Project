@@ -132,7 +132,7 @@ public class UscitaCamera : MonoBehaviour
 
     IEnumerator SwimDown()
     {
-        Debug.Log("SwimDown");
+        //Debug.Log("SwimDown");
         collision = false;
         Vector3 targetDirection = target.transform.position - transform.position;
         targetDirection.Normalize();

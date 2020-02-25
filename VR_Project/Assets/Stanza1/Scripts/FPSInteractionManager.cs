@@ -825,6 +825,7 @@ public class FPSInteractionManager : MonoBehaviour
                 Interagisci.enabled = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    _target.enabled = false;
                     Interagisci.enabled = false;
                     upScala.SaliERuota();
                 }
