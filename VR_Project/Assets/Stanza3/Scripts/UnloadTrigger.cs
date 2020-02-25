@@ -11,6 +11,8 @@ public class UnloadTrigger : MonoBehaviour
         if (other.gameObject.name == persona.name)
         {
             AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
+            FindObjectOfType<AudioManager>().StopPlaying("transizione_2_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_2_finale");
         }
     }
 

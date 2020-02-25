@@ -14,6 +14,8 @@ public class Stanza4Trigger : MonoBehaviour
             floor4 = true;
             AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza3");
             GameObject.Find("room_4/Room.001/Floor.001").GetComponent<BoxCollider>().enabled = false;
+            FindObjectOfType<AudioManager>().StopPlaying("transizione_3_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_3_finale");
         }
     }
 

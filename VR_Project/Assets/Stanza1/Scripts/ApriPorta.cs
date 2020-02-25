@@ -25,6 +25,7 @@ public class ApriPorta : MonoBehaviour
     private IEnumerator Apri()
     {
         yield return new WaitForSeconds(0.3f);
+        this.gameObject.GetComponent<AudioSource>().Play();
         while (pos > -100)
         {
             pos -= 1f;

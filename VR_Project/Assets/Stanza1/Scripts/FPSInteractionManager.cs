@@ -51,6 +51,13 @@ public class FPSInteractionManager : MonoBehaviour
     private bool bigliettoEsaminato = false;
     private bool chiaveInserita = false;
     private bool disegnoEsaminato = false;
+    private bool fedeEsaminata = false;
+
+    /*******BOOLEANI TRANSIZIONI********/
+    public bool goingToStanza2 = false;
+    public bool goingToStanza3 = false;
+    public bool goingToStanza4 = false;
+    public bool goingToStanza5 = false;
 
 
     private bool fluo;
@@ -181,6 +188,8 @@ public class FPSInteractionManager : MonoBehaviour
 
     void Update()
     {
+        InizioTransizione();
+
         amoColtello = GameObject.Find("amoColtello");
         if (amoColtello!= null)
         {
@@ -613,15 +622,17 @@ public class FPSInteractionManager : MonoBehaviour
                     }
                     else if (examinableObject.gameObject == GameObject.Find("foto") && disegnoEsaminato == false)
                     {
+                        yield return new WaitForSeconds(.04f);
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
                         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza2", LoadSceneMode.Additive);
                     }
-                    else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello"))
+                    else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello") && fedeEsaminata==false)
                     {
 
                         FindObjectOfType<AudioManager>().Play("voce_fede");
+                        fedeEsaminata = true;
                         ApriPorta3.apri3 = true;
                         //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
                         AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza4", LoadSceneMode.Additive);
@@ -789,6 +800,10 @@ public class FPSInteractionManager : MonoBehaviour
                     {
                         angOcc4 = true;
                     }
+                }
+                else if (Input.GetKey(KeyCode.E) && !leve_arrivate.Contains(movableObject.name) && angolo)
+                {
+                    FindObjectOfType<AudioManager>().Play("ErroreLeva");
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && leve_arrivate.Contains(movableObject.name))
                 {
@@ -1007,6 +1022,32 @@ public class FPSInteractionManager : MonoBehaviour
     private void PremoTasto(PremoTastoCassaforte digitabile)
     {
         _tastoPremuto = digitabile;
+    }
+
+    private void InizioTransizione()
+    {
+        if (this.gameObject.transform.position.y < 70f && goingToStanza2 == false)
+        {
+            FindObjectOfType<AudioManager>().Play("transizione_1");
+            goingToStanza2 = true;
+
+        }
+        else if (this.gameObject.transform.position.y < 2f && goingToStanza3 == false)
+        {
+            FindObjectOfType<AudioManager>().Play("transizione_2_caduta");
+            FindObjectOfType<AudioManager>().StopPlaying("sottofondo_stanza2");
+            goingToStanza3 = true;
+        }
+        else if (this.gameObject.transform.position.y < -56f && goingToStanza4 == false)
+        {
+            FindObjectOfType<AudioManager>().Play("transizione_3_caduta");
+            goingToStanza4 = true;
+        }
+        else if (this.gameObject.transform.position.y < -128f && goingToStanza5 == false)
+        {
+            FindObjectOfType<AudioManager>().Play("transizione_1");
+            goingToStanza5 = true;
+        }
     }
 
 

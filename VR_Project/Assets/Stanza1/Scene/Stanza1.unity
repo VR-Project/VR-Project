@@ -882,6 +882,10 @@ MonoBehaviour:
   Esca3: {fileID: 612660777}
   Esca4: {fileID: 1079263305}
   Esca5: {fileID: 437510654}
+  goingToStanza2: 0
+  goingToStanza3: 0
+  goingToStanza4: 0
+  goingToStanza5: 0
   _premuto: {fileID: 0}
   _spenta: {fileID: 0}
   portaCassaforte: {fileID: 0}
@@ -3033,6 +3037,108 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!1 &693834623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 693834622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &693834624
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693834623}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5893299df3a3d41b682fc6e83a9ed9ec, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3236,102 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 839045101}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &723805174
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723805173}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9babb54d14ae443ffb359a5be86b5226, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &723805177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6668,8 +6870,8 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_disegno
-    clip: {fileID: 8300000, guid: 73205bb41ce26455e892c4a948a5d619, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: aae68013232c148578656372a671b414, type: 3}
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6695,7 +6897,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_pescare
-    clip: {fileID: 8300000, guid: 8767347e7b4df4a6fad5d41fc58729cb, type: 3}
+    clip: {fileID: 8300000, guid: d3e7e9a41cda14f08bd0015cf1305cea, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6705,7 +6907,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: IngranaggiLeve
     clip: {fileID: 8300000, guid: 98048e2ec7b0947dfbfe63b0c1f89e6c, type: 3}
-    volume: 0.5
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6723,7 +6925,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: TraslazioneOggetti
     clip: {fileID: 8300000, guid: 26505b94185614ce0964d6171fa0d222, type: 3}
-    volume: 1
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6732,7 +6934,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ArrivoLeva
     clip: {fileID: 8300000, guid: ab771381bac89b545a1617c530bad4f2, type: 3}
-    volume: 0.58
+    volume: 1
     volumeVariance: 0
     pitch: 1.59
     pitchVariance: 0
@@ -6741,7 +6943,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: AperturaScrigno
     clip: {fileID: 8300000, guid: df7e77cc089904aa08b4071b71e111de, type: 3}
-    volume: 0.7
+    volume: 0.3
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6749,7 +6951,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_fede
-    clip: {fileID: 8300000, guid: fb9094cb1c3494ef1ac72f7a14e02820, type: 3}
+    clip: {fileID: 8300000, guid: e474f027766f6449fafc7a7ae2233137, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6759,7 +6961,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ErroreCassaforte
     clip: {fileID: 8300000, guid: ffebf8521e3844c15ada480b1012dc91, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6768,7 +6970,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CorrettoCassaforte
     clip: {fileID: 8300000, guid: 5d215751c85994816af768f2da930125, type: 3}
-    volume: 1
+    volume: 0.8
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6786,7 +6988,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MattoneInserito
     clip: {fileID: 8300000, guid: 1aa1a7f2221ec40a7851c2fecacc8abf, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -6821,12 +7023,66 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_scoglio
-    clip: {fileID: 8300000, guid: 84256e87d652c4a09b795e9789d0d4c3, type: 3}
+    clip: {fileID: 8300000, guid: fe47a575f74a04a629f9a653fafca61c, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
     loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: transizione_1
+    clip: {fileID: 8300000, guid: f7a10a5a6c6114bad92b20d76fed12eb, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: transizione_2_caduta
+    clip: {fileID: 8300000, guid: 366be19eb0f80477d96846982ff8f0b7, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: transizione_2_finale
+    clip: {fileID: 8300000, guid: 3176c4a4ff8864954866ac186153ee9a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: transizione_3_caduta
+    clip: {fileID: 8300000, guid: f70218539b08d4639a7485c47a93c9aa, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: transizione_3_finale
+    clip: {fileID: 8300000, guid: d3a3bdef3664a4961a7835e0374e3980, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: sottofondo_stanza2
+    clip: {fileID: 8300000, guid: fe6fd552bed244c65add631a34130c04, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1789013115
