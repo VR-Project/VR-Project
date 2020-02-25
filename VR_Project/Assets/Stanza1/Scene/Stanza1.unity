@@ -6897,7 +6897,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_pescare
-    clip: {fileID: 8300000, guid: d3e7e9a41cda14f08bd0015cf1305cea, type: 3}
+    clip: {fileID: 8300000, guid: c36967d3d763948ec9ac604edb0f6ed9, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -6951,7 +6951,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_fede
-    clip: {fileID: 8300000, guid: e474f027766f6449fafc7a7ae2233137, type: 3}
+    clip: {fileID: 8300000, guid: 3eb8044329d704a718c430c390fc507d, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -7023,7 +7023,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: voce_scoglio
-    clip: {fileID: 8300000, guid: fe47a575f74a04a629f9a653fafca61c, type: 3}
+    clip: {fileID: 8300000, guid: d6bf6c5cd7dbe4bcdb364b4b942d3393, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

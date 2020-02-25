@@ -1035,13 +1035,13 @@ public class FPSInteractionManager : MonoBehaviour
         }
         else if (this.gameObject.transform.position.y < 2f && goingToStanza3 == false)
         {
-            FindObjectOfType<AudioManager>().Play("transizione_2_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_1");
             FindObjectOfType<AudioManager>().StopPlaying("sottofondo_stanza2");
             goingToStanza3 = true;
         }
         else if (this.gameObject.transform.position.y < -56f && goingToStanza4 == false)
         {
-            FindObjectOfType<AudioManager>().Play("transizione_3_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_1");
             goingToStanza4 = true;
         }
         else if (this.gameObject.transform.position.y < -128f && goingToStanza5 == false)
