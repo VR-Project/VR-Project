@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EscOpzioni : MonoBehaviour
 {
-    private GameObject cameraMenu;
-    private GameObject cameraOpzioni;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +14,9 @@ public class EscOpzioni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cameraMenu = GameObject.Find("EmptyMenu");
-        cameraOpzioni = GameObject.Find("EmptyOpzioni");
-
-        if (Input.GetKeyDown(KeyCode.Escape) && cameraOpzioni.transform.GetChild(0).gameObject.active==true)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            cameraMenu.transform.GetChild(0).gameObject.SetActive(true);
-            cameraOpzioni.transform.GetChild(0).gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
         }
 
     }

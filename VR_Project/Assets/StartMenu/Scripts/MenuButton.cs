@@ -9,18 +9,9 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] Animator animator;
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
-
-	private GameObject cameraInizio;
-	private GameObject miaCamera;
-	private GameObject cameraOpzioni;
-	private GameObject Canvas;
-
     // Update is called once per frame
     void Update()
     {
-		miaCamera = GameObject.Find("CameraMenu");
-		cameraInizio = GameObject.Find("EmptyPre");
-		cameraOpzioni = GameObject.Find("EmptyOpzioni");
 		if(menuButtonController.index == thisIndex)
 		{
 			animator.SetBool ("selected", true);
@@ -37,8 +28,7 @@ public class MenuButton : MonoBehaviour
                 }
 				if (thisIndex == 1)
 				{
-					miaCamera.SetActive(false);
-					cameraOpzioni.transform.GetChild(0).gameObject.SetActive(true);
+                    SceneManager.LoadScene(8);
 				}
 				if(thisIndex == 2)
 				{
