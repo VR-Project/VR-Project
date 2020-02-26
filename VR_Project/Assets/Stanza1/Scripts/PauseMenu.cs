@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject fps;
+    public GameObject opzioni;
     private bool isPaused;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape) && !opzioni.activeSelf)
         {
             if (isPaused)
             {
