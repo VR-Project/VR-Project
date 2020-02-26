@@ -17,17 +17,22 @@ public class ThrowObject : MonoBehaviour
     private bool hasObjectAlready;
     public Thrower thrower;
     private bool isPointing;
+    float maxDist;
     [SerializeField] public Image Lancia;
+    [SerializeField] public Image Prendimi;
+    //[SerializeField] public Image Target1;
 
 
     void Start()
     {
+        //Target1.color = Color.green;
         audio = GetComponent<AudioSource>();
         obj = GameObject.Find("FPSController");
         player = obj.transform;
         playerCam = GameObject.Find("FirstPersonCharacter").transform;
         thrower = obj.GetComponent<Thrower>();
         isPointing = false;
+        maxDist = 2f;
     }
 
     void Update()
@@ -36,7 +41,7 @@ public class ThrowObject : MonoBehaviour
         //float dist = Vector3.Distance(gameObject.transform.position, player.position);
 
         RaycastHit hit;
-        Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit);
+        Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit, maxDist);
 
         /* if (hit.transform.GetComponent<ThrowObject>()!=null)
          {
@@ -44,52 +49,60 @@ public class ThrowObject : MonoBehaviour
          }*/
         if (hit.transform != null)
         {
-            if (this.transform.name == hit.transform.name)
+            if (this.name == hit.transform.name)
             {
-                
+                Prendimi.enabled = true;
+                Target1.enabled = true;
                 hasPlayer = true;
+                if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
+                {
+                    Prendimi.enabled = false;
+                    Lancia.enabled = true;
+                    GetComponent<Rigidbody>().isKinematic = true;
+                    transform.parent = playerCam;
+                    beingCarried = true;
+                    thrower.hasObject = true;
+                }
             }
             else
             {
+                Target1.enabled = false;
+                Prendimi.enabled = false;
                 hasPlayer = false;
-            }
-            if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
+            }   
+        }
+        if (beingCarried)
+        {
+            Prendimi.enabled = false;
+            if (touched)
             {
-                Lancia.enabled = true;
-                GetComponent<Rigidbody>().isKinematic = true;
-                transform.parent = playerCam;
-                beingCarried = true;
-                thrower.hasObject = true;
+                Prendimi.enabled = false;
+                Lancia.enabled = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                transform.parent = null;
+                beingCarried = false;
+                touched = false;
+                thrower.hasObject = false;
             }
-            if (beingCarried)
+            if (Input.GetMouseButtonDown(0))
             {
-                if (touched)
-                {
-                    Lancia.enabled = false;
-                    GetComponent<Rigidbody>().isKinematic = false;
-                    transform.parent = null;
-                    beingCarried = false;
-                    touched = false;
-                    thrower.hasObject = false;
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Lancia.enabled = false;
-                    GetComponent<Rigidbody>().isKinematic = false;
-                    transform.parent = null;
-                    beingCarried = false;
-                    GetComponent<Rigidbody>().AddForce(playerCam.forward * throwForce);
-                    thrower.hasObject = false;
-                    //RandomAudio();
-                }
-                else if (Input.GetMouseButtonDown(1))
-                {
-                    Lancia.enabled = false;
-                    GetComponent<Rigidbody>().isKinematic = false;
-                    transform.parent = null;
-                    beingCarried = false;
-                    thrower.hasObject = false;
-                }
+                Prendimi.enabled = false;
+                Lancia.enabled = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                transform.parent = null;
+                beingCarried = false;
+                GetComponent<Rigidbody>().AddForce(playerCam.forward * throwForce);
+                thrower.hasObject = false;
+                //RandomAudio();
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                Prendimi.enabled = false;
+                Lancia.enabled = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                transform.parent = null;
+                beingCarried = false;
+                thrower.hasObject = false;
             }
         }
     }
