@@ -106,20 +106,6 @@ public class FPSInteractionManager : MonoBehaviour
     private GameObject scala;
 
     private GameObject esca;
-    private GameObject fish;
-    private GameObject fish1;
-    private GameObject fish2;
-    private GameObject fish3;
-    private GameObject fish4;
-    private GameObject fish5;
-    private GameObject fish6;
-    private CharacterCollisionDetecter colli1;
-    private CharacterCollisionDetecter colli2;
-    private CharacterCollisionDetecter colli3;
-    private CharacterCollisionDetecter colli4;
-    private CharacterCollisionDetecter colli5;
-    private CharacterCollisionDetecter colli6;
-    private CharacterCollisionDetecter colli7;
 
     private Material material1;
 
