@@ -20,12 +20,12 @@ public class ThrowObject : MonoBehaviour
     float maxDist;
     [SerializeField] public Image Lancia;
     [SerializeField] public Image Prendimi;
-    //[SerializeField] public Image Target1;
+    [SerializeField] public Image Target1;
 
 
     void Start()
     {
-        //Target1.color = Color.green;
+        Target1.color = Color.green;
         audio = GetComponent<AudioSource>();
         obj = GameObject.Find("FPSController");
         player = obj.transform;
@@ -57,6 +57,7 @@ public class ThrowObject : MonoBehaviour
                 if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
                 {
                     Prendimi.enabled = false;
+                    Target1.enabled = false;
                     Lancia.enabled = true;
                     GetComponent<Rigidbody>().isKinematic = true;
                     transform.parent = playerCam;
@@ -74,9 +75,11 @@ public class ThrowObject : MonoBehaviour
         if (beingCarried)
         {
             Prendimi.enabled = false;
+            Target1.enabled = false;
             if (touched)
             {
                 Prendimi.enabled = false;
+                Target1.enabled = false;
                 Lancia.enabled = false;
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
@@ -87,6 +90,7 @@ public class ThrowObject : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Prendimi.enabled = false;
+                Target1.enabled = false;
                 Lancia.enabled = false;
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
@@ -98,6 +102,7 @@ public class ThrowObject : MonoBehaviour
             else if (Input.GetMouseButtonDown(1))
             {
                 Prendimi.enabled = false;
+                Target1.enabled = false;
                 Lancia.enabled = false;
                 GetComponent<Rigidbody>().isKinematic = false;
                 transform.parent = null;
