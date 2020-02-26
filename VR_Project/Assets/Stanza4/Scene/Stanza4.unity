@@ -8927,6 +8927,7 @@ GameObject:
   - component: {fileID: 8296172668546713255}
   - component: {fileID: 8296172668546713257}
   - component: {fileID: 8296172668546713256}
+  - component: {fileID: 8296172668546713258}
   m_Layer: 0
   m_Name: cassaforte_stanza4
   m_TagString: Untagged
@@ -9069,6 +9070,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00cee237898634d54ac85725ad363ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8296172668546713258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668546713253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87016827, y: 0.13752747, z: 1.3581289}
+  m_Center: {x: -0.043552756, y: 0.6042557, z: 0.00046360493}
 --- !u!1 &8296172668630523543
 GameObject:
   m_ObjectHideFlags: 0
