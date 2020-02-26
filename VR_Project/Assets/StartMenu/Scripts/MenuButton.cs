@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MenuButton : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] Animator animator;
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
+
+    public GameObject pauseMenu;
+    private GameObject fps;
+    public GameObject opzioni;
     // Update is called once per frame
     void Update()
     {
@@ -34,7 +39,22 @@ public class MenuButton : MonoBehaviour
 				{
 					Application.Quit();
 				}
-			}
+                if (thisIndex == 3)
+                {
+                    pauseMenu.SetActive(false);
+                    GameObject.Find("Fps/FPSController").GetComponent<FirstPersonController>().enabled = true;
+                }
+                if (thisIndex == 4)
+                {
+                    pauseMenu.SetActive(false);
+                    GameObject.Find("Fps/FPSController").GetComponent<FirstPersonController>().enabled = true;
+                    opzioni.SetActive(true);
+                }
+                if (thisIndex == 5)
+                {
+                    Application.Quit();
+                }
+            }
 		}else{
 			animator.SetBool ("selected", false);
 		}
