@@ -52,6 +52,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool chiaveInserita = false;
     private bool disegnoEsaminato = false;
     private bool fedeEsaminata = false;
+    private bool cassaforteAperta = false;
 
     /*******BOOLEANI TRANSIZIONI********/
     public bool goingToStanza2 = false;
@@ -729,7 +730,7 @@ public class FPSInteractionManager : MonoBehaviour
                         combCorretta = true;
                     }
 
-                    if(numeroCombinazione == numeroCorretto && combCorretta == true)
+                    if(numeroCombinazione == numeroCorretto && combCorretta == true && cassaforteAperta == false)
                     {
                         //Debug.Log("combinazione corretta");
                         Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
@@ -738,6 +739,7 @@ public class FPSInteractionManager : MonoBehaviour
                         combCorretta = false;
                         FindObjectOfType<AudioManager>().Play("CorrettoCassaforte");
                         StartCoroutine(AproCassaforteStanza4());
+                        cassaforteAperta = true;
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {
@@ -1035,13 +1037,13 @@ public class FPSInteractionManager : MonoBehaviour
         }
         else if (this.gameObject.transform.position.y < 2f && goingToStanza3 == false)
         {
-            FindObjectOfType<AudioManager>().Play("transizione_2_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_1");
             FindObjectOfType<AudioManager>().StopPlaying("sottofondo_stanza2");
             goingToStanza3 = true;
         }
         else if (this.gameObject.transform.position.y < -56f && goingToStanza4 == false)
         {
-            FindObjectOfType<AudioManager>().Play("transizione_3_caduta");
+            FindObjectOfType<AudioManager>().Play("transizione_1");
             goingToStanza4 = true;
         }
         else if (this.gameObject.transform.position.y < -128f && goingToStanza5 == false)
