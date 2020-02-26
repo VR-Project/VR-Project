@@ -4,24 +4,18 @@ using UnityEngine;
 
 public class TriggerCassaforte : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public static bool floor4 = false;
     private void OnTriggerEnter(Collider other)
     {
         GameObject masso = GameObject.Find("Masso/Stone");
+        Debug.Log("Dentro la funzione");
         if (other.gameObject.name == masso.name)
         {
-            //floor4 = true;
-            //AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza3");
-            //GameObject.Find("room_4/Room.001/Floor.001").GetComponent<BoxCollider>().enabled = false;
+            Debug.Log("Masso ha colliso");
             masso.GetComponent<AudioSource>().Stop();
             this.gameObject.GetComponent<AudioSource>().Play();
+            Debug.Log("Audio ok: " + this.gameObject.GetComponent<AudioSource>().isPlaying);
 
-            while (this.gameObject.GetComponent<AudioSource>().isPlaying)
-            {
-
-            }
-            FindObjectOfType<AudioManager>().Play("voce_scoglio");
+            //FindObjectOfType<AudioManager>().Play("voce_scoglio");
 
         }
     }

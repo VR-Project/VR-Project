@@ -52,6 +52,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool chiaveInserita = false;
     private bool disegnoEsaminato = false;
     private bool fedeEsaminata = false;
+    private bool cassaforteAperta = false;
 
     /*******BOOLEANI TRANSIZIONI********/
     public bool goingToStanza2 = false;
@@ -729,7 +730,7 @@ public class FPSInteractionManager : MonoBehaviour
                         combCorretta = true;
                     }
 
-                    if(numeroCombinazione == numeroCorretto && combCorretta == true)
+                    if(numeroCombinazione == numeroCorretto && combCorretta == true && cassaforteAperta == false)
                     {
                         //Debug.Log("combinazione corretta");
                         Tastierino.GetComponent<Renderer>().material = tastierinoVerde;
@@ -738,6 +739,7 @@ public class FPSInteractionManager : MonoBehaviour
                         combCorretta = false;
                         FindObjectOfType<AudioManager>().Play("CorrettoCassaforte");
                         StartCoroutine(AproCassaforteStanza4());
+                        cassaforteAperta = true;
                     }
                     else if (numeroCombinazione == 4 && combCorretta == false)
                     {

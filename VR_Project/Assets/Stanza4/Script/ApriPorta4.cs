@@ -32,5 +32,7 @@ public class ApriPorta4 : MonoBehaviour
             transform.Rotate(0, 0, -1);
             yield return new WaitForSeconds(0.005f);
         }
+        FindObjectOfType<AudioManager>().Play("voce_scoglio");
+
     }
 }
