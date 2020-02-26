@@ -674,7 +674,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingThrowable = lanciabile != null ? true : false;
            if (_pointingThrowable )
             {
-                Prendi.enabled = true;
+                //Prendi.enabled = true;
             }
             //else if (ThrowObject.beingCarried == true)
             //{
@@ -901,12 +901,7 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingInterruttore)
             _target.color = Color.green;
         else if (_pointingTastoCassaforte)
-            _target.color = Color.green;
-        else if (_pointingThrowable)
-        {
-            _target.color = Color.green;
-        }
-           
+            _target.color = Color.green;       
         else if (_pointingsedia && _movedSedia==null)
             _target.color = Color.green;
         else if (_pointingscala)
