@@ -53,6 +53,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool disegnoEsaminato = false;
     private bool fedeEsaminata = false;
     private bool cassaforteAperta = false;
+    private bool muroAlzato = false;
 
     /*******BOOLEANI TRANSIZIONI********/
     public bool goingToStanza2 = false;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BrickTrigger : MonoBehaviour
 {
     public bool bucoCorretto = false;
+    static int counter = 0;
     private void OnTriggerEnter(Collider other)
     {
         GameObject originalParent = GameObject.Find("Mattoni");
@@ -27,9 +28,15 @@ public class BrickTrigger : MonoBehaviour
         //Debug.Log(counter);
         if (brick.name == this.gameObject.name)
         {
+            counter++;
             aperturaVarco.contaMattoniCorretti();
         }
         
+    }
+
+    public static int getCounterMattoni()
+    {
+        return counter;
     }
 
 }
