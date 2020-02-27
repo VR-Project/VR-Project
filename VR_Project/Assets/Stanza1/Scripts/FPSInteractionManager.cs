@@ -53,6 +53,7 @@ public class FPSInteractionManager : MonoBehaviour
     private bool disegnoEsaminato = false;
     private bool fedeEsaminata = false;
     private bool cassaforteAperta = false;
+    private bool muroAlzato = false;
 
     /*******BOOLEANI TRANSIZIONI********/
     public bool goingToStanza2 = false;
@@ -106,20 +107,6 @@ public class FPSInteractionManager : MonoBehaviour
     private GameObject scala;
 
     private GameObject esca;
-    private GameObject fish;
-    private GameObject fish1;
-    private GameObject fish2;
-    private GameObject fish3;
-    private GameObject fish4;
-    private GameObject fish5;
-    private GameObject fish6;
-    private CharacterCollisionDetecter colli1;
-    private CharacterCollisionDetecter colli2;
-    private CharacterCollisionDetecter colli3;
-    private CharacterCollisionDetecter colli4;
-    private CharacterCollisionDetecter colli5;
-    private CharacterCollisionDetecter colli6;
-    private CharacterCollisionDetecter colli7;
 
     private Material material1;
 
@@ -690,7 +677,7 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingThrowable = lanciabile != null ? true : false;
            if (_pointingThrowable )
             {
-                Prendi.enabled = true;
+                //Prendi.enabled = true;
             }
             //else if (ThrowObject.beingCarried == true)
             //{
@@ -917,12 +904,7 @@ public class FPSInteractionManager : MonoBehaviour
         else if (_pointingInterruttore)
             _target.color = Color.green;
         else if (_pointingTastoCassaforte)
-            _target.color = Color.green;
-        else if (_pointingThrowable)
-        {
-            _target.color = Color.green;
-        }
-           
+            _target.color = Color.green;       
         else if (_pointingsedia && _movedSedia==null)
             _target.color = Color.green;
         else if (_pointingscala)

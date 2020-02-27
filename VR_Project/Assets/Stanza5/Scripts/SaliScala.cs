@@ -82,9 +82,9 @@ public class SaliScala : MonoBehaviour
         {
             if (angle < 70)
             {
-                angle += 2;
-                uscita.transform.GetChild(0).transform.Rotate(-2, 0, 0);
-                yield return new WaitForSeconds(0.01f);
+                angle += 1;
+                uscita.transform.GetChild(0).transform.Rotate(-1, 0, 0);
+                yield return new WaitForSeconds(0.005f);
             }
             else{ 
             RenderSettings.fogDensity += 0.01f;

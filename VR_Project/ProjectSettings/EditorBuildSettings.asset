@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: 
-    guid: a34da97c59330494bba19623f9ace4fe
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Stanza2/Scene/Stanza2.unity
     guid: 030f71dd0a932224f9a7909c1b8ab0a5
@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StartMenu/Scenes/Opzioni.unity
     guid: 1d4c9d8d95f976d4f85a459feb1ee516
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/Realizzatoda.unity
+    guid: 1d66fca49abf73e4eb75035e3ba773e1
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/Ringraziamenti.unity
+    guid: 11ce0adfe8dafbc4a94c53abffd4e134
   m_configObjects: {}

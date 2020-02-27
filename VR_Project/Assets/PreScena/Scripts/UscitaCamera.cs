@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UscitaCamera : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class UscitaCamera : MonoBehaviour
     private float blue;
     private bool transFog = true;
     private bool finish = true;
+    private bool titoli = false;
     private float density;
 
     // Start is called before the first frame update
@@ -51,6 +53,12 @@ public class UscitaCamera : MonoBehaviour
                     RenderSettings.fog = false;
                     target = GameObject.Find("TargetDirezione");
                     StartCoroutine(Rotate());
+                    if (!titoli)
+                    {
+                        titoli = true;
+                        StartCoroutine(LoadTitoli());
+                        
+                    }
                 }
                 else
                 {
@@ -70,6 +78,12 @@ public class UscitaCamera : MonoBehaviour
     public void SetColor(Color color)
     {
         azzurro = color;
+    }
+
+    IEnumerator LoadTitoli()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene(9);
     }
 
     IEnumerator transizioneFog()

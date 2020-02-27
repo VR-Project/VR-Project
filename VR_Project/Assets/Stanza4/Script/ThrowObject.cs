@@ -17,54 +17,77 @@ public class ThrowObject : MonoBehaviour
     private bool hasObjectAlready;
     public Thrower thrower;
     private bool isPointing;
+    float maxDist;
+    public static bool stanza4 = true;
     [SerializeField] public Image Lancia;
+    [SerializeField] public Image Prendimi;
+    [SerializeField] public Image Target1;
 
 
     void Start()
     {
+        Target1.color = Color.green;
         audio = GetComponent<AudioSource>();
         obj = GameObject.Find("FPSController");
         player = obj.transform;
         playerCam = GameObject.Find("FirstPersonCharacter").transform;
         thrower = obj.GetComponent<Thrower>();
         isPointing = false;
+        maxDist = 2f;
     }
 
     void Update()
     {
-        hasObjectAlready = thrower.hasObject;
-        //float dist = Vector3.Distance(gameObject.transform.position, player.position);
-
-        RaycastHit hit;
-        Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit);
-
-        /* if (hit.transform.GetComponent<ThrowObject>()!=null)
-         {
-             isPointing = true;
-         }*/
-        if (hit.transform != null)
+        if(stanza4 == true)
         {
-            if (this.transform.name == hit.transform.name)
+            hasObjectAlready = thrower.hasObject;
+            //float dist = Vector3.Distance(gameObject.transform.position, player.position);
+
+            RaycastHit hit;
+            Physics.Raycast(playerCam.position, playerCam.transform.forward, out hit, maxDist);
+
+            /* if (hit.transform.GetComponent<ThrowObject>()!=null)
+             {
+                 isPointing = true;
+             }*/
+            if (hit.transform != null)
             {
-                
-                hasPlayer = true;
+                if (this.name == hit.transform.name)
+                {
+                    Prendimi.enabled = true;
+                    Target1.enabled = true;
+                    hasPlayer = true;
+                    if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
+                    {
+                        Prendimi.enabled = false;
+                        Target1.enabled = false;
+                        Lancia.enabled = true;
+                        GetComponent<Rigidbody>().isKinematic = true;
+                        transform.parent = playerCam;
+                        beingCarried = true;
+                        thrower.hasObject = true;
+                    }
+                }
+                else
+                {
+                    Target1.enabled = false;
+                    Prendimi.enabled = false;
+                    hasPlayer = false;
+                }
             }
-            else
+            if (hit.transform == null)
             {
-                hasPlayer = false;
-            }
-            if (hasPlayer && Input.GetKeyDown(KeyCode.E) && !hasObjectAlready)
-            {
-                Lancia.enabled = true;
-                GetComponent<Rigidbody>().isKinematic = true;
-                transform.parent = playerCam;
-                beingCarried = true;
-                thrower.hasObject = true;
+                Prendimi.enabled = false;
+                Target1.enabled = false;
             }
             if (beingCarried)
             {
+                Prendimi.enabled = false;
+                Target1.enabled = false;
                 if (touched)
                 {
+                    Prendimi.enabled = false;
+                    Target1.enabled = false;
                     Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
@@ -74,6 +97,8 @@ public class ThrowObject : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Prendimi.enabled = false;
+                    Target1.enabled = false;
                     Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
@@ -84,6 +109,8 @@ public class ThrowObject : MonoBehaviour
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
+                    Prendimi.enabled = false;
+                    Target1.enabled = false;
                     Lancia.enabled = false;
                     GetComponent<Rigidbody>().isKinematic = false;
                     transform.parent = null;
@@ -92,6 +119,7 @@ public class ThrowObject : MonoBehaviour
                 }
             }
         }
+        
     }
 
     void RandomAudio()
