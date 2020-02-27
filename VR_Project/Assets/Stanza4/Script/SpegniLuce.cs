@@ -6,10 +6,13 @@ public class SpegniLuce : MonoBehaviour
 {
     private int pos = 0;
     Material material1;
+    Material emissivo;
+    Material noEmissivo;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,6 +26,8 @@ public class SpegniLuce : MonoBehaviour
         GameObject.Find("lampadario/SpotLight").SetActive(false);
         GameObject.Find("lampadario/Point Light (2)").SetActive(false);
         material1 = (Material)Resources.Load("wall_conScritta", typeof(Material));
+        noEmissivo = (Material)Resources.Load("vetroLampadario", typeof(Material));
+        GameObject.Find("lampadario/vetroLampadario").GetComponent<Renderer>().material = noEmissivo;
         GameObject.Find("room_4/Room.001").GetComponent<Renderer>().material = material1;
     }
 
@@ -33,6 +38,8 @@ public class SpegniLuce : MonoBehaviour
         GameObject.Find("room_4/lampadario/Point Light (2)").SetActive(true);
         material1 = (Material)Resources.Load("wall", typeof(Material));
         GameObject.Find("room_4/Room.001").GetComponent<Renderer>().material = material1;
+        emissivo = (Material)Resources.Load("vetroLampadarioEmission", typeof(Material));
+        GameObject.Find("lampadario/vetroLampadario").GetComponent<Renderer>().material = emissivo;
     }
 
     private IEnumerator Pulsante()
