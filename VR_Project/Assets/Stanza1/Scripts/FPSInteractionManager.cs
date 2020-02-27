@@ -279,6 +279,8 @@ public class FPSInteractionManager : MonoBehaviour
             if (counterFish >= 5)
             {
                 //qui audio coltello che scende
+                //Debug.Log("Coltello discesa");
+                amoColtello.GetComponent<AudioSource>().Play();
                 if (pos <= 50)
                 {
                     pos = pos + 1;
@@ -293,7 +295,10 @@ public class FPSInteractionManager : MonoBehaviour
                     esca.AddComponent(typeof(PickUp));
                     coltello = true;
                     //qui audio coltello pronto per essere preso
-                    FindObjectOfType<AudioManager>().Play("InterazioneImportante");
+                    //Debug.Log("Coltello da prendere");
+                    amoColtello.GetComponent<AudioSource>().Stop();
+                    esca.GetComponent<AudioSource>().Play();
+                    //FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                 }
             }
             else
@@ -362,7 +367,7 @@ public class FPSInteractionManager : MonoBehaviour
     {
         cassaforteStanza1 = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
         yield return new WaitForSeconds(1.8f);
-        FindObjectOfType<AudioManager>().Play("InterazioneImportante");
+        cassaforteStanza1.GetComponent<AudioSource>().Play();
         while (posCass1 > -70)
         {
             posCass1 -= 1f;
