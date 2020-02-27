@@ -11,6 +11,7 @@ public class UnloadTrigger5 : MonoBehaviour
         if (other.gameObject.name == persona.name)
         {
             AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza4");
+            ThrowObject.stanza4 = false;
             Stanza4Trigger.floor4 = false;
             GameObject.Find("stanza5/Pavimento").GetComponent<BoxCollider>().enabled = false;
             FindObjectOfType<AudioManager>().StopPlaying("transizione_1");
