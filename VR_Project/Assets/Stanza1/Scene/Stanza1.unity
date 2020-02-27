@@ -7085,6 +7085,15 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: sottofondoGenerale
+    clip: {fileID: 8300000, guid: b3fe6c1595eb34a72aa11474a3fd5684, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &1789013115
 Transform:
   m_ObjectHideFlags: 0

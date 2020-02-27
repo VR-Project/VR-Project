@@ -12,7 +12,9 @@ public class UnloadTrigger : MonoBehaviour
         {
             AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("Stanza2");
             FindObjectOfType<AudioManager>().StopPlaying("transizione_1");
-            FindObjectOfType<AudioManager>().Play("transizione_2_finale");
+            //FindObjectOfType<AudioManager>().Play("transizione_2_finale");
+            FindObjectOfType<AudioManager>().Play("sottofondoGenerale");
+
         }
     }
 

@@ -89,6 +89,7 @@ public class MoveCamera : MonoBehaviour
             RenderSettings.skybox = nerog;
             //FPS.transform.GetChild(0).gameObject.SetActive(true);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            FindObjectOfType<AudioManager>().Play("sottofondoGenerale");
             //RenderSettings.fog = false;
         }
     }

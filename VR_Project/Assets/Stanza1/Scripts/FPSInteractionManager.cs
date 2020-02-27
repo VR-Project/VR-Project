@@ -291,6 +291,7 @@ public class FPSInteractionManager : MonoBehaviour
             }
             if (counterFish >= 5)
             {
+                //qui audio coltello che scende
                 if (pos <= 50)
                 {
                     pos = pos + 1;
@@ -304,6 +305,7 @@ public class FPSInteractionManager : MonoBehaviour
                     esca = amoColtello.transform.GetChild(0).Find("coltello").gameObject;
                     esca.AddComponent(typeof(PickUp));
                     coltello = true;
+                    //qui audio coltello pronto per essere preso
                     FindObjectOfType<AudioManager>().Play("InterazioneImportante");
                 }
             }
@@ -1031,6 +1033,7 @@ public class FPSInteractionManager : MonoBehaviour
     {
         if (this.gameObject.transform.position.y < 70f && goingToStanza2 == false)
         {
+            FindObjectOfType<AudioManager>().StopPlaying("sottofondoGenerale");
             FindObjectOfType<AudioManager>().Play("transizione_1");
             goingToStanza2 = true;
 
@@ -1043,11 +1046,13 @@ public class FPSInteractionManager : MonoBehaviour
         }
         else if (this.gameObject.transform.position.y < -56f && goingToStanza4 == false)
         {
+            FindObjectOfType<AudioManager>().StopPlaying("sottofondoGenerale");
             FindObjectOfType<AudioManager>().Play("transizione_1");
             goingToStanza4 = true;
         }
         else if (this.gameObject.transform.position.y < -128f && goingToStanza5 == false)
         {
+            FindObjectOfType<AudioManager>().StopPlaying("sottofondoGenerale");
             FindObjectOfType<AudioManager>().Play("transizione_1");
             goingToStanza5 = true;
         }
