@@ -21,7 +21,17 @@ public class SpegniLuce : MonoBehaviour
     {
         StartCoroutine(Pulsante());
         GameObject.Find("lampadario/SpotLight").SetActive(false);
+        GameObject.Find("lampadario/Point Light (2)").SetActive(false);
         material1 = (Material)Resources.Load("wall_conScritta", typeof(Material));
+        GameObject.Find("room_4/Room.001").GetComponent<Renderer>().material = material1;
+    }
+
+    public void Accendi()
+    {
+        StartCoroutine(PulsanteSu());
+        GameObject.Find("room_4/lampadario/SpotLight").SetActive(true);
+        GameObject.Find("room_4/lampadario/Point Light (2)").SetActive(true);
+        material1 = (Material)Resources.Load("wall", typeof(Material));
         GameObject.Find("room_4/Room.001").GetComponent<Renderer>().material = material1;
     }
 
@@ -32,6 +42,17 @@ public class SpegniLuce : MonoBehaviour
         {
             pos += 4;
             transform.Rotate(0, 0, 4, Space.Self);
+            yield return new WaitForSeconds(0f);
+        }
+    }
+
+    private IEnumerator PulsanteSu()
+    {
+        this.gameObject.GetComponent<AudioSource>().Play();
+        while (pos > 0)
+        {
+            pos -= 4;
+            transform.Rotate(0, 0, -4, Space.Self);
             yield return new WaitForSeconds(0f);
         }
     }

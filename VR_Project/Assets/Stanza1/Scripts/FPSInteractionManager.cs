@@ -87,6 +87,7 @@ public class FPSInteractionManager : MonoBehaviour
     public PremiBottone _premuto = null;
     public SpegniLuce _spenta = null;
     private SaliScala _saliScala = null;
+    private bool acceso = false;
 
     public GameObject portaCassaforte;
     public CollisionColorChanger colorChanger = null;
@@ -461,11 +462,17 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingInterruttore)
             {
                 Interagisci.enabled = true;
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && acceso == false)
                 {
                     Interagisci.enabled = false;
                     interruttore.Spegni();
-                    //PickUp(pickableObject);
+                    acceso = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && acceso == true)
+                {
+                    Interagisci.enabled = false;
+                    interruttore.Accendi();
+                    acceso = false;
                 }
             }
 
