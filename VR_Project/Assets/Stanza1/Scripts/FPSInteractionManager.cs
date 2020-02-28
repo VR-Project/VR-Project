@@ -633,7 +633,7 @@ public class FPSInteractionManager : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("voce_disegno");
                         ApriPorta.apri = true;
                         disegnoEsaminato = true;
-                        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza2", LoadSceneMode.Additive);
+                        //AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza2", LoadSceneMode.Additive);
                     }
                     else if (examinableObject.gameObject == GameObject.Find("Room/labirinto_wayPoints/Scrigno_corpo/anello") && fedeEsaminata==false)
                     {
