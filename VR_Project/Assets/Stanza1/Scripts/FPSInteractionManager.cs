@@ -349,6 +349,7 @@ public class FPSInteractionManager : MonoBehaviour
     {
         scrigno = GameObject.Find("labirinto_wayPoints/Scrigno_corpo");
         yield return new WaitForSeconds(6f);
+        FindObjectOfType<AudioManager>().Play("sollevamentoScrigno");
         while (posScrigno <= 0.5f)
         {
             posScrigno = posScrigno + 0.01f;

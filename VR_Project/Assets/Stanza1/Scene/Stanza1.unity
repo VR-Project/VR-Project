@@ -2463,7 +2463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -95.79999, y: 56.899994}
+  m_AnchoredPosition: {x: -95.79883, y: 56.899902}
   m_SizeDelta: {x: 128, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446251921
@@ -3822,7 +3822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -88.20001, y: 55.600006}
+  m_AnchoredPosition: {x: -88.20117, y: 55.600098}
   m_SizeDelta: {x: 144, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663191640
@@ -8779,6 +8779,15 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: sollevamentoScrigno
+    clip: {fileID: 8300000, guid: 482f4483a410b42cb9068ee0271d2a47, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!4 &1789013115
