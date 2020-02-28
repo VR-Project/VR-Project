@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApriPorta : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ApriPorta : MonoBehaviour
         if (apri == true)
         {
             StartCoroutine(Apri());
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("Stanza2", LoadSceneMode.Additive);
             apri = false;
         }
     }
