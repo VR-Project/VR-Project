@@ -101,6 +101,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Material tastierinoNero;
     private GameObject cassaforteStanza4;
     private GameObject cassaforteStanza1;
+    private GameObject sportelloCassaforte;
 
     private GameObject amo;
     private GameObject pickedColtello;
@@ -367,9 +368,11 @@ public class FPSInteractionManager : MonoBehaviour
     public IEnumerator AproCassaforteStanza1()
     {
         cassaforteStanza1 = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
+        sportelloCassaforte = GameObject.Find("Room_new/cassaforte/Cassaforte");
         yield return new WaitForSeconds(1.8f);
         cassaforteStanza1.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1f);
+        sportelloCassaforte.GetComponent<AudioSource>().Play();
         while (posCass1 > -70)
         {
             posCass1 -= 1f;
