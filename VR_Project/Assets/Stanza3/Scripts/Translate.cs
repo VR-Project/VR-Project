@@ -6,7 +6,7 @@ using UnityEngine;
 public class Translate : MonoBehaviour
 {
     float pos = 0;
-    float maxSpost = 0.8f;
+    float maxSpost = 0.6f;
     float dir = 1;
     // Start is called before the first frame update
     void Start()
@@ -22,22 +22,43 @@ public class Translate : MonoBehaviour
 
     public IEnumerator MoveQ()
     {
-        if (this.name == "LibriMove" || this.name == "cestino") maxSpost = 0.2f;
-        if (this.name == "cestino"|| this.name == "Scrivania") dir = -1;
-        FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
-        while (pos < maxSpost)
+        if (this.name != "Picture frame")
         {
-            pos +=  0.01f;
-            gameObject.transform.Translate(0, -0.01f*dir, 0);
-            yield return new WaitForSeconds(.02f);
+            if (this.name == "LibriMove" || this.name == "cestino") maxSpost = 0.2f;
+            if (this.name == "cestino" || this.name == "Scrivania") dir = -1;
+            FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
+            while (pos < maxSpost)
+            {
+                pos += 0.01f;
+                gameObject.transform.Translate(0, -0.01f * dir, 0);
+                yield return new WaitForSeconds(.02f);
+            }
+            yield return new WaitForSeconds(0.3f);
+            FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
+            while (pos > 0)
+            {
+                pos -= 0.01f;
+                gameObject.transform.Translate(0, +0.01f * dir, 0);
+                yield return new WaitForSeconds(.035f);
+            }
         }
-        yield return new WaitForSeconds(0.3f);
-        FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
-        while (pos > 0)
+        else
         {
-            pos -= 0.01f;
-            gameObject.transform.Translate(0, +0.01f*dir, 0);
-            yield return new WaitForSeconds(.007f);
+            FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
+            while (pos < maxSpost)
+            {
+                pos += 0.01f;
+                gameObject.transform.Translate(0, -0.01f * dir, 0);
+                yield return new WaitForSeconds(.003f);
+            }
+            yield return new WaitForSeconds(0.3f);
+            FindObjectOfType<AudioManager>().Play("TraslazioneOggetti");
+            while (pos > 0)
+            {
+                pos -= 0.01f;
+                gameObject.transform.Translate(0, +0.01f * dir, 0);
+                yield return new WaitForSeconds(.003f);
+            }
         }
 
     }
