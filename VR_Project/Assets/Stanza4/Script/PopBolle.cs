@@ -10,8 +10,8 @@ public class PopBolle : MonoBehaviour
         GameObject pezzoFoto = GameObject.Find("Bolle/PezziFoto/" + this.name); 
         if (other.gameObject.tag == "proiettile")
         {
+            GameObject.Find("Bolle").GetComponent<AudioSource>().Play();
             Vector3 posBolla = gameObject.transform.position;
-            gameObject.GetComponent<AudioSource>().Play();
             gameObject.SetActive(false);
             GameObject.Find("Bolle/PezziFoto/" + this.name).transform.position = posBolla;
             pezzoFoto.SetActive(true);
