@@ -82,8 +82,8 @@ public class UscitaCamera : MonoBehaviour
 
     IEnumerator LoadTitoli()
     {
-        yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene(9);
+        yield return new WaitForSeconds(13f);
+        SceneManager.LoadScene(11);
     }
 
     IEnumerator transizioneFog()

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TransizioneTitoli : MonoBehaviour
+public class TransizioneTitolo : MonoBehaviour
 {
     private bool transizione = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class TransizioneTitoli : MonoBehaviour
 
     IEnumerator Transizione()
     {
-        yield return new WaitForSeconds(8f);
-        SceneManager.LoadScene(10);
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(9);
     }
 }

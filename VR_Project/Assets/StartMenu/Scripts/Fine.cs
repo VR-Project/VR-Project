@@ -23,7 +23,7 @@ public class Fine : MonoBehaviour
 
     IEnumerator FineT()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(8f);
         Application.Quit();
     }
 }
