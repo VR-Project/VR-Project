@@ -369,6 +369,7 @@ public class FPSInteractionManager : MonoBehaviour
         cassaforteStanza1 = GameObject.Find("Room_new/cassaforte/PortaCassaforte");
         yield return new WaitForSeconds(1.8f);
         cassaforteStanza1.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1f);
         while (posCass1 > -70)
         {
             posCass1 -= 1f;

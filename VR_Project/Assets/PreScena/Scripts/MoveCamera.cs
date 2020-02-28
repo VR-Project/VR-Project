@@ -96,7 +96,7 @@ public class MoveCamera : MonoBehaviour
 
     IEnumerator Nero()
     {
-        while(RenderSettings.fogDensity < 0.5f)
+        while(RenderSettings.fogDensity < 0.37f)
         {
 
             color.r = RenderSettings.fogColor.r;

@@ -39,7 +39,7 @@ public class Translate : MonoBehaviour
             {
                 pos -= 0.01f;
                 gameObject.transform.Translate(0, +0.01f * dir, 0);
-                yield return new WaitForSeconds(.035f);
+                yield return new WaitForSeconds(.03f);
             }
         }
         else
