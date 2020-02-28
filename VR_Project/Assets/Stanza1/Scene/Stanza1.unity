@@ -3981,15 +3981,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -617.203
+      value: -615.24
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 269
+      value: -1.27
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.893
+      value: -2.74
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8768,7 +8768,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: MattoneInserito
-    clip: {fileID: 8300000, guid: 1aa1a7f2221ec40a7851c2fecacc8abf, type: 3}
+    clip: {fileID: 8300000, guid: 42047a4152e1d4b1d8286e42dddd331c, type: 3}
     volume: 0.7
     volumeVariance: 0
     pitch: 1
@@ -8795,7 +8795,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: postScena_audio
-    clip: {fileID: 8300000, guid: 1a2bd5512144649ba96b5cb9e63eefc9, type: 3}
+    clip: {fileID: 8300000, guid: b7ef5be926df1441b8522abdaca687f7, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -8813,7 +8813,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: transizione_1
-    clip: {fileID: 8300000, guid: f7a10a5a6c6114bad92b20d76fed12eb, type: 3}
+    clip: {fileID: 8300000, guid: 6cc0186b4ae6a48eca1531aaed818e05, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
