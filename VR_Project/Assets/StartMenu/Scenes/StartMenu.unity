@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 711364969}
   - component: {fileID: 711364968}
   m_Layer: 0
-  m_Name: MenuStart
+  m_Name: background_sinapsi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
