@@ -8633,7 +8633,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: AperturaCassaforte
-    clip: {fileID: 8300000, guid: 9873c13a5619d92498ec40f34f8a5235, type: 3}
+    clip: {fileID: 8300000, guid: 61bab4b2513ec4bb4934e1524392f6bb, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
