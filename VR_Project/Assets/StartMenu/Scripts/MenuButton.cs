@@ -11,6 +11,7 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
 
+
     public GameObject pauseMenu;
     private GameObject fps;
     public GameObject opzioni;
@@ -29,6 +30,7 @@ public class MenuButton : MonoBehaviour
 				if (thisIndex == 0)
 				{
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    FindObjectOfType<AudioMenuScript1>().gameObject.GetComponent<AudioSource>().Stop();
 
                 }
 				if (thisIndex == 1)
