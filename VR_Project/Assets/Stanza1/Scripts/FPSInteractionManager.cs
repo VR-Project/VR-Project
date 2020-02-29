@@ -124,7 +124,7 @@ public class FPSInteractionManager : MonoBehaviour
     public Vector3 finalPositionColtello;
     private List<string> leve_arrivate = new List<string>();
 
-    bool angolo = false;
+    public bool angolo = false;
     bool angOcc2 = false;
     bool angOcc3 = false;
     bool angOcc4 = false;
@@ -779,15 +779,15 @@ public class FPSInteractionManager : MonoBehaviour
                 }
                 else if (movableObject.name == "2" || movableObject.name == "3" || movableObject.name == "4")
                 {
-                    angolo = angOcc2;
+                    StartCoroutine(SetAngolo(angOcc2));
                 }
                 else if (movableObject.name == "5" || movableObject.name == "6")
                 {
-                    angolo = angOcc3;
+                    StartCoroutine(SetAngolo(angOcc3));
                 }
                 else if (movableObject.name == "7" || movableObject.name == "8" || movableObject.name == "9" || movableObject.name == "10")
                 {
-                    angolo = angOcc4;
+                    StartCoroutine(SetAngolo(angOcc4));
                 }
 
                 if (Input.GetKeyDown(KeyCode.E) && !leve_arrivate.Contains(movableObject.name) && !angolo)
@@ -886,6 +886,12 @@ public class FPSInteractionManager : MonoBehaviour
             _pointingscala = false;
         }
 
+    }
+
+    IEnumerator SetAngolo(bool segno)
+    {
+        yield return new WaitForSeconds(.1f);
+        angolo = segno;
     }
 
     IEnumerator TastierinoNero()
